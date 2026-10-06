@@ -1,0 +1,5 @@
+setup,direction,f_Hz,phase_1_3_deg,phase_2_4_deg,centre_amp,mean_corner_amp
+"Vertical, C1",V,1.134,-179.1,-173.3,0.048,0.466
+"Vertical d1, C2",V,1.209,176.3,176.6,0.424,0.517
+"Vertical d2ke, C2",V,1.228,-142.7,-175.2,0.183,0.518
+"Lateral, C2",H,1.203,-4.9,-143.3,0.927,0.757

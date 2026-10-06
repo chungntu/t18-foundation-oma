@@ -1,0 +1,69 @@
+MANIFEST - ambient vibration records, turbine T18, Dong Hai 1
+
+45 files, 2.4 GB total. SHA-256 checksums.
+Paths are relative to the folder that holds dot1/ and dot2/ (T18_DATA).
+
+dot1/Thangdung.mat                                                  156758343  eb4dd7b80ab88fb9d901b29d17383cb6b4385868a57c7fa09493df2c5a7014b0
+dot1/Thangdung.tdms                                                 203717586  c39436bf3126066225606b532ad338ee0660f12b17f1678043459cf7e9fc0504
+dot1/code.m                                                               562  f0c2f2700ae97d8e3c972f21625bdb611e3b4260ecca7ca25ded7a41213403c0
+dot1/convertTDMS.m                                                      73415  16d7a80058646d5e249a32531efdc798d5bb66fbb0b5c3cfb4bc557b675270cd
+dot1/ga.mat                                                          37487767  88a1abdad806e3521e5457ce9ee0d0c83955f9eb3fe6359a3c0e7de5a4ef036f
+dot1/ga.tdms                                                         62056623  4554de2a5d171472e1760bc1abf9f683f3d41d609e3946e3f863fad189910352
+dot1/logfile.m                                                           4231  a828642e6367fea32c1fcecc9c74f1ec92b3199aaca92444795aa76d7fda637f
+dot1/ngang1.mat                                                      95047567  31983cfcb99dd5100f732367058e75c0909fefb130509c66b6c1a64d3d50e4d7
+dot1/ngang1.tdms                                                    122417845  b171179103090f612b21ce04e4a13f81a3c035a8a902600e2e07bd63407d2992
+dot1/ngang2.mat                                                      86366454  d772069c7610eb35c8e98005f177641605f94ba0960a6ceab259198158c7b3fe
+dot1/ngang2.tdms                                                    111277261  405b5a227ecb597ecd191ce876e198eb758f31e2f793d8f62d5f73dfc3a74e7c
+dot1/point.asc                                                             66  28503894afa898d56db6b58152b612ca8008ae46d87ea188a94b63c3cf1c3aab
+dot1/sensitivediemdo.mat                                                  566  564d98076bfcd55ed2f083d53d9d03f83fa21e3246c45fff0482e2eb35fe302e
+dot1/sensitivega.mat                                                      547  4809402c0f912b7139e1433d08fe0bd200a0b24799c88cde1f00067759a5a989
+dot1/simpleConvertTDMS.m                                                 5309  6cfac17838d4fc110c5c1e386de49d824365a16810cc43b7647953588191acdf
+dot1/xl_ga.mat                                                       34556915  c56830144d7dbc3814eb62d90506b0a88357605a338944eb6f046ab0f69b965d
+dot1/xl_ga_conv.mat                                                  34570740  169c397e330a64e7b988fe1ef322ab9697898e960419d8d9c5283a4508ad1a62
+dot1/xl_ngang1.mat                                                   57787992  267177029636ba91eff05121c1e58251cc37a2a2e151fa41ebaa5474776ae819
+dot1/xl_ngang1_conv.mat                                              57798394  83df1f2a99e84163338ae7a2df3c024bdd40142edaad2b9640c16189c9b24cbb
+dot1/xl_ngang2.mat                                                   52493367  3c7ca187f24c6a24cadfb206bcdb31df4454703dc76b719cb7c84885781b06fd
+dot1/xl_ngang2_conv.mat                                              52501732  8d8b8aa32f6e0d801da20cb114ff6ab5730028baaac50ae348b69baf7e46a84f
+dot1/xl_thangdung.mat                                                94753941  617df175bd7c90fd412852bbfdf9c4f7eda6b6fa1c3d0e17141de32bc6b6511a
+dot1/xl_thangdung_conv.mat                                           94792631  a1de55982d13ebfbe061c748e4c0b86a0bb96d32609a0a02af775d1e7f0cf067
+dot2/Thangdungd1.mat                                                117108115  77b5b22d678b62efe125d5abd314094c0c25e52371592327900701956f3e3174
+dot2/Thangdungd1.tdms                                               150671736  39dc665d7af814e9b9dba3b62074ad5021034aa955e8bd4111414622e72f3e16
+dot2/Thangdungd2ke.mat                                              140244922  a5c460aa35f39d8df9ea97704a9a12f1b284d7ff90b435899d2f4002407cb9fa
+dot2/Thangdungd2ke.tdms                                             181574528  73644e2a2731b9e49518d9bd35a9767791375624c4b9164fa23eb4a6f9fea03a
+dot2/beam.asc                                                             306  71060ef2f59a5cdd46d4ef0b1a4256cb9a94ef4a8784f3f69a36d860e05f9c3e
+dot2/beam2.asc                                                            340  3ac232cf1c9e43cd01e8116e0e5a574c34523d53a7f46c1424681b9843db2071
+dot2/code.m                                                               518  a60f21aec0fffefd509b187febf6d8bcae6e44e69335a1d7bfaf5a7ceff0825b
+dot2/convertTDMS.m                                                      73415  16d7a80058646d5e249a32531efdc798d5bb66fbb0b5c3cfb4bc557b675270cd
+dot2/grid.asc                                                             396  0edb6c875468dbb6f72f5c254d6e46f16850db3a02008e8c943f5fec5194c09a
+dot2/grid2.asc                                                            462  2f91b79562df21b69407167b14e50624198bf8eb2f4099e42f92289967e0ca1c
+dot2/logfile.m                                                           9471  9b8df1ec21ec1191458a79aabc5ff4997872f47a2278e3b5b44ffb135295bfa5
+dot2/ngangd2ke.mat                                                   56652925  7934d92d46b4115a87e726ff4782a0ba2e45158b8571a10a6a949d9aec8eea8a
+dot2/ngangd2ke.tdms                                                  72817924  29d4e49169b1940abcf3a2c2bae20dd22d07f5871a23de7a9a036cb2b05241f0
+dot2/point.asc                                                             66  28503894afa898d56db6b58152b612ca8008ae46d87ea188a94b63c3cf1c3aab
+dot2/sensitivity.mat                                                      567  1b1ebe3c1d50921e5ac22bf71ff07a566997b4aa0bed97a84147ffed45c8b6a9
+dot2/simpleConvertTDMS.m                                                 5309  6cfac17838d4fc110c5c1e386de49d824365a16810cc43b7647953588191acdf
+dot2/xl_ngang.mat                                                    41294533  a6352ed5b0a13a0e8e90c657e1293d3b615620584522cd1d9950144e63e1e53a
+dot2/xl_ngang_conv.mat                                               41291730  68331ad8efb3a3f8e1221c62310b422ea5ef1fc5d63011b87f89c78c589c2e79
+dot2/xl_td1.mat                                                      85345441  28dc98ff0dbdcc3d4aff0efc3693d3c0184632e21f40a462073668199af5b103
+dot2/xl_td1_conv.mat                                                 85344421  74c6a20a4689cbaf506451a49799ee7772b06123bcabcfc001386262db4ac766
+dot2/xl_td2.mat                                                     101970601  47f1fba026d943b596f280437feca49e8e96fd94526efe3ccc2b342b58014ca7
+dot2/xl_td2_conv.mat                                                101976245  6d9ac9dc95d750669ea6ff142a7852ed82de6eee527d2c98cd1f61999abbc513
+
+Not needed for the analysis:
+
+dot1/Thangdung.tdms_index                                              842706  chi muc do LabVIEW tu sinh lai khi mo tep .tdms
+dot1/ga.tdms_index                                                     243183  chi muc do LabVIEW tu sinh lai khi mo tep .tdms
+dot1/ngang1.tdms_index                                                 508005  chi muc do LabVIEW tu sinh lai khi mo tep .tdms
+dot1/ngang2.tdms_index                                                 462141  chi muc do LabVIEW tu sinh lai khi mo tep .tdms
+dot2/KQ dot 2.docx                                                     320058  bao cao noi bo, khong phai so lieu do
+dot2/Thangdungd1.tdms_index                                            628856  chi muc do LabVIEW tu sinh lai khi mo tep .tdms
+dot2/Thangdungd2ke.tdms_index                                          757008  chi muc do LabVIEW tu sinh lai khi mo tep .tdms
+dot2/ngangd2ke.tdms_index                                              306004  chi muc do LabVIEW tu sinh lai khi mo tep .tdms
+dot2/xl_ngang_proc.mat                                               41794282  ket qua trung gian cua lan phan tich truoc
+dot2/xl_ngang_ssi_cov.mat                                            42584042  ket qua trung gian cua lan phan tich truoc, khong phai so lieu do
+dot2/xl_ngang_ssi_cov_modes.mat                                          3927  ket qua trung gian cua lan phan tich truoc
+dot2/xl_td2_proc.mat                                                 44070207  ket qua trung gian cua lan phan tich truoc
+dot2/xl_td2_ssi_cov.mat                                              44859712  ket qua trung gian cua lan phan tich truoc, khong phai so lieu do
+dot2/xl_td2_ssi_cov2.mat                                             44859712  ket qua trung gian cua lan phan tich truoc, khong phai so lieu do
+dot2/xl_td2_ssi_cov2_modes.mat                                           5309  ket qua trung gian cua lan phan tich truoc
+dot2/xl_td2_ssi_cov_modes.mat                                            1996  ket qua trung gian cua lan phan tich truoc

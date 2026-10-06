@@ -1,0 +1,24 @@
+# du lieu tho, ban ve va tai lieu khong can de tai lap ket qua - giu ngoai repo
+data/
+un_use/
+
+# san pham bien dich LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# he dieu hanh
+Thumbs.db
+desktop.ini
+.DS_Store

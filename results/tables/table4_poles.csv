@@ -1,0 +1,39 @@
+campaign,setup,f_Hz,xi_pct,n_poles,MPC,band
+1,"Vertical, campaign 1",1.1734,4.736,19,0.9997,low
+1,"Vertical, campaign 1",18.1249,0.7,27,0.997,high
+1,"Vertical, campaign 1",18.5581,0.683,19,0.9932,high
+1,"Vertical, campaign 1",19.0695,0.582,8,0.8523,high
+1,"Vertical, campaign 1",19.4587,0.592,8,0.9726,high
+1,"Vertical, campaign 1",19.9129,1.298,18,0.9838,high
+1,"Lateral 1, campaign 1",1.2258,3.428,13,0.9731,low
+1,"Lateral 1, campaign 1",1.2536,2.771,12,0.9942,low
+1,"Lateral 1, campaign 1",1.7301,5.486,11,0.998,low
+1,"Lateral 1, campaign 1",21.9121,0.4,45,1.0,high
+1,"Lateral 1, campaign 1",22.7423,0.512,48,0.9998,high
+1,"Lateral 1, campaign 1",23.7452,0.304,25,0.9882,high
+1,"Lateral 2, campaign 1",1.3217,2.704,14,0.8956,low
+1,"Lateral 2, campaign 1",21.5658,5.945,18,0.9849,high
+1,"Lateral 2, campaign 1",22.8042,1.251,8,0.7008,high
+1,"Lateral 2, campaign 1",23.1641,0.586,33,0.9938,high
+1,"Three-channel setup, campaign 1",1.237,3.011,15,0.9217,low
+1,"Three-channel setup, campaign 1",1.3307,4.393,16,0.9978,low
+1,"Three-channel setup, campaign 1",1.725,5.351,13,0.9991,low
+1,"Three-channel setup, campaign 1",14.4325,1.415,20,0.9988,high
+1,"Three-channel setup, campaign 1",14.9904,0.973,33,0.9092,high
+2,"Lateral, campaign 2",1.052,2.684,17,0.9892,low
+2,"Lateral, campaign 2",1.2146,1.927,28,0.9208,low
+2,"Lateral, campaign 2",1.6111,2.416,10,0.9791,low
+2,"Vertical d1, campaign 2",1.1465,9.854,12,0.9506,low
+2,"Vertical d1, campaign 2",11.8012,11.523,17,1.0,high
+2,"Vertical d1, campaign 2",13.8658,3.025,13,0.9678,high
+2,"Vertical d1, campaign 2",16.8269,2.73,21,0.9577,high
+2,"Vertical d1, campaign 2",17.0808,0.588,17,0.9545,high
+2,"Vertical d1, campaign 2",17.6664,1.96,22,0.9931,high
+2,"Vertical d1, campaign 2",18.9465,1.083,21,0.9761,high
+2,"Vertical d1, campaign 2",19.4659,1.373,32,0.9485,high
+2,"Vertical d1, campaign 2",19.6818,1.113,24,0.9918,high
+2,"Vertical d1, campaign 2",20.5419,0.544,32,0.9955,high
+2,"Vertical d2ke, campaign 2",1.0735,1.253,13,0.9923,low
+2,"Vertical d2ke, campaign 2",1.1985,2.353,19,0.445,low
+2,"Vertical d2ke, campaign 2",1.2305,2.484,25,0.4956,low
+2,"Vertical d2ke, campaign 2",2.2951,1.189,10,0.9834,low
