@@ -22,3 +22,6 @@ __pycache__/
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# bo du lieu chuan bi nop Zenodo (2.4 GB, khong dua len GitHub)
+zenodo_dataset/
