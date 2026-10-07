@@ -58,9 +58,10 @@ python src/oma/run_dot2.py                # campaign 2: identification, 3 setups
 python src/oma/participation.py           # effective channel count, both frequency bands
 python src/oma/configuration_experiment.py# 2x2 factorial: covariance window vs high-pass
 python src/oma/low_band_search.py         # search below 0.5 Hz for a tower mode
-python src/oma/criterion_calibration.py   # N_eff threshold by simulation; setup-level test
+python src/oma/criterion_calibration.py   # N_eff threshold and sensitivity, by simulation
 python src/oma/make_tables.py             # data behind the tables of the article
 python src/oma/rotation_centre_test.py    # vertical/horizontal ratio, torsional member
+python src/oma/segment_uncertainty.py     # scatter of the low-band poles between record thirds
 python src/model/foundation_stiffness.py  # geometry, focal heights, forward axial stiffness
 python src/model/rigid_cap_6dof.py        # 6-DOF rigid cap: modes, centres, L_eff inversion
 python src/model/group_interaction.py     # group efficiency, forward axial pile stiffness
