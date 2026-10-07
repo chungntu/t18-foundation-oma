@@ -87,17 +87,6 @@ piles rather than their axial stiffness.
 \noindent\textbf{Keywords:} inclined pile group; pile-group foundation; operational modal analysis; sway and rocking; offshore wind turbine; soil--structure interaction
 
 \bigskip
-\hrule
-\vspace{0.5em}
-\setcounter{tocdepth}{2}
-\begingroup
-\small
-\setlength{\parskip}{0pt}
-\tableofcontents
-\endgroup
-\vspace{0.5em}
-\hrule
-\bigskip
 
 % =====================================================================
 \section{Introduction}
@@ -138,7 +127,7 @@ Four bodies of work bear on the problem: the stiffness of inclined pile groups, 
 
 The stiffness model of Section~\ref{sec:model} is classical. Hrennikoff \cite{hrennikoff1950} analysed a rigid cap on batter piles by resolving the axial and transverse resistance of each pile onto the displacements of the cap, which is the route by which inclination turns axial stiffness into lateral stiffness. Saul \cite{saul1968} cast the analysis as a matrix of stiffness coefficients from which the natural frequencies of a pile foundation also follow, and Poulos and Davis \cite{poulos1980} give the standard treatment of pile groups. Implicit in those matrices is a condition that Section~\ref{sec:model} makes central: piles whose axes pass through one point offer no axial resistance to rotation about that point. Randolph and Wroth \cite{randolph1978,randolph1979} provide the closed-form axial stiffness of a single pile and the axial interaction factors used in Section~\ref{sec:stiffness}. The benefit of inclination depends on the axial capacity it mobilises: in centrifuge tests McVay et al.\ \cite{mcvay1996} found battered groups to carry 20 to 50\,\% more lateral load than plumb groups in dense sand, but little more in loose sand, where the tension capacity of the piles was limited.
 
-Dynamic interaction within pile groups was established by Kaynia and Kausel \cite{kaynia1982}, who found group impedances to depend strongly on frequency, and reduced to practice through the interaction factors of Dobry and Gazetas \cite{dobry1988} and of Gazetas and Makris \cite{gazetas1991,makris1992}. For inclined piles, Gerolymos et al.\ \cite{gerolymos2008} showed that batter piles may be beneficial or detrimental according to superstructure slenderness and pile--cap connection, and Giannakou et al.\ \cite{giannakou2010} that the response depends on the balance between overturning moment and shear. Padr\'on et al.\ \cite{padron2010} computed the complete vertical, horizontal, rocking and cross-coupled impedance functions of inclined piles and pile groups with a coupled boundary-element and finite-element formulation. The same line of work has since examined the effect of the angle of inclination on the dynamic properties of piled structures \cite{medina2015}, extended the impedances to layered soils \cite{alamo2016}, and provided ready-to-use vertical and rocking impedances of pile groups for offshore wind turbine foundations \cite{rodriguez2025}, while Goit and Saitoh \cite{goit2016} measured the interaction factors and impedances of inclined piles experimentally. Huang and Zhong \cite{huang2014} derived the coupled horizontal--rocking impedance of partially embedded pile groups, the configuration of an elevated cap, and showed its effect on the resonance of offshore wind turbines, for vertical piles. Arany et al.\ \cite{arany2016,arany2017} derived closed-form estimates of offshore wind turbine frequencies that include foundation flexibility.
+Dynamic interaction within pile groups was established by Kaynia and Kausel \cite{kaynia1982}, who found group impedances to depend strongly on frequency, and reduced to practice through the interaction factors of Dobry and Gazetas \cite{dobry1988} and of Gazetas and Makris \cite{gazetas1991,makris1992}. For inclined piles, Gerolymos et al.\ \cite{gerolymos2008} showed that batter piles may be beneficial or detrimental according to superstructure slenderness and pile--cap connection, and Giannakou et al.\ \cite{giannakou2010} that the response depends on the balance between overturning moment and shear. Padr\'on et al.\ \cite{padron2010} computed the complete vertical, horizontal, rocking and cross-coupled impedance functions of inclined piles and pile groups with a coupled boundary-element and finite-element formulation. The same line of work has since examined the effect of the angle of inclination on the dynamic properties of piled structures \cite{medina2015}, extended the impedances to layered soils \cite{alamo2016}, and provided ready-to-use vertical and rocking impedances of pile groups for offshore wind turbine foundations \cite{rodriguez2025}, while Goit and Saitoh \cite{goit2016} measured the interaction factors and impedances of inclined piles experimentally. Carbonari et al.\ \cite{carbonari2017} examined soil--structure interaction effects in bridge piers founded on inclined pile groups, and Dezi et al.\ \cite{dezi2012,dezi2013} tested near-shore piles in the field, under lateral impact and for pile-to-pile interaction. Huang and Zhong \cite{huang2014} derived the coupled horizontal--rocking impedance of partially embedded pile groups, the configuration of an elevated cap, and showed its effect on the resonance of offshore wind turbines, for vertical piles. Arany et al.\ \cite{arany2016,arany2017} derived closed-form estimates of offshore wind turbine frequencies that include foundation flexibility.
 
 These studies predict an impedance, a response or a frequency, and each requires the stiffness of the soil to do so. The near-concurrency of the pile axes of a practical inclined group, and its consequence for the shape of the lowest mode of an elevated cap, have not to the authors' knowledge been used to predict a measurable property of that mode. The result of Section~\ref{sec:model} is narrower than an impedance analysis. It does not give the frequency, which still depends on the soil, but it bounds the vertical component of the lowest mode from the setting-out drawing alone, and that bound can be checked against records.
 
@@ -148,7 +137,8 @@ These studies predict an impedance, a response or a frequency, and each requires
 Output-only identification of offshore wind turbines is established. Devriendt et al.\ \cite{devriendt2014} automated operational modal analysis to track the support-structure modes of a turbine in the Belgian North Sea, Damgaard et al.\ \cite{damgaard2013} identified cross-wind modal properties of offshore turbines by full-scale testing, and Dong et al.\ \cite{dong2018} combined vibration monitoring with operational modal analysis of an offshore turbine structure. Weijtjens et al.\ \cite{weijtjens2016} used resonance frequencies to monitor a monopile foundation, and Nor\'en-Cosgriff and Kaynia \cite{noren2021} found the first natural frequency to fall and damping to rise with load level. Tcherniak et al.\ \cite{tcherniak2011} examined where the assumptions of the method break down on operating turbines, and van Vondelen et al.\ \cite{vanvondelen2022} reviewed damping identification for offshore turbines. Separating a structural change from environmental and operational variability requires long records with environmental covariates \cite{peeters2001z24,kjeld2023}, which construction-stage campaigns rarely provide.
 
 Measured frequencies of monopile-supported turbines commonly exceed design predictions. Sastre Jurado et al.\ \cite{sastre2024} found the parked eigenfrequencies of a North Sea wind farm to be systematically underestimated by the design models and identified foundation stiffness as a key source of the discrepancy, and Winkler et al.\ \cite{winkler2024} benchmarked soil--structure interaction models against monopiles measured before the tower was installed. Over 47 locations, Nernheim et al.\ \cite{nernheim2025} found design frequencies between about 85 and 97\,\% of the measured values, a gap that stiffening the soil springs alone did not close.
-Measurements during construction are fewer. Fernandes et al.\ \cite{fernandes2022} tracked resonance frequencies through every installation stage of 48 monopile-supported turbines, Seo et al.\ \cite{seo2020} tested a turbine on tripod suction buckets at four construction stages, and Louw and Kearsley \cite{louw2026} monitored the strains of an onshore piled raft through turbine installation and its first year of operation. Pile groups under an elevated cap, the foundation of the Donghai Bridge wind farm in China and of the nearshore farms of the Mekong Delta \cite{worldbank2021,nguyen2022}, have been studied mainly for bearing capacity \cite{lang2014}. Li et al.\ \cite{li2022} identified the modes of an operating 4~MW turbine on such a foundation, eight piles inclined at 6:1 under a 15~m cap, from accelerometers distributed along the tower, and found the first mode at 0.36~Hz; Liu et al.\ \cite{liu2026} studied a cap--pile group of the Donghai Bridge farm by experimental modal analysis. In Vietnam, Huynh \cite{huynh2024} modelled a single pile foundation as a rigid body to study the loads from blade breakage. These studies identify the modes of the turbine as a whole, measured along the tower or at a single level. None that was found instruments the cap of an inclined group so that its pattern of motion, and not its frequency alone, can be compared with a mechanism predicted beforehand.
+
+Measurements during construction are fewer. Fernandes et al.\ \cite{fernandes2022} tracked resonance frequencies through every installation stage of 48 monopile-supported turbines, Seo et al.\ \cite{seo2020} tested a turbine on tripod suction buckets at four construction stages, and Louw and Kearsley \cite{louw2026} monitored the strains of an onshore piled raft through turbine installation and its first year of operation. Pile groups under an elevated cap, the foundation of the Donghai Bridge wind farm in China and of the nearshore farms of the Mekong Delta \cite{worldbank2021,nguyen2022}, have been studied mainly for bearing capacity \cite{lang2014}. Their dynamics have been examined in centrifuge tests of a turbine on a group-pile foundation \cite{wang2015} and by transfer-path analysis of the energy reaching an elevated pile cap \cite{yu2021}. Li et al.\ \cite{li2022} identified the modes of an operating 4~MW turbine on such a foundation, eight piles inclined at 6:1 under a 15~m cap, from accelerometers distributed along the tower, and found the first mode at 0.36~Hz; Liu et al.\ \cite{liu2026} studied a cap--pile group of the Donghai Bridge farm by experimental modal analysis. In bridges, a similar configuration, a pier on piles standing in water, has been tested modally by Deng et al.\ \cite{deng2017}. In Vietnam, Huynh \cite{huynh2024} modelled a single pile foundation as a rigid body to study the loads from blade breakage. These studies identify the modes of the turbine as a whole, measured along the tower or at a single level. None that was found instruments the cap of an inclined group so that its pattern of motion, and not its frequency alone, can be compared with a mechanism predicted beforehand.
 
 \subsection{Acceptance of identified poles}
 \label{sec:rw-acceptance}
@@ -157,7 +147,7 @@ Covariance-driven subspace identification \cite{overschee1996,peeters1999} and f
 
 Invariance across setups enters multi-setup identification as an assumption. Reference-based identification \cite{peeters1999} rests on the invariance of an eigenvalue to the sensor configuration, and the merging schemes of Mevel et al.\ \cite{mevel2002} and Döhler and Mevel \cite{dohler2012} fit one state matrix to all setups because the same structure is observed in each. Döhler et al.\ \cite{dohler2013ms} noted that matching modes between setups after identification is fragile and that the assumption may fail in practice. Section~\ref{sec:procedure} uses the same invariance as a test that a candidate pole must pass, not as a constraint imposed on the fit.
 
-The number of block rows, which sets the covariance window of the estimator, is known to bias the estimates \cite{rainieri2014}, and Priori et al.\ \cite{priori2018} proposed rules for its minimum value. Section~\ref{sec:procedure} states the corresponding limit as a bound on the frequencies the estimator can resolve, and Table~\ref{tab:config} shows that the bound alone suppresses the admitted band. Subspace identification has been shown to be robust to white excitation whose covariance varies in time \cite{benveniste1985}, but not to impulsive or coloured excitation, under which damping estimates show larger variance and bias \cite{nord2019}; damping is therefore not interpreted here.
+The number of block rows, which sets the covariance window of the estimator, is known to bias the estimates \cite{rainieri2014}, and Priori et al.\ \cite{priori2018} proposed rules for its minimum value. Section~\ref{sec:procedure} states the corresponding limit as a heuristic bound on the frequencies the estimator can resolve, and Table~\ref{tab:config} shows that a window below that bound suppresses the admitted band. Subspace identification has been shown to be robust to white excitation whose covariance varies in time \cite{benveniste1985}, but not to impulsive or coloured excitation, under which damping estimates show larger variance and bias \cite{nord2019}; damping is therefore not interpreted here.
 
 \subsection{Harmonic and local contamination}
 \label{sec:rw-contamination}
@@ -245,8 +235,8 @@ Figure~\ref{fig:section}.
 Two ambient vibration campaigns were recorded on the top surface of the cap:
 campaign 1 before the tower was erected and campaign 2 after. Each comprises
 several setups differing in sensor position and measurement direction, seven in
-total, with three to six accelerometers sampled at 1651~Hz for between 9 and 26
-minutes. The instrumented area is a square frame of $5 \times 5$~m with sensors
+total, with three to six accelerometers recorded for between 9 and 26
+minutes. Campaign 1 was recorded on 18 May 2024 and campaign 2 on 13 July 2024, each within about one and a half hours. The records were acquired with a National Instruments system under LabVIEW and stored in TDMS format, in units of $g$, at $51\,200/31 = 1651.6$~Hz, the rate stated in the file metadata. The calibration factors recorded in the processing log differ by at most 3\,\% between channels. The accelerometer model, its mounting and the grounding of the measuring chain are not documented. The instrumented area is a square frame of $5 \times 5$~m with sensors
 at the four corners and at the centre and, in campaign 2, a sixth channel two
 metres above the centre on the tower itself. Figure~\ref{fig:sensors} shows the
 arrangement. The position of the frame on the 20.5~m cap is not documented, and it is drawn concentric on the inference that the sixth channel, being mounted on the tower, lies close to the cap centre.
@@ -260,21 +250,21 @@ arrangement. The position of the frame on the 20.5~m cap is not documented, and 
 
 \begin{table}[htbp]
 \centering
-\caption{Measurement setups and raw-record statistics. \emph{Peak}/$\sigma$ is
+\caption{Measurement setups and raw-record statistics. \emph{Ch.} is the number of channels and \emph{Min.} the record length in minutes. \emph{Peak}/$\sigma$ is
 the largest absolute sample of any channel divided by that channel's standard
-deviation; \emph{RMS drift} the ratio of largest to smallest channel RMS over
+deviation; \emph{Kurt.} the largest channel kurtosis; $N_{>8\sigma}$ the largest number of samples of one channel beyond $8\sigma$; \emph{Drift} the ratio of largest to smallest channel RMS over
 ten equal segments; \emph{spread} the ratio of the largest to the smallest
 channel standard deviation within a setup.}
 \label{tab:records}
 \begin{tabular}{@{}llrrrrrrrr@{}}
 \toprule
-Camp. & Setup & Ch. & Samples & Min & Peak/$\sigma$ & Kurtosis & $>8\sigma$ & RMS drift & Spread \\
+Camp. & Setup & Ch. & Samples & Min. & Peak/$\sigma$ & Kurt. & $N_{>8\sigma}$ & Drift & Spread \\
 \midrule
 1 & Vertical       & 5 & 2\,535\,936 & 25.6 & 133 & 562  & 2238 & 3.2 & 6.1 \\
 1 & Lateral 1      & 5 & 1\,523\,873 & 15.4 & 25  & 54   & 3131 & 12.9 & 47.0 \\
 1 & Lateral 2      & 5 & 1\,385\,189 & 14.0 & 50  & 1812 & 1063 & \textbf{112} & 9.2 \\
 1 & Three-channel  & 3 & 1\,545\,336 & 15.6 & 10  & 4    & 9    & 1.5 & 33.7 \\
-2 & Lateral        & 6 & \phantom{0}906\,399 & \phantom{0}9.2 & \textbf{139} & \textbf{3883} & 724 & 4.7 & 11.5 \\
+2 & Lateral        & 6 & \phantom{0}906\,399 & \phantom{0}9.1 & \textbf{139} & \textbf{3883} & 724 & 4.7 & 11.5 \\
 2 & Vertical d1    & 6 & 1\,875\,536 & 18.9 & 69  & 95   & 695  & 4.4 & 4.1 \\
 2 & Vertical d2ke  & 6 & 2\,260\,219 & 22.8 & 67  & 88   & \textbf{2564} & 4.3 & 4.2 \\
 \bottomrule
@@ -428,12 +418,11 @@ $\tau = i\,\Delta t$, and this is a property of the construction rather than a
 processing choice. A mode of period $T$ enters the covariances through their
 oscillation and decay across that window; when $\tau \ll T$ the covariance
 varies negligibly over the observed lags and carries nothing that distinguishes
-the mode from a constant offset. The lowest frequency the estimator can resolve
-is fixed, for a given configuration, before the data are consulted.
+the mode from a constant offset. The block Toeplitz matrix reaches lags up to $2i$, so the span actually observed is $2\tau$, and the statement is a heuristic bound in the spirit of the rules of Priori et al.\ \cite{priori2018}, not a sharp limit. It is nonetheless fixed, for a given configuration, before the data are consulted.
 
 The processing chain follows from that requirement. Retaining the acquisition
-rate of 1651~Hz with $i = 150$ gives $\tau = 0.091$~s, which is 9\,\% of one
-period at 1~Hz and places any such mode outside the span of the estimator. The records are therefore decimated in two stages to 51.59~Hz with zero-phase
+rate of 1651.6~Hz with $i = 150$ gives $\tau = 0.091$~s, which is 9\,\% of one
+period at 1~Hz and places any such mode outside the span of the estimator. The records are therefore decimated in two stages to 51.61~Hz with zero-phase
 anti-alias filtering, then high-pass filtered at 0.3~Hz with a fourth-order
 Butterworth. Identification uses $i = 120$ over model orders 2 to 80, which
 gives $\tau = 2.33$~s, or 2.3 periods at 1~Hz. Poles are accepted into a cluster
@@ -451,12 +440,10 @@ smaller than the sensor spacing, and the pole describes that region rather than
 the structure the instrumentation was placed to characterise. The measure used is the effective channel count
 $N_{\mathrm{eff}} = (\sum|\phi|^2)^2 / \sum|\phi|^4$, taken from the first
 singular vector of the cross-power spectral density matrix. It equals the number of channels when the shape is spread evenly over them, and unity when one channel carries the entire response. The rejection threshold is established by simulation.
-Synthetic records were generated at the same length and spectral resolution as
-the measurements, once with a narrow-band signal on a single channel and once
-with the same signal shared by all channels in a shape containing a nodal line.
+Synthetic records of 28\,000 samples at the decimated rate were analysed with the same spectral resolution as the measurements. Each channel carries unit white noise. A narrow-band signal at 1.2~Hz, white noise through a second-order resonator with 2\,\% damping, is added at a signal-to-noise ratio of 3 or 10, once to a single channel and once to all channels in a shape containing a nodal line, the shape measured in the vertical setup of campaign 1.
 The first case gives $N_{\mathrm{eff}} \le 1.00$ without exception. The second
 gives $\ge 1.53$ for five channels and $\ge 1.74$ for six, in 95\,\% of trials. A threshold of $N_{\mathrm{eff}} = 1.25$ separates them with no overlap
-in 400 trials per case. The quantity is the inverse participation ratio, familiar from studies of
+in 400 trials per case. With three channels the two cases are not separated, and the threshold is not applied. Two departures from these idealised records were tested. Channel gains differing by up to $\pm3$\,\%, the spread of the calibration factors, change $N_{\mathrm{eff}}$ by at most 4\,\%. Noise levels differing between channels by up to a factor of ten leave the single-channel case below the threshold in every trial, but push 21\,\% of the shared-signal trials below it as well. The test can therefore reject a global mode recorded with unequal channel noise; it did not, in any trial, accept a local one. The quantity is the inverse participation ratio, familiar from studies of
 vibrational localisation in disordered media \cite{bell1970,hodges1982}. No precedent was found for its use as an acceptance criterion in operational modal analysis, so it is defined explicitly here and justified by the simulations above rather than by citation. It is not a mass participation factor and should not be interpreted as one.
 
 The second requirement is that a mode is the same for every observer. The eigenvalue depends on the mass, damping and stiffness of the structure, not
@@ -464,7 +451,7 @@ on which degrees of freedom are instrumented; moving the sensors changes which
 components of the shape are observed and cannot change the eigenvalue. The
 criterion requires the same pole in every setup of a campaign and, where the
 measured degrees of freedom coincide, agreement of the shapes by the modal
-assurance criterion.
+assurance criterion. A group of closely spaced modes, which Section~\ref{sec:model} predicts for this foundation, cannot be matched pole by pole across setups that weight its members differently. The requirement is then applied to the group: every setup of a campaign must return a pole within it, and the group must be no wider than the model allows, about 20\,\% for the lowest lateral pair and torsion together, plus the scatter of a single estimate.
 
 The third requirement is that a mode dissipates at a rate materials permit. Free decay follows an envelope $e^{-\xi\omega t}$, so a mode falls to $1/e$ of
 its amplitude in $1/(2\pi\xi)$ cycles. At $\xi = 0.01$\,\% that is about 1600
@@ -500,13 +487,13 @@ in parentheses.}
 \toprule
 Camp. & Setup & Low band & Higher band \\
 \midrule
-1 & Vertical & 1.173 (4.74) & 18.125 (0.70), 18.558 (0.68), 19.070 (0.58), 19.459 (0.59), 19.913 (1.30) \\
-1 & Lateral 1 & 1.226 (3.43), 1.254 (2.77), 1.730 (5.49) & 21.912 (0.40), 22.742 (0.51), 23.745 (0.30) \\
-1 & Lateral 2 & 1.322 (2.70) & 21.566 (5.95), 22.804 (1.25), 23.164 (0.59) \\
-1 & Three-channel & 1.237 (3.01), 1.331 (4.39), 1.725 (5.35) & 14.432 (1.42), 14.990 (0.97) \\
-2 & Lateral & 1.052 (2.68), 1.215 (1.93), 1.611 (2.42) & none accepted \\
-2 & Vertical d1 & 1.147 (9.85) & 11.801, 13.866, 16.827, 17.081, 17.666, 18.947, 19.466, 19.682, 20.542 \\
-2 & Vertical d2ke & 1.073 (1.25), 1.198 (2.35), 1.230 (2.48) & 2.295 (1.19) \\
+1 & Vertical & 1.174 (4.74) & 18.132 (0.70), 18.565 (0.68), 19.077 (0.58), 19.466 (0.59), 19.920 (1.30) \\
+1 & Lateral 1 & 1.226 (3.43), 1.254 (2.77), 1.731 (5.49) & 21.920 (0.40), 22.751 (0.51), 23.754 (0.30) \\
+1 & Lateral 2 & 1.322 (2.71) & 21.574 (5.95), 22.813 (1.25), 23.173 (0.59) \\
+1 & Three-channel & 1.238 (3.01), 1.331 (4.39), 1.726 (5.35) & 14.438 (1.42), 14.996 (0.97) \\
+2 & Lateral & 1.052 (2.69), 1.215 (1.93), 1.612 (2.42) & none accepted \\
+2 & Vertical d1 & 1.147 (9.85) & 11.806 (11.52), 13.871 (3.02), 16.833 (2.73), 17.087 (0.59), 17.673 (1.96), 18.954 (1.08), 19.473 (1.37), 19.689 (1.11), 20.549 (0.54) \\
+2 & Vertical d2ke & 1.074 (1.25), 1.199 (2.35), 1.231 (2.48) & 2.296 (1.19) \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -517,7 +504,7 @@ level, so there is no spatial pattern to interpret. In the 1.0--1.4~Hz band six
 of the seven exceed the threshold, ranging from 1.55 to 5.00. The low-band values are not uniform, and uniformity is not to be expected, since a pattern containing a nodal line necessarily leaves channels near that line with small amplitude, which
 lowers $N_{\mathrm{eff}}$ without implying locality. Two exceptions are reported rather than excluded. Lateral setup 2 of campaign 1
 gives 1.00 in the low band as well; it is also the record with the strongest
-impulsive content, its narrow-band kurtosis \cite{jacobsen2007} lying between 128 and 164. The
+impulsive content, its narrow-band kurtosis \cite{jacobsen2007} lying between 128 and 164, and the one whose channel RMS drifts by a factor of 112 (Table~\ref{tab:records}). That is the condition under which the simulations show the test rejecting a global mode, but the record cannot show that it did, so its low-band pole fails the first requirement and is not used in any comparison that follows. The
 three-channel setup gives 0.60 of its channel count in both bands, which with
 only three channels does not separate the two cases.
 
@@ -540,15 +527,16 @@ of each sits at a different point and is left out of that comparison.
 Table~\ref{tab:phase} gives the phase relations and Figure~\ref{fig:shape} the
 patterns. One further observation supports this interpretation. The single vertically oriented channel in the lateral setup is also the only channel there that is out of phase and of small amplitude, and it was not selected for that purpose.
 
-By contrast the 14--24~Hz poles fail the same test. Within campaign 1
-alone, three setups on the same cap in the same period return three disjoint
-bands: 18.1 to 19.9~Hz, 21.6 to 23.7~Hz and 14.4 to 15.0~Hz. A natural frequency
-is a property of the structure and cannot take three values at once.
+The scatter of a single estimate was measured by identifying each record again in three equal segments with the same settings. The low-band poles of one setup move between segments by 1 to 3\,\% from their mean, and by less than 0.3\,\% in the three-channel setup, the one record close to stationary. Lateral setup 2 of campaign 1 is the exception, with segment poles spread over 1.19 to 1.36~Hz. The low group spans 1.174 to 1.331~Hz in campaign 1 and 1.052 to 1.231~Hz in campaign 2, 13 and 16\,\% of its centre, and every setup of each campaign contributes to it; it satisfies the group form of the second requirement.
 
-One observation tells against the interpretation just given. If instead of matching corresponding clusters one
+The 14--24~Hz poles do not. Within campaign 1, three setups recorded within ninety minutes return three disjoint bands, 18.1 to 19.9~Hz, 21.6 to 23.8~Hz and 14.4 to 15.0~Hz, spanning 65\,\% of their centre, and in campaign 2 two of the three setups return no pole above 5~Hz at all. These poles are local in the sense of the first requirement as well. Two sources are plausible. The first bending mode of an individual pile, over the fixity lengths inferred in Section~\ref{sec:stiffness} and carrying its added water, lies between about 8~Hz (one end pinned) and 17~Hz (both ends fixed), overlapping the lower part of the band. The response of the instrument mounting, which was not documented, may lie anywhere in it \cite{shokrollahi2017}. The records cannot separate the two, and neither would be a mode of the cap. The verdict on this band is therefore that it is not a global mode of the foundation, not that its source is known.
+
+Three further sets of poles fail the second requirement and are reported without interpretation. A pole at 1.61 to 1.73~Hz appears in three of the seven setups and has no counterpart in the model of Section~\ref{sec:model}, which places nothing between torsion and rocking. The extended search described below returns single poles at 0.69~Hz in lateral setup 1 of campaign 1 and at 0.83~Hz in the lateral setup of campaign 2, each in one setup only. And the vertical d2ke setup returns a pole at 2.30~Hz that no other setup shares.
+
+One observation appears to tell against the shape agreement reported above. If instead of matching corresponding clusters one
 compares the first singular vector at the dominant low-band peak of each of
-those two setups, the modal assurance criterion is 0.09, not 0.97. The peaks are
-at 1.209 and 1.228~Hz, and the two setups are therefore dominated by different
+the two vertical setups of campaign 2, the modal assurance criterion is 0.09, not 0.97. The peaks are
+at 1.210 and 1.229~Hz, and the two setups are therefore dominated by different
 members of the closely spaced group. The shapes of corresponding poles agree;
 the dominant pole differs between setups. Both facts are consequences of the
 group containing more than one mode, and Section~\ref{sec:mechanism} returns to
@@ -568,13 +556,14 @@ low-band peak, and amplitude at the centre relative to the mean of the corners.
 In the lateral setup, channel 4 is the only vertically oriented channel, which
 is why the 2--4 pair behaves unlike the 1--3 pair there.}
 \label{tab:phase}
+\small
 \begin{tabular}{@{}llrrrl@{}}
 \toprule
-Setup & Direction & Peak (Hz) & Node 1 vs 3 & Node 2 vs 4 & Centre / mean corner \\
+Setup & Direction & Peak (Hz) & 1 vs 3 & 2 vs 4 & Centre / corners \\
 \midrule
 Vertical, campaign 1      & vertical   & 1.134 & $-179.1$\degr & $-173.3$\degr & 0.048 / 0.466 \\
-Vertical d1, campaign 2   & vertical   & 1.209 & $+176.3$\degr & $+176.6$\degr & 0.424 / 0.517 \\
-Vertical d2ke, campaign 2 & vertical   & 1.228 & $-142.7$\degr & $-175.2$\degr & 0.183 / 0.518 \\
+Vertical d1, campaign 2   & vertical   & 1.210 & $+176.3$\degr & $+176.6$\degr & 0.424 / 0.517 \\
+Vertical d2ke, campaign 2 & vertical   & 1.229 & $-142.7$\degr & $-175.2$\degr & 0.183 / 0.518 \\
 Lateral, campaign 2       & horizontal & 1.203 & $-4.9$\degr   & $-143.3$\degr & 0.927 / 0.757 \\
 \bottomrule
 \end{tabular}
@@ -582,27 +571,26 @@ Lateral, campaign 2       & horizontal & 1.203 & $-4.9$\degr   & $-143.3$\degr &
 
 The third requirement needs the influence of the processing configuration settled first. Two processing choices govern what the identification can return, the covariance
 window and the high-pass cut-off, and varying them together would not separate
-their effects. One record was therefore processed under all four combinations,
+their effects. One record was therefore processed under all four combinations, A to D of
 Table~\ref{tab:config}. Configuration C removes the filter while keeping the
 short window and still returns nothing below 5~Hz; configuration D lengthens the
-window while keeping the filter and likewise returns nothing. Each constraint is
-independently sufficient to suppress the admitted band, and only their joint
-removal recovers it. The resolution limit of Section~\ref{sec:procedure} is
-thereby established as a constraint in its own right and not a by-product of
-filtering.
+window while keeping the filter and likewise returns nothing. Only their joint
+removal recovers the band. In this factorial the window changes together with the sampling rate, and configurations A and C also contain the mains harmonics, which take up model order. Configuration E therefore keeps the sampling rate and the filter of B and shortens only the window, to $i = 5$. It returns nothing below 5~Hz, but also no stable pole anywhere, since five block rows leave little room for any; it is consistent with the effect of the window without isolating it cleanly. The comparison supports the window bound of Section~\ref{sec:procedure} as a constraint separate from the filter, but it does not establish the bound as a sharp limit.
 
 \begin{table}[htbp]
 \centering
-\caption{Factorial comparison of processing configurations, one record.}
+\caption{Comparison of processing configurations, one record (lateral setup, campaign 2). Configurations A--D form a factorial in window and high-pass cut-off, in which the window changes together with the sampling rate; E differs from B in the window alone.}
 \label{tab:config}
+\small
 \begin{tabular}{@{}clllll@{}}
 \toprule
 Config. & Sampling rate & High-pass & $i$ & $\tau$ & Poles returned \\
 \midrule
-A & 1651~Hz & 5~Hz   & 150 & 0.091~s & 20, from 57.6 to 700.7~Hz; none below 5~Hz \\
-C & 1651~Hz & 0.3~Hz & 150 & 0.091~s & 19, from 80.8 to 604.4~Hz; none below 5~Hz \\
+A & 1651.6~Hz & 5~Hz   & 150 & 0.091~s & 20, from 57.6 to 700.9~Hz; none below 5~Hz \\
+C & 1651.6~Hz & 0.3~Hz & 150 & 0.091~s & 19, from 80.9 to 604.6~Hz; none below 5~Hz \\
 D & 51.6~Hz & 5~Hz   & 120 & 2.33~s  & 6, from 6.8 to 20.6~Hz; none below 5~Hz \\
-B & 51.6~Hz & 0.3~Hz & 120 & 2.33~s  & 3: 1.052, 1.215, 1.611~Hz \\
+B & 51.6~Hz & 0.3~Hz & 120 & 2.33~s  & 3: 1.052, 1.215, 1.612~Hz \\
+E & 51.6~Hz & 0.3~Hz & 5 & 0.097~s & none \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -610,9 +598,9 @@ B & 51.6~Hz & 0.3~Hz & 120 & 2.33~s  & 3: 1.052, 1.215, 1.611~Hz \\
 Seven of the twenty poles returned by configuration A carry damping between
 0.007\,\% and 0.042\,\%, which the third requirement alone rejects. Only
 afterwards is the spectrum consulted, and it identifies them: the same seven lie
-within 0.16\,\% of an exact multiple of 50~Hz, at 100.129, 150.239, 200.209,
-250.171, 300.377, 400.537 and 700.666~Hz, and six of them survive into
-configuration C. They are harmonics of the mains supply, which these records
+within 0.2\,\% of an exact multiple of 50~Hz, at 100.166, 150.295, 200.284,
+250.264, 300.488, 400.686 and 700.926~Hz, and six of them survive into
+configuration C. Divided by their harmonic orders they give a fundamental between 50.05 and 50.10~Hz, within the normal excursion of a 50~Hz supply. They are harmonics of the mains supply, which these records
 carry at high level, as Figure~\ref{fig:harm} shows.
 
 \begin{figure}[htbp]
@@ -650,8 +638,8 @@ identification settings.
 \toprule
 Group & $N_{\mathrm{eff}}/n$ & Same in every setup & Damping & Verdict \\
 \midrule
-1.05--1.33~Hz & 0.31--0.94 in six of seven & yes; MAC 0.967 between corresponding clusters & 1.2--4.7\,\% & structural \\
-14--24~Hz & 1.00 of 5 or 6 in five of seven & no; three bands in one campaign & 0.3--6\,\% & local to the sensor position \\
+1.05--1.33~Hz & 0.31--0.94 in six of seven & yes, as a group; MAC 0.967 between corresponding clusters & 1.3--9.9\,\% & structural \\
+14--24~Hz & $1/n$ (one channel) in five of seven & no; three disjoint bands in one campaign, none in two setups of the other & 0.3--11.5\,\% & local; not a mode of the cap \\
 57--700~Hz & --- & --- & 0.007--0.042\,\% & mains harmonics \\
 \bottomrule
 \end{tabularx}
@@ -732,9 +720,9 @@ Depth to fixity, Davisson and Robinson, $E_s = 3G$, $G = 0.5$--$1.0\,G_0$ & 2.3-
 
 Campaign 2 was recorded after the tower was erected. The model of Section~\ref{sec:model} is a model of the bare cap. The tower adds mass and rotational inertia far above the cap and its own flexibility, so the model does not predict the campaign 2 frequencies. The question here is narrower: whether the records show a change in the band between the two campaigns.
 
-Setup means cannot answer it directly, because the setups of the two campaigns differ in direction, and the band contains members of different kinds that different directions weight differently. The means of all setups fall by 8.4\,\% between campaigns, from 1.255 to 1.149~Hz, but that comparison mixes three vertical setups with two lateral ones and a mixed one. Table~\ref{tab:shift} and Figure~\ref{fig:shift} therefore group the setups by measured direction.
+Setup means cannot answer it directly, because the setups of the two campaigns differ in direction, and the band contains members of different kinds that different directions weight differently. The means of all setups fall by 8.4\,\% between campaigns, from 1.255 to 1.150~Hz, but that comparison mixes three vertical setups with two lateral ones and a mixed one. Table~\ref{tab:shift} and Figure~\ref{fig:shift} therefore group the setups by measured direction.
 
-Like-for-like comparisons give a much smaller change. The vertical setup of campaign 1 and the two vertical setups of campaign 2 differ by $-2.3$ and $-0.5$\,\%. In the lateral setups, the translational member of campaign 2, at 1.215~Hz, lies 2.0\,\% below the mean of lateral setup 1 of campaign 1. The lateral comparison rises to $-8.6$\,\% only when the torsional member at 1.052~Hz is averaged in. It rises to $-14$\,\% against lateral setup 2, which fails the first requirement. Changes of 0.5 to 2.3\,\% lie well within the spread of the band within one campaign, $\pm6$ to $\pm8$\,\%. The records therefore show no change attributable to the tower that exceeds the resolution of these campaigns. No participating mass is inferred.
+Like-for-like comparisons give a much smaller change. The vertical setup of campaign 1 and the two vertical setups of campaign 2 differ by $-2.3$ and $-0.5$\,\%. In the lateral setups, the translational member of campaign 2, at 1.215~Hz, lies 2.0\,\% below the mean of lateral setup 1 of campaign 1. The lateral comparison rises to $-8.6$\,\% only when the torsional member at 1.052~Hz is averaged in. It rises to $-14$\,\% against lateral setup 2, which fails the first requirement. Changes of 0.5 to 2.3\,\% are no larger than the 1 to 3\,\% by which a single pole moves between segments of one record (Section~\ref{sec:classify}), and well within the spread of the band within one campaign, $\pm6$ to $\pm8$\,\%. The records therefore show no change attributable to the tower that exceeds the resolution of these campaigns. No participating mass is inferred.
 
 Three further limitations apply. The records do not document the state of construction at campaign 2 beyond the presence of the tower. No environmental or operational data, tide level among them, accompany either campaign, and the free length of the piles in water changes with the tide. And the 0.32~Hz peak of campaign 2, which may be the first tower mode (Section~\ref{sec:classify}), shows that the tower does contribute to the cap response at its own frequency.
 
@@ -753,17 +741,17 @@ Three further limitations apply. The records do not document the state of constr
 \toprule
 Dir. & Camp. & Setup & Poles (Hz) & Setup mean (Hz) \\
 \midrule
-V & 1 & Vertical & 1.173 & 1.173 \\
+V & 1 & Vertical & 1.174 & 1.174 \\
 V & 2 & Vertical d1 & 1.147 & 1.147 \\
-V & 2 & Vertical d2ke & 1.073, 1.198, 1.230 & 1.168 \\
+V & 2 & Vertical d2ke & 1.074, 1.199, 1.231 & 1.168 \\
   &   & \multicolumn{3}{l}{change, vertical: $-2.3$\,\% and $-0.5$\,\%} \\
 \midrule
 H & 1 & Lateral 1 & 1.226, 1.254 & 1.240 \\
 H & 1 & Lateral 2 & 1.322 & 1.322 \\
-H & 2 & Lateral & 1.052 (torsional), 1.215 (translational) & 1.133 \\
+H & 2 & Lateral & 1.052 (torsional), 1.215 (translational) & 1.134 \\
   &   & \multicolumn{3}{l}{change, translational member against lateral 1: $-2.0$\,\%} \\
 \midrule
-M & 1 & Three-channel & 1.237, 1.331 & 1.284 \\
+M & 1 & Three-channel & 1.238, 1.331 & 1.284 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -844,6 +832,15 @@ Rodr{\'\i}guez-Galv{\'a}n E, {\'A}lamo GM, Azn{\'a}rez JJ, Maeso O (2025) An acc
 \bibitem{goit2016}
 Goit CS, Saitoh M (2016) Experimental approach on the pile-to-pile interaction factors and impedance functions of inclined piles. G{\'e}otechnique 66(11):888--901. \url{https://doi.org/10.1680/jgeot.15.p.192}
 
+\bibitem{carbonari2017}
+Carbonari S, Morici M, Dezi F, Gara F, Leoni G (2017) Soil-structure interaction effects in single bridge piers founded on inclined pile groups. Soil Dynamics and Earthquake Engineering 92:52--67. \url{https://doi.org/10.1016/j.soildyn.2016.10.005}
+
+\bibitem{dezi2012}
+Dezi F, Gara F, Roia D (2012) Dynamic response of a near-shore pile to lateral impact load. Soil Dynamics and Earthquake Engineering 40:34--47. \url{https://doi.org/10.1016/j.soildyn.2012.04.002}
+
+\bibitem{dezi2013}
+Dezi F, Gara F, Roia D (2013) Experimental study of near-shore pile-to-pile interaction. Soil Dynamics and Earthquake Engineering 48:282--293. \url{https://doi.org/10.1016/j.soildyn.2013.01.025}
+
 \bibitem{huang2014}
 Huang M, Zhong R (2014) Coupled horizontal-rocking vibration of partially embedded pile groups and its effect on resonance of offshore wind turbine structures. Chinese Journal of Geotechnical Engineering 36(2):286--294 (in Chinese). \url{https://doi.org/10.11779/CJGE201402003}
 
@@ -907,11 +904,20 @@ Nguyen TD, Ho DA, Bui NH, Pham DH, Ngo HD, Du VT (2022) Design and Construction 
 \bibitem{lang2014}
 Lang R, Liu R, Lian J, Ding H (2014) Study on Load-Bearing Characteristics of a New Pile Group Foundation for an Offshore Wind Turbine. The Scientific World Journal 2014:1--11. \url{https://doi.org/10.1155/2014/394104}
 
+\bibitem{wang2015}
+Wang X, Zeng X, Yu H, Lian J (2015) Simulation of dynamic response of offshore wind turbine with group-pile foundation using centrifuge tests. In: IFCEE 2015, pp 1781--1790. \url{https://doi.org/10.1061/9780784479087.162}
+
+\bibitem{yu2021}
+Yu Q, Yu H, Zhou L, Meng A, Hu X, Hou X (2021) Structural energy transfer to the elevated pile-cap foundation of an offshore wind turbine based on extracted transfer path analysis. Journal of Sound and Vibration 512:116388. \url{https://doi.org/10.1016/j.jsv.2021.116388}
+
 \bibitem{li2022}
 Li Y, Wang B, Liu Q, Gao S, Lu S (2022) Application of Converted Displacement for Modal Parameter Identification of Offshore Wind Turbines with High-Pile Foundation. Journal of Ocean University of China 21(6):1467--1478. \url{https://doi.org/10.1007/s11802-022-4943-0}
 
 \bibitem{liu2026}
 Liu Y, Zhao J, Zhang L, Hu H, Yu L, Wang Y, Liu C, Luo S (2026) Dynamic Characteristics of Offshore Wind Turbine Cap-Pile Group Structure Based on Experimental Modal Analysis. In: Hydropower and Renewable Energies. Springer Nature Singapore, pp 389--397. \url{https://doi.org/10.1007/978-981-95-4889-7_33}
+
+\bibitem{deng2017}
+Deng Y, Guo Q, Xu L (2017) Experimental and numerical study on modal dynamic response of water-surrounded slender bridge pier with pile foundation. Shock and Vibration 2017:4769637. \url{https://doi.org/10.1155/2017/4769637}
 
 \bibitem{huynh2024}
 Huynh QV (2024) Analysis of the dynamic behaviour of a single pile foundation when a wind turbine blade breaks. Transport and Communications Science Journal 75(6):1988--1999 (in Vietnamese). \url{https://doi.org/10.47869/tcsj.75.6.5}
@@ -920,7 +926,7 @@ Huynh QV (2024) Analysis of the dynamic behaviour of a single pile foundation wh
 Van Overschee P, De Moor B (1996) Subspace Identification for Linear Systems. Kluwer Academic Publishers. \url{https://doi.org/10.1007/978-1-4613-0465-4}
 
 \bibitem{peeters1999}
-PEETERS B, DE ROECK G (1999) REFERENCE-BASED STOCHASTIC SUBSPACE IDENTIFICATION FOR OUTPUT-ONLY MODAL ANALYSIS. Mechanical Systems and Signal Processing 13(6):855--878. \url{https://doi.org/10.1006/mssp.1999.1249}
+Peeters B, De Roeck G (1999) Reference-based stochastic subspace identification for output-only modal analysis. Mechanical Systems and Signal Processing 13(6):855--878. \url{https://doi.org/10.1006/mssp.1999.1249}
 
 \bibitem{brincker2001}
 Brincker R, Zhang L, Andersen P (2001) Modal identification of output-only systems using frequency domain decomposition. Smart Materials and Structures 10(3):441--445. \url{https://doi.org/10.1088/0964-1726/10/3/303}
@@ -959,7 +965,7 @@ Allemang RJ (2003) The modal assurance criterion -- twenty years of use and abus
 Reynders E, Pintelon R, De Roeck G (2008) Uncertainty bounds on modal parameters obtained from stochastic subspace identification. Mechanical Systems and Signal Processing 22(4):948--969. \url{https://doi.org/10.1016/j.ymssp.2007.10.009}
 
 \bibitem{mevel2002}
-MEVEL L, BASSEVILLE M, BENVENISTE A, GOURSAT M (2002) MERGING SENSOR DATA FROM MULTIPLE MEASUREMENT SET-UPS FOR NON-STATIONARY SUBSPACE-BASED MODAL ANALYSIS. Journal of Sound and Vibration 249(4):719--741. \url{https://doi.org/10.1006/jsvi.2001.3880}
+Mevel L, Basseville M, Benveniste A, Goursat M (2002) Merging sensor data from multiple measurement set-ups for non-stationary subspace-based modal analysis. Journal of Sound and Vibration 249(4):719--741. \url{https://doi.org/10.1006/jsvi.2001.3880}
 
 \bibitem{dohler2012}
 D{\"o}hler M, Mevel L (2012) Modular Subspace-Based System Identification From Multi-Setup Measurements. IEEE Transactions on Automatic Control 57(11):2951--2956. \url{https://doi.org/10.1109/tac.2012.2193711}
@@ -1013,7 +1019,7 @@ Lindahl C, Ginn B (1999) How to deal with electrical noise and interference in t
 International Organization for Standardization (2021) ISO 5348:2021 Mechanical vibration and shock -- Mechanical mounting of accelerometers. ISO, Geneva.
 
 \bibitem{shokrollahi2017}
-Shokrollahi S, Adel F, Ahmadian H (2017) An investigation into the accelerometer mounting effects on signal transmissibility in modal measurements. Scientia Iranica 0(0):0--0. \url{https://doi.org/10.24200/sci.2017.4244}
+Shokrollahi S, Adel F, Ahmadian H (2017) An investigation into the accelerometer mounting effects on signal transmissibility in modal measurements. Scientia Iranica. \url{https://doi.org/10.24200/sci.2017.4244}
 
 \bibitem{abdelnour2024}
 Abdelnour M, Zabel V (2023) Modal identification of structures with a dynamic behaviour characterised by global and local modes at close frequencies. Acta Mechanica 235(3):1471--1491. \url{https://doi.org/10.1007/s00707-023-03598-z}

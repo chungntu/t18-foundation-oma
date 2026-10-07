@@ -22,7 +22,7 @@ sys.path.insert(0, os.path.dirname(HERE))   # src/
 from paths import DATA, RESULTS, FIGURES
 from oma_lib import preprocess
 
-FS_RAW = 1651.0
+FS_RAW = 51200 / 31            # Hz = 1651.61; wf_increment = 31/51200 s trong metadata TDMS
 
 CASES = [
     ("dot1/xl_thangdung.mat", "xl_thangdung", "Vertical, campaign 1"),

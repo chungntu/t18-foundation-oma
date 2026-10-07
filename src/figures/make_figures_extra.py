@@ -28,12 +28,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "model"))
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "oma"))
-from paths import DATA, FIGURES, save_figure
+from paths import DATA, FIGURES, RESULTS, save_figure
 from foundation_stiffness import RINGS, D_CAP, D_OUT, batter_angle
 from oma_lib import (preprocess, ssi_cov, filter_poles, stable_poles,
-                     cluster_modes, fdd)
+                     cluster_modes, fdd, band_poles_by_setup)
 
-FS_RAW = 1651.0
+FS_RAW = 51200 / 31            # Hz = 1651.61; wf_increment = 31/51200 s trong metadata TDMS
 BLUE, RED, GREY = "#1f4e79", "#c00000", "0.55"
 
 NODES = {1: (0.0, 0.0), 2: (-5.0, 0.0), 3: (-5.0, 5.0), 4: (0.0, 5.0), 5: (-2.5, 2.5)}
@@ -431,10 +431,7 @@ def fig_low_band():
 
 
 # ============================================================ HINH 13
-C1 = {"Vertical": [1.1734], "Lateral 1": [1.2258, 1.2536],
-      "Lateral 2": [1.3217], "Three-channel": [1.2370, 1.3307]}
-C2 = {"Lateral": [1.0520, 1.2146], "Vertical d1": [1.1465],
-      "Vertical d2ke": [1.0735, 1.1985, 1.2305]}
+C1, C2 = band_poles_by_setup(RESULTS)
 
 
 # huong do: V = moi kenh dung; H = kenh ngang (kenh 4 dung o dot 2); M = hon hop

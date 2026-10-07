@@ -19,9 +19,10 @@ STEPS = [
     "src/oma/participation.py",            # so kenh hieu dung N_eff
     "src/oma/configuration_experiment.py", # thi nghiem 2x2: cua so hiep phuong sai vs loc
     "src/oma/low_band_search.py",          # tim mode thap duoi 0.5 Hz
-    "src/oma/criterion_calibration.py",    # nguong N_eff bang mo phong
+    "src/oma/criterion_calibration.py",    # nguong N_eff bang mo phong, do nhay
     "src/oma/make_tables.py",              # du lieu cac bang
     "src/oma/rotation_centre_test.py",     # ty so dung/ngang, mode xoan (muc 6.1)
+    "src/oma/segment_uncertainty.py",      # bat dinh tan so theo ba doan ban ghi
     "src/model/foundation_stiffness.py",   # so lieu hinh hoc, do cung doc truc thuan
     "src/model/rigid_cap_6dof.py",         # dai cung 6 bac tu do, tieu diem, suy nguoc L_eff
     "src/model/group_interaction.py",      # he so hieu qua nhom, do cung thuan

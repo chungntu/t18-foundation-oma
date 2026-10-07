@@ -16,7 +16,7 @@ from oma_lib import (preprocess, ssi_cov, filter_poles, stable_poles,
                      cluster_modes, fdd, peak_pick, mac, harmonic_indicator)
 
 # --- tham so xu ly, DUNG CHUNG cho moi dot do -------------------------------
-FS_RAW = 1651.0
+FS_RAW = 51200 / 31            # Hz = 1651.61; wf_increment = 31/51200 s trong metadata TDMS
 DEC = (4, 8)                 # 1651 / 32 = 51.59 Hz
 F_HIGH = 0.3                 # Hz, loc thong cao
 F_RANGE = (0.5, 25.0)        # dai tim mode

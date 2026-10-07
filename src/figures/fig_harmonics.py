@@ -19,7 +19,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 OUT = FIGURES
-FS = 1651.0
+FS = 51200 / 31                # Hz = 1651.61; wf_increment = 31/51200 s trong metadata TDMS
 
 FILE, VAR = "dot2/xl_ngang.mat", "xl_ngang"
 TITLE = "Lateral setup, campaign 2"

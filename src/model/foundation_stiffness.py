@@ -117,6 +117,13 @@ def kax_from_soil(G_scales=(0.5, 1.0), nu=0.3):
     return k_free, out
 
 
+def pile_bending_frequency(L, end="fixed-fixed"):
+    """Tan so uon thu nhat cua MOT coc, khoi luong gom coc va nuoc kem theo [Hz]."""
+    beta_L = {"fixed-fixed": 4.730, "fixed-pinned": 3.927}[end]
+    m = A_PILE * RHO_C + RHO_W * np.pi / 4 * D_OUT ** 2
+    return beta_L ** 2 / (2 * np.pi * L ** 2) * np.sqrt(EI / m)
+
+
 def main():
     p = cap_mass_inertia()
     print("=" * 74)
@@ -141,6 +148,11 @@ def main():
     for s, r in fwd.items():
         print(f"  G = {s:.1f} G0: G_avg = {r['G_avg']/1e6:.1f} MPa, muL = {r['muL']:.2f}, "
               f"k_ngam = {r['k_soil']:.2e}, k_co_lap = {r['k_iso']:.2e} N/m")
+
+    print("\n  Tan so uon thu nhat cua mot coc (L_eff suy nguoc 13.9-17.0 m, muc 6.2):")
+    for L in (13.9, 17.0):
+        print(f"    L = {L:.1f} m: ngam-ngam {pile_bending_frequency(L):.1f} Hz,"
+              f" ngam-khop {pile_bending_frequency(L, 'fixed-pinned'):.1f} Hz")
 
 
 if __name__ == '__main__':

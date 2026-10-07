@@ -1,25 +1,24 @@
 """
-Hai viec phan bien yeu cau:
+Dinh nguong va kiem do nhay cua tieu chi N_eff (muc 5.1 bai bao).
 
-  PHAN 1. Dinh nguong cho tieu chi N_eff bang mo phong.
+  PHAN 1. Dinh nguong bang mo phong.
      - H0 "cuc bo": chi mot kenh chua tin hieu dai hep, cac kenh con lai la nhieu
      - H1 "toan cuc": moi kenh chia se mot tin hieu chung theo dang co duong nut
      Tu hai phan bo suy ra nguong va ty le bao dong gia.
 
-  PHAN 2. Kiem dinh thay doi tan so o DON VI CAU HINH DO,
-     thay cho viec gop tat ca cac cuc lam mau doc lap.
+  PHAN 2. Do nhay cua N_eff voi sai lech he so khuech dai giua cac kenh
+     (he so chuan cam bien trong log MACEC lech nhau toi 3 %) va voi muc
+     nhieu khac nhau giua cac kenh.
 
 Chay:  python oma/criterion_calibration.py
 """
 
-import itertools
-import math
 import numpy as np
 from scipy import signal, linalg
 
 RNG = np.random.default_rng(20260927)
 
-FS = 51.59          # Hz, sau khi giam tan so lay mau
+FS = 51200 / 31 / 32  # Hz = 51.61, sau khi giam tan so lay mau
 N_SAMP = 28000      # xap xi ban ghi ngan nhat
 NPERSEG = 8192
 F0 = 1.2            # Hz, tan so tin hieu mo phong
@@ -94,34 +93,30 @@ def part1():
 def part2():
     print()
     print("=" * 76)
-    print("PHAN 2. THAY DOI TAN SO, KIEM DINH O DON VI CAU HINH DO")
+    print("PHAN 2. DO NHAY CUA N_eff VOI HE SO KHUECH DAI VA MUC NHIEU")
     print("=" * 76)
-    c1 = {"Vertical": [1.1734], "Lateral 1": [1.2258, 1.2536],
-          "Lateral 2": [1.3217], "Three-channel": [1.2370, 1.3307]}
-    c2 = {"Lateral": [1.0520, 1.2146], "Vertical d1": [1.1465],
-          "Vertical d2ke": [1.0735, 1.1985, 1.2305]}
-    a = np.array([np.mean(v) for v in c1.values()])
-    b = np.array([np.mean(v) for v in c2.values()])
-
-    print(f"  dot 1, trung binh tung setup: {np.round(a,4)}   -> {a.mean():.4f} Hz")
-    print(f"  dot 2, trung binh tung setup: {np.round(b,4)}   -> {b.mean():.4f} Hz")
-    print(f"  chenh lech: {100*(b.mean()-a.mean())/a.mean():+.2f} %")
-    print(f"  tach bach hoan toan? min(dot1) = {a.min():.4f} > max(dot2) = {b.max():.4f}  "
-          f"-> {a.min() > b.max()}")
-
-    obs = abs(a.mean() - b.mean())
-    allv = np.concatenate([a, b])
-    cnt = tot = 0
-    for idx in itertools.combinations(range(len(allv)), len(a)):
-        g1 = allv[list(idx)]
-        g2 = np.delete(allv, list(idx))
-        tot += 1
-        if abs(g1.mean() - g2.mean()) >= obs - 1e-12:
-            cnt += 1
-    p_min = 2 / math.comb(len(allv), len(a))
-    print(f"\n  kiem dinh hoan vi hai phia: p = {cnt}/{tot} = {cnt/tot:.4f}")
-    print(f"  p nho nhat kha di voi n = {len(a)} va {len(b)}: {p_min:.4f}")
-    print("  => phan tach hoan toan, nhung khong dat muc 0.05 THUAN TUY vi co mau.")
+    shape = np.array([1.0, 0.35, -0.27, -0.25, -0.05])
+    base = n_eff(shape)
+    # (a) he so khuech dai ngau nhien trong +-3 %, ap dung truc tiep len dang mode
+    g = RNG.uniform(0.97, 1.03, size=(20000, 5))
+    ne = np.array([n_eff(shape * gi) for gi in g])
+    print(f"  (a) dang co duong nut, N_eff = {base:.3f}; he so lech +-3 %:"
+          f" N_eff {ne.min():.3f} - {ne.max():.3f} (lech toi da {100*np.abs(ne/base-1).max():.1f} %)")
+    # (b) H0 va H1 khi muc nhieu cac kenh khac nhau toi 10 lan
+    for nch, w in ((5, shape),):
+        h0, h1 = [], []
+        for _ in range(N_TRIAL):
+            lev = np.exp(RNG.uniform(0, np.log(10), nch))
+            y0 = simulate(nch, None, 3.0) * lev
+            y1 = simulate(nch, w, 3.0) * lev
+            h0.append(neff_from_series(y0, FS))
+            h1.append(neff_from_series(y1, FS))
+        h0, h1 = np.array(h0), np.array(h1)
+        print(f"  (b) n = {nch}, nhieu kenh lech toi 10 lan, SNR = 3:")
+        print(f"      H0: bach phan vi 95 = {np.quantile(h0, .95):.2f};"
+              f"  H1: bach phan vi 5 = {np.quantile(h1, .05):.2f};"
+              f"  ty le H1 duoi 1.25 = {100*(h1 < 1.25).mean():.1f} %;"
+              f"  ty le H0 tren 1.25 = {100*(h0 > 1.25).mean():.1f} %")
 
 
 if __name__ == '__main__':

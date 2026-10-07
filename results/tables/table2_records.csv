@@ -3,6 +3,6 @@ campaign,setup,channels,samples,minutes,peak_over_sigma,max_kurtosis,samples_ove
 1,Lateral 1,5,1523873,15.4,25,54,3131,12.9,47.0
 1,Lateral 2,5,1385189,14.0,50,1812,1063,112.0,9.2
 1,Three-channel,3,1545336,15.6,10,4,9,1.5,33.7
-2,Lateral,6,906399,9.2,139,3883,724,4.7,11.5
+2,Lateral,6,906399,9.1,139,3883,724,4.7,11.5
 2,Vertical d1,6,1875536,18.9,69,95,695,4.4,4.1
 2,Vertical d2ke,6,2260219,22.8,67,88,2564,4.3,4.2

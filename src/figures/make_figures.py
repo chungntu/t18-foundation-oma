@@ -51,7 +51,7 @@ PILE_TIP = -40.5
 MODE_V_C1 = ("Vertical setup, campaign 1  (1.134 Hz)",
              [(1, 1.000, -0.0), (2, 0.351, 9.8), (3, 0.267, 179.1),
               (4, 0.248, -177.0), (5, 0.048, 156.5)])
-MODE_V_C2 = ("Vertical d2ke setup, campaign 2  (1.228 Hz)",
+MODE_V_C2 = ("Vertical d2ke setup, campaign 2  (1.229 Hz)",
              [(1, 0.031, -141.5), (2, 1.000, 0.0), (3, 0.205, 1.1),
               (4, 0.837, 175.2), (5, 0.183, -2.4)])
 MODE_L_C2 = ("Lateral setup, campaign 2  (1.203 Hz)",

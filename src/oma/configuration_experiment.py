@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.dirname(HERE))   # src/
 from paths import DATA, RESULTS, FIGURES
 from oma_lib import ssi_cov, filter_poles, stable_poles, cluster_modes, preprocess
 
-FS_RAW = 1651.0
+FS_RAW = 51200 / 31            # Hz = 1651.61; wf_increment = 31/51200 s trong metadata TDMS
 FILE, VAR, LABEL = "dot2/xl_ngang.mat", "xl_ngang", "Lateral setup, campaign 2"
 
 
@@ -47,6 +47,8 @@ CONFIGS = [
     ("C", False, 0.3, 150, (0.5, 800.0)),
     ("D", True, 5.0, 120, (0.5, 25.0)),
     ("B", True, 0.3, 120, (0.5, 25.0)),
+    # E: cung tan so lay mau va bo loc voi B, chi rut ngan cua so tre -> tach rieng tau
+    ("E", True, 0.3, 5, (0.5, 25.0)),
 ]
 
 
@@ -59,7 +61,7 @@ def main():
         y, fs = prepare(x, dec, fh)
         dt = 1.0 / fs
         tau = i_block * dt
-        res = ssi_cov(y, dt, i_block, list(range(2, 82, 2)))
+        res = ssi_cov(y, dt, i_block, list(range(2, min(82, i_block * y.shape[1] + 1), 2)))
         res = filter_poles(res, f_range, xi_range=(0.00001, 0.15))
         modes = cluster_modes(res, stable_poles(res), min_count=8)
 
@@ -78,8 +80,8 @@ def main():
         else:
             print("  mode duoi 5 Hz:  KHONG CO")
         if harm:
-            print(f"  cuc trung boi so 50 Hz, can < 0.05%: {len(harm)} cuc  -> "
-                  + ", ".join(f"{m['f']:.2f}" for m in harm))
+            print(f"  cuc trung boi so 50 Hz, lech < 0.2 %, xi < 0.05 %: {len(harm)} cuc  -> "
+                  + ", ".join(f"{m['f']:.3f} (xi {100*m['xi']:.3f} %)" for m in harm))
         rng = (f"{min(m['f'] for m in modes):.1f} - {max(m['f'] for m in modes):.1f} Hz"
                if modes else "-")
         print(f"  dai tan so cac mode: {rng}\n")

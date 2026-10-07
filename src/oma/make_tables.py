@@ -22,9 +22,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.dirname(HERE))
 from paths import DATA, RESULTS
-from oma_lib import preprocess, mac
+from oma_lib import preprocess, mac, band_poles_by_setup
 
-FS_RAW = 1651.0
+FS_RAW = 51200 / 31            # Hz = 1651.61; wf_increment = 31/51200 s trong metadata TDMS
 OUT = os.path.join(RESULTS, "tables")
 os.makedirs(OUT, exist_ok=True)
 
@@ -173,10 +173,7 @@ def table5():
 
 
 # ---------------------------------------------------------------- BANG 9
-C1 = {"Vertical": [1.1734], "Lateral 1": [1.2258, 1.2536],
-      "Lateral 2": [1.3217], "Three-channel": [1.2370, 1.3307]}
-C2 = {"Lateral": [1.0520, 1.2146], "Vertical d1": [1.1465],
-      "Vertical d2ke": [1.0735, 1.1985, 1.2305]}
+C1, C2 = band_poles_by_setup(RESULTS)
 
 
 # huong do: V = moi kenh dung; H = kenh ngang (kenh 4 dung o dot 2, chua ghi nhan o dot 1);

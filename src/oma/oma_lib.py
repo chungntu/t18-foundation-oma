@@ -11,6 +11,7 @@ Gom:
 Chi phu thuoc numpy + scipy.
 """
 
+import os
 import numpy as np
 from scipy import signal, linalg
 
@@ -277,3 +278,24 @@ def harmonic_indicator(y, fs, f0, bw=0.4):
     z = signal.filtfilt(b, a, y, axis=0)
     k = [np.mean(c ** 4) / np.mean(c ** 2) ** 2 for c in z.T]
     return float(np.mean(k))
+
+
+# ----------------------------------------------------------------------------
+# Cac cuc dai thap theo setup, doc tu ket qua run_dot1.py / run_dot2.py
+# ----------------------------------------------------------------------------
+def band_poles_by_setup(results_dir, band=(1.0, 1.4)):
+    """Tra ve (C1, C2): {ten setup ngan: [cac tan so trong dai]} cho hai dot do."""
+    import csv
+    out = []
+    for camp in (1, 2):
+        path = os.path.join(results_dir, f"dot{camp}", f"modes_dot{camp}.csv")
+        d = {}
+        with open(path, encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                name = r["setup"].split(", campaign")[0].replace(" setup", "")
+                d.setdefault(name, [])
+                f = float(r["f_Hz"])
+                if band[0] <= f <= band[1]:
+                    d[name].append(f)
+        out.append(d)
+    return out[0], out[1]

@@ -21,7 +21,7 @@ sys.path.insert(0, os.path.dirname(HERE))   # src/
 from paths import DATA, RESULTS, FIGURES
 from oma_lib import preprocess, ssi_cov, filter_poles, stable_poles, cluster_modes
 
-FS_RAW = 1651.0
+FS_RAW = 51200 / 31            # Hz = 1651.61; wf_increment = 31/51200 s trong metadata TDMS
 CASES = [
     ("dot1/xl_thangdung.mat", "xl_thangdung", "Vertical, campaign 1"),
     ("dot1/xl_ngang1.mat", "xl_ngang1", "Lateral 1, campaign 1"),
