@@ -3,7 +3,6 @@ Ve cac hinh cua bai bao (tru hinh 5, xem fig_harmonics.py).
 
   fig1_pile_layout.png   - mat bang 34 coc PHC D1000, ba vong, coc xien      (muc 4.1)
   fig2_borehole.png      - mat cat mong va dia tang DH9, kem SPT             (muc 4.2)
-  fig3_sensitivity.png   - do nhay tan so lu ngang theo L_eff va k_ax        (muc 5.5)
   fig4_mode_shape.png    - dang bien dang do duoc, ba cau hinh               (muc 8.2)
 
 So hinh theo dung THU TU XUAT HIEN trong bai.
@@ -26,8 +25,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))          # src/
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "model"))
 from paths import FIGURES, save_figure
-from foundation_stiffness import (RINGS, D_CAP, L_FREE, D_OUT, batter_angle,
-                                  frequencies, F_MEAS_C1, F_MEAS_C2)
+from foundation_stiffness import RINGS, D_CAP, L_FREE, D_OUT, batter_angle
 
 # ---------------------------------------------------------------- dia chat DH9
 # (do sau day lop tinh tu day bun -6.900 [m], mo ta, mau)
@@ -179,34 +177,6 @@ def fig_borehole():
     print("[luu]", p)
 
 
-# =============================================================== HINH 3
-def fig_sensitivity():
-    fig, ax = plt.subplots(figsize=(7.6, 5.2))
-    Le = np.linspace(L_FREE + 2 * D_OUT, L_FREE + 14 * D_OUT, 120)
-    for k_ax, col in zip([2e8, 3e8, 5e8, 8e8], ["#9ecae1", "#4292c6", "#1f4e79", "#08306b"]):
-        f = [frequencies(k_ax, L)['f_sway'] for L in Le]
-        ax.plot(Le, f, color=col, lw=1.8, label=f"$k_{{ax}}$ = {k_ax:.0e} N/m per pile")
-
-    ax.axhspan(1.05, 1.33, color="#c00000", alpha=.12, zorder=0)
-    ax.axhline(F_MEAS_C1, color="#c00000", lw=1.4, ls="--")
-    ax.axhline(F_MEAS_C2, color="#c00000", lw=1.0, ls=":")
-    ax.text(Le[-1], F_MEAS_C1 + 0.03, f"campaign 1 mean {F_MEAS_C1} Hz",
-            ha="right", fontsize=8.5, color="#c00000")
-    ax.text(Le[-1], F_MEAS_C2 - 0.09, f"campaign 2 mean {F_MEAS_C2} Hz",
-            ha="right", fontsize=8.5, color="#c00000")
-
-    ax.set_xlabel("Effective fixity length of the pile, $L_{eff}$ [m]   "
-                  f"(free length in water = {L_FREE:.2f} m)")
-    ax.set_ylabel("Predicted sway frequency [Hz]")
-    ax.grid(alpha=.3)
-    ax.legend(fontsize=8.5)
-    fig.tight_layout()
-    p = os.path.join(FIGURES, "fig07_sensitivity.png")
-    save_figure(fig, p)
-    plt.close(fig)
-    print("[luu]", p)
-
-
 # =============================================================== HINH 4
 def _panel_frame(ax):
     xs = [NODES[k][0] for k in (1, 2, 3, 4, 1)]
@@ -259,5 +229,4 @@ def fig_mode_shape():
 if __name__ == '__main__':
     fig_pile_layout()
     fig_borehole()
-    fig_sensitivity()
     fig_mode_shape()

@@ -1,5 +1,5 @@
 """
-Uoc luong tan so dao dong cua mong T18 tu NGUYEN LY DAU, dung so lieu ban ve.
+So lieu hinh hoc, tiet dien, khoi luong va do cung doc truc coc cua mong T18.
 
 Nguon so lieu (Tap 4.2 - Ban ve thiet ke mong Turbine, 10/04/2021):
   - trang 41: MAT BANG BO TRI PHC D1000 - 34 COC
@@ -13,15 +13,10 @@ Nguon so lieu (Tap 4.2 - Ban ve thiet ke mong Turbine, 10/04/2021):
         dia chat (ho khoan DH9): 2.6 m cat set chat vua; 13.4 m SET BEO RAT MEM
         (SPT N = 0..2); duoi do la cac lop cung hon (N = 17..35).
 
-Muc tieu:
-  1. Kiem tra co che nao chi phoi tan so: LAC tren do cung doc truc coc,
-     hay LAC LU NGANG tren do cung ngang cua nhom coc.
-  2. Hieu chinh nguoc do cung doc truc coc tu tan so DO DUOC.
+Module nay cung cap so lieu cho mo hinh dai cung 6 bac tu do (rigid_cap_6dof.py)
+va uoc luong THUAN do cung doc truc mot coc tu ho so dia chat (muc 6.2 bai bao).
 
-LUU Y: day la uoc luong bac nhat. Cac gia thiet phai xac nhan lai bang
-ban ve chi tiet coc va bao cao dia chat (xem cuoi file).
-
-Chay:  python model/foundation_stiffness.py
+Chay:  python src/model/foundation_stiffness.py
 """
 
 import numpy as np
@@ -50,9 +45,11 @@ I_PILE = np.pi / 64 * (D_OUT ** 4 - D_IN ** 4)
 EA = E_PILE * A_PILE
 EI = E_PILE * I_PILE
 
-# ------------------------------------------------------- tan so do duoc (OMA)
-F_MEAS_C1 = 1.257     # Hz, trung binh nhom mode toan cuc, dot 1 (chua co thap)
-F_MEAS_C2 = 1.153     # Hz, dot 2 (da co thap)
+# SPT trung binh theo tung lop trong doan coc ngam (tu ho khoan DH9)
+# (chieu day [m], N trung binh)
+EMBEDDED_LAYERS = [(2.6, 10.0), (13.4, 1.4), (2.5, 16.0),
+                   (4.2, 26.0), (7.8, 21.0), (3.1, 27.0)]
+L_EMB = sum(t for t, _ in EMBEDDED_LAYERS)
 
 
 def batter_angle(n):
@@ -61,214 +58,14 @@ def batter_angle(n):
 
 
 def cap_mass_inertia():
-    """Khoi luong va mo-men quan tinh khoi cua dai + coc (khong ke thap)."""
+    """Khoi luong dai, coc va nuoc kem theo (khong ke thap)."""
     V_cap = np.pi / 4 * D_CAP ** 2 * T_CAP
     m_cap = V_cap * RHO_C
-    R = D_CAP / 2
-    # quay quanh mot duong kinh qua trong tam dia tron day t
-    J_cap = m_cap * (3 * R ** 2 + T_CAP ** 2) / 12
-
     m_pile_each = A_PILE * L_PILE * RHO_C
     n_pile = sum(n for _, n, _ in RINGS)
-    m_piles = m_pile_each * n_pile
-    J_piles = sum(m_pile_each * n * r ** 2 for r, n, _ in RINGS)
-
-    # khoi luong nuoc kem theo tren doan coc ngap (added mass he so 1.0)
     m_added = RHO_W * np.pi / 4 * D_OUT ** 2 * L_FREE * n_pile
-
-    return dict(m_cap=m_cap, J_cap=J_cap, m_piles=m_piles, J_piles=J_piles,
-                m_added=m_added, V_cap=V_cap, n_pile=n_pile)
-
-
-def geometry_sums():
-    """Cac tong hinh hoc dung cho do cung lac va ngang."""
-    s_rot = 0.0      # sum r^2 cos^2(alpha)  -> lac tu do cung doc truc
-    s_lat_ax = 0.0   # sum sin^2(alpha)      -> ngang tu do cung doc truc (coc xien)
-    s_lat_b = 0.0    # sum cos^2(alpha)      -> ngang tu uon coc
-    for r, n, nb in RINGS:
-        a = batter_angle(nb)
-        s_rot += n * r ** 2 * np.cos(a) ** 2
-        s_lat_ax += n * np.sin(a) ** 2
-        s_lat_b += n * np.cos(a) ** 2
-    return s_rot, s_lat_ax, s_lat_b
-
-
-def k_lateral_bending(L_eff):
-    """Do cung ngang cua MOT coc coi nhu dam ngam hai dau, chieu dai hieu dung L_eff."""
-    return 12 * EI / L_eff ** 3
-
-
-def frequencies(k_ax, L_eff, m_extra=0.0, J_extra=0.0):
-    """Tan so lac va tan so lu ngang, voi do cung doc truc mot coc k_ax [N/m]."""
-    p = cap_mass_inertia()
-    s_rot, s_lat_ax, s_lat_b = geometry_sums()
-
-    M = p['m_cap'] + p['m_piles'] + p['m_added'] + m_extra
-    J = p['J_cap'] + p['J_piles'] + J_extra
-
-    k_theta = k_ax * s_rot
-    k_lat = k_ax * s_lat_ax + k_lateral_bending(L_eff) * s_lat_b
-
-    f_rock = np.sqrt(k_theta / J) / (2 * np.pi)
-    f_sway = np.sqrt(k_lat / M) / (2 * np.pi)
-    return dict(M=M, J=J, k_theta=k_theta, k_lat=k_lat,
-                k_lat_from_batter=k_ax * s_lat_ax,
-                k_lat_from_bending=k_lateral_bending(L_eff) * s_lat_b,
-                f_rock=f_rock, f_sway=f_sway)
-
-
-def solve_kax_for_frequency(f_target, L_eff):
-    """Tim k_ax sao cho tan so lu ngang bang f_target (giai truc tiep)."""
-    p = cap_mass_inertia()
-    s_rot, s_lat_ax, s_lat_b = geometry_sums()
-    M = p['m_cap'] + p['m_piles'] + p['m_added']
-    k_need = (2 * np.pi * f_target) ** 2 * M
-    k_ax = (k_need - k_lateral_bending(L_eff) * s_lat_b) / s_lat_ax
-    return k_ax, k_need
-
-
-def rock_sway_ratio(L_eff=None):
-    """Ty so f_lac / f_lu_ngang.
-
-    Neu bo qua do cung uon coc, k_ax TRIET TIEU:
-        f_rock/f_sway = sqrt( (sum r^2 cos^2 a / J) / (sum sin^2 a / M) )
-    tuc chi phu thuoc HINH HOC va PHAN BO KHOI LUONG, khong phu thuoc dat nen.
-    """
-    p = cap_mass_inertia()
-    s_rot, s_lat_ax, s_lat_b = geometry_sums()
-    M = p['m_cap'] + p['m_piles'] + p['m_added']
-    J = p['J_cap'] + p['J_piles']
-
-    r_no_bending = np.sqrt((s_rot / J) / (s_lat_ax / M))
-    out = dict(ratio_no_bending=r_no_bending, M=M, J=J,
-               s_rot=s_rot, s_lat_ax=s_lat_ax, s_lat_b=s_lat_b)
-    if L_eff is not None:
-        out['ratio_with_bending'] = {}
-        for k_ax in [2e8, 3e8, 5e8, 8e8, 2e9]:
-            r = frequencies(k_ax, L_eff)
-            out['ratio_with_bending'][k_ax] = r['f_rock'] / r['f_sway']
-    return out
-
-
-def main():
-    p = cap_mass_inertia()
-    s_rot, s_lat_ax, s_lat_b = geometry_sums()
-
-    print("=" * 74)
-    print("1. SO LIEU DAN XUAT TU BAN VE")
-    print("=" * 74)
-    print(f"  Tiet dien coc PHC D1000 (vach {T_WALL*1000:.0f} mm, GIA THIET):")
-    print(f"     A  = {A_PILE:.4f} m2      I  = {I_PILE:.5f} m4")
-    print(f"     EA = {EA:.3e} N        EI = {EI:.3e} N.m2")
-    print(f"  Dai: the tich {p['V_cap']:.0f} m3, khoi luong {p['m_cap']/1e6:.2f} x10^6 kg")
-    print(f"  {p['n_pile']} coc: khoi luong {p['m_piles']/1e6:.2f} x10^6 kg, "
-          f"nuoc kem theo {p['m_added']/1e6:.2f} x10^6 kg")
-    print(f"  Tong hinh hoc:  sum r^2cos^2a = {s_rot:.1f} m2   "
-          f"sum sin^2a = {s_lat_ax:.3f}   sum cos^2a = {s_lat_b:.2f}")
-    print(f"  Chieu dai coc tu do trong nuoc: {L_FREE:.2f} m")
-
-    print("\n" + "=" * 74)
-    print("2. CO CHE NAO CHI PHOI? (thu voi k_ax = 5e8 N/m, L_eff = L_free + 5D)")
-    print("=" * 74)
-    L_eff = L_FREE + 5 * D_OUT
-    r = frequencies(5e8, L_eff)
-    print(f"  Khoi luong dao dong M = {r['M']/1e6:.2f} x10^6 kg")
-    print(f"  Quan tinh quay     J = {r['J']:.3e} kg.m2")
-    print(f"  Do cung lac    k_th = {r['k_theta']:.3e} N.m/rad  ->  f_lac  = {r['f_rock']:6.2f} Hz")
-    print(f"  Do cung ngang  k_lat= {r['k_lat']:.3e} N/m      ->  f_ngang = {r['f_sway']:6.2f} Hz")
-    print(f"     trong do do coc xien dong gop {r['k_lat_from_batter']:.3e} N/m "
-          f"({100*r['k_lat_from_batter']/r['k_lat']:.0f} %)")
-    print(f"     uon coc dong gop            {r['k_lat_from_bending']:.3e} N/m "
-          f"({100*r['k_lat_from_bending']/r['k_lat']:.0f} %)")
-    print(f"\n  => f_lac ({r['f_rock']:.1f} Hz) cao hon han f_do (~1.2 Hz):")
-    print( "     tan so do duoc KHONG phai lac tren do cung doc truc coc.")
-    print( "     Co che chi phoi la LU NGANG cua nhom coc, trong do coc xien")
-    print( "     dong gop phan lon do cung.")
-
-    print("\n" + "=" * 74)
-    print("3. DO NHAY THEO CHIEU DAI NGAM HIEU DUNG VA DO CUNG DOC TRUC")
-    print("=" * 74)
-    print(f"  {'L_eff [m]':>10} " + " ".join(f"{k:>9.0e}" for k in [2e8, 3e8, 5e8, 8e8]))
-    print(f"  {'':>10} " + " ".join(f"{'f [Hz]':>9}" for _ in range(4)))
-    for Le in [L_FREE + 3 * D_OUT, L_FREE + 5 * D_OUT, L_FREE + 8 * D_OUT, L_FREE + 12 * D_OUT]:
-        row = [frequencies(k, Le)['f_sway'] for k in [2e8, 3e8, 5e8, 8e8]]
-        print(f"  {Le:>10.1f} " + " ".join(f"{v:>9.2f}" for v in row))
-
-    print("\n" + "=" * 74)
-    print("4. HIEU CHINH NGUOC TU TAN SO DO DUOC (dot 1, chua co thap)")
-    print("=" * 74)
-    for Le, tag in [(L_FREE + 3 * D_OUT, "ngam nong"),
-                    (L_FREE + 5 * D_OUT, "trung binh"),
-                    (L_FREE + 8 * D_OUT, "ngam sau")]:
-        k_ax, k_need = solve_kax_for_frequency(F_MEAS_C1, Le)
-        print(f"  L_eff = {Le:5.1f} m ({tag:10s}): de f = {F_MEAS_C1} Hz thi can "
-              f"k_ax = {k_ax:.3e} N/m/coc")
-    k_ax_mid, _ = solve_kax_for_frequency(F_MEAS_C1, L_FREE + 5 * D_OUT)
-    print(f"\n  De so sanh, do cung dan hoi thuan tuy cua doan coc tu do:")
-    print(f"     EA/L_free = {EA/L_FREE:.3e} N/m")
-    print(f"     k_ax hieu chinh / (EA/L_free) = {k_ax_mid/(EA/L_FREE):.2f}")
-
-    print("\n" + "=" * 74)
-    print("5. DOI CHIEU")
-    print("=" * 74)
-    print(f"  Do duoc, dot 1 (chua thap) : {F_MEAS_C1:.3f} Hz")
-    print(f"  Do duoc, dot 2 (co thap)   : {F_MEAS_C2:.3f} Hz")
-    print( "  Uoc luong nguyen ly dau    : xem bang muc 3 - nam trong cung khoang")
-    print( "  => uoc luong nguyen ly dau bao trum ca hai gia tri do duoc;")
-    print( "     xem muc 3 ve do nhay theo gia thiet.")
-
-    print("\n" + "=" * 74)
-    print("6. SUY NGUOC KHOI LUONG THAP THAM GIA DAO DONG")
-    print("=" * 74)
-    print("  Gia thiet: do cung ngang KHONG doi giua hai dot (chi them khoi luong).")
-    print("  Khi do  M2/M1 = (f1/f2)^2 .")
-    M1 = p['m_cap'] + p['m_piles'] + p['m_added']
-    ratio = (F_MEAS_C1 / F_MEAS_C2) ** 2
-    dM = (ratio - 1) * M1
-    print(f"     M1 (dai + coc + nuoc kem theo) = {M1/1e6:.2f} x10^6 kg = {M1/1e3:.0f} tan")
-    print(f"     (f1/f2)^2 = ({F_MEAS_C1}/{F_MEAS_C2})^2 = {ratio:.4f}")
-    print(f"     => khoi luong tang them  dM = {dM/1e3:.0f} tan")
-    print("  Doi chieu: thap + nacelle + rotor cua tua-bin co cong suat nay thuong")
-    print("  vao khoang 500-700 tan. Neu dM suy ra lon hon dang ke thi hoac do cung")
-    print("  cung thay doi, hoac mot phan chenh lech la do dieu kien moi truong.")
-    print("  => day la mot phep kiem tra doc lap, KHONG can mo hinh dat nen.")
-
-    print("\n" + "=" * 74)
-    print("CAN XAC NHAN DE CHOT SO")
-    print("=" * 74)
-    print("  - Chieu day vach coc PHC D1000 va cap do ben be tong (ban ve chi tiet coc)")
-    print("  - Bao cao dia chat day du: suc khang cat khong thoat nuoc theo do sau,")
-    print("    de tinh do cung doc truc coc thay vi gia thiet")
-    print("  - Khoi luong thap + nacelle + rotor cho trang thai dot 2")
-    print("  - Khoi luong thuc cua dai (co cot thep, long neo) thay vi be tong thuan")
-
-
-if __name__ == '__main__':
-    main()
-
-
-# ============================================================================
-# TRA LOI PHAN BIEN: hieu ung nhom coc, va uoc luong k_ax doc lap
-# ============================================================================
-
-# SPT trung binh theo tung lop trong doan coc ngam (tu ho khoan DH9)
-# (chieu day [m], N trung binh)
-EMBEDDED_LAYERS = [(2.6, 10.0), (13.4, 1.4), (2.5, 16.0),
-                   (4.2, 26.0), (7.8, 21.0), (3.1, 27.0)]
-L_EMB = sum(t for t, _ in EMBEDDED_LAYERS)
-
-
-def group_effect_bounds(eta_ratio_range=(0.5, 2.0)):
-    """Ty so f_rock/f_sway khi hai co che co he so hieu qua nhom KHAC nhau.
-
-    Phan bien dung: k_ax khong triet tieu neu he so hieu qua nhom cho lac
-    (eta_rock) khac cho lu ngang (eta_sway). Khi do
-        f_rock/f_sway = 7.69 * sqrt(eta_rock/eta_sway)
-    """
-    base = rock_sway_ratio()['ratio_no_bending']
-    lo = base * np.sqrt(eta_ratio_range[0])
-    hi = base * np.sqrt(eta_ratio_range[1])
-    return base, lo, hi
+    return dict(m_cap=m_cap, m_piles=m_pile_each * n_pile, m_added=m_added,
+                V_cap=V_cap, n_pile=n_pile)
 
 
 def g0_ohsaki_iwasaki(N):
@@ -320,30 +117,31 @@ def kax_from_soil(G_scales=(0.5, 1.0), nu=0.3):
     return k_free, out
 
 
-if __name__ != '__main__':
-    pass
-
-
-def dimensionless_ratio():
-    """Dang khong thu nguyen cua tieu chi (muc 3.3 cua bai bao).
-
-    Voi nhom coc co MOT goc xien alpha:
-        sum r^2 cos^2(a) = cos^2(a) * sum r^2 = cos^2(a) * n * r_rms^2
-        sum sin^2(a)     = n * sin^2(a)
-    nen
-        f_rock/f_sway = sqrt( (M/J) * sum r^2cos^2a / sum sin^2a )
-                      = (r_rms / k_g) * cot(alpha)
-    voi r_rms = sqrt(sum r^2 / n) va k_g = sqrt(J/M).
-
-    Hai co che bang nhau khi tan(alpha) = r_rms / k_g.
-    """
+def main():
     p = cap_mass_inertia()
-    M = p['m_cap'] + p['m_piles'] + p['m_added']
-    J = p['J_cap'] + p['J_piles']
-    k_g = np.sqrt(J / M)
-    n = sum(nn for _, nn, _ in RINGS)
-    r_rms = np.sqrt(sum(nn * r ** 2 for r, nn, _ in RINGS) / n)
-    alpha_crit = np.arctan(r_rms / k_g)
-    return dict(k_g=k_g, r_rms=r_rms, shape=r_rms / k_g,
-                alpha_crit_deg=np.degrees(alpha_crit),
-                ratio=lambda a_rad: (r_rms / k_g) / np.tan(a_rad))
+    print("=" * 74)
+    print("SO LIEU DAN XUAT TU BAN VE")
+    print("=" * 74)
+    print(f"  Tiet dien coc PHC D1000 (vach {T_WALL*1000:.0f} mm, GIA THIET):")
+    print(f"     A  = {A_PILE:.4f} m2      I  = {I_PILE:.5f} m4")
+    print(f"     EA = {EA:.3e} N        EI = {EI:.3e} N.m2")
+    print(f"  Dai: the tich {p['V_cap']:.0f} m3, khoi luong {p['m_cap']/1e6:.2f} x10^6 kg")
+    print(f"  {p['n_pile']} coc: khoi luong {p['m_piles']/1e6:.2f} x10^6 kg, "
+          f"nuoc kem theo {p['m_added']/1e6:.2f} x10^6 kg")
+    print("\n  Tieu diem tung vong coc xien, r cot(alpha):")
+    for r, n, nb in RINGS:
+        if nb:
+            print(f"     R = {r:.0f} m, {nb:.0f}:1  ->  {r / np.tan(batter_angle(nb)):.1f} m tren dau coc")
+
+    print("\n" + "=" * 74)
+    print("DO CUNG DOC TRUC MOT COC CO LAP, UOC LUONG THUAN TU SPT (muc 6.2)")
+    print("=" * 74)
+    k_free, fwd = kax_from_soil()
+    print(f"  EA/L_free = {k_free:.3e} N/m")
+    for s, r in fwd.items():
+        print(f"  G = {s:.1f} G0: G_avg = {r['G_avg']/1e6:.1f} MPa, muL = {r['muL']:.2f}, "
+              f"k_ngam = {r['k_soil']:.2e}, k_co_lap = {r['k_iso']:.2e} N/m")
+
+
+if __name__ == '__main__':
+    main()

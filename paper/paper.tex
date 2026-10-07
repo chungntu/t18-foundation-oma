@@ -64,23 +64,24 @@
 
 \begin{abstract}
 Operational modal analysis of a pile-supported foundation returns natural
-frequencies and mode shapes, but it does not identify the mechanism that each
-mode represents. For an inclined pile group the distinction matters most at the
-lowest frequency, where the cap may sway on the lateral stiffness of the piles
-or rock on their axial stiffness. These are the two fundamental motions of such
-a system, and the measured records alone seldom establish which of them has
-been identified. The conventional remedy is to construct a numerical model of
-the foundation and to classify the measured modes by correspondence with it.
-The difficulty is that such a model requires the stiffness of the supporting
-soil, which is the least certain quantity in the problem: it depends on the
-strain level, on the installation process and on time. A classification
-obtained in this way therefore inherits the uncertainty of its least reliable
-input. This paper establishes the classification analytically instead. Both
-motions of an inclined pile group are resisted by the same axial pile stiffness,
-and that stiffness cancels from the ratio of the two natural frequencies. The ratio reduces to a function of the geometry alone, which is available from the setting-out drawing. The criterion is demonstrated on the foundation of an offshore wind turbine,
-measured before and after tower installation. The single band that satisfies
-the requirements placed on a physical mode is shown to be sway, in agreement
-with the geometric prediction.
+frequencies and mode shapes, but not the mechanism that each mode represents.
+For an elevated cap on inclined piles the question at the lowest frequency is
+whether the cap sways or rocks, which usually requires the soil stiffness, the
+least certain input. This paper shows that the geometry settles much of it. The six-degree-of-freedom stiffness of a rigid cap
+shows that the axial pile springs, which carry the soil stiffness, leave one
+motion almost unresisted: rotation about the point where the pile axes meet,
+here 42 to 45~m above the pile heads. The lowest lateral mode therefore rotates
+about a centre at or above that focal point and is resisted mainly by pile
+bending, and its vertical component at the cap is bounded by geometry alone. Rocking about a centre near the pile heads
+lies five to sixteen times higher, and torsion falls close to the lowest
+lateral pair. The prediction is tested on an offshore wind turbine foundation
+measured before and after tower installation. Of the identified poles, only one
+band, 1.05 to 1.33~Hz, meets three acceptance requirements derived from the
+definition of a mode. In the setup with a documented vertical channel, the
+vertical-to-horizontal amplitude ratio of that band is 0.08 to 0.16. Focal-point
+sway predicts 0.03 to 0.08 and rocking about 1. One member of the band has a
+torsional pattern. The measured frequency constrains the depth to fixity of the
+piles rather than their axial stiffness.
 \end{abstract}
 
 \noindent\textbf{Keywords:} inclined pile group; pile-group foundation; operational modal analysis; sway and rocking; offshore wind turbine; soil--structure interaction
@@ -118,14 +119,11 @@ that can be applied to raw records without a validated model, a documented
 sensor layout or environmental data, which matters in construction-stage
 measurement, where none of the three is normally available.
 
-A parallel difficulty arises on the modelling side. The lowest mode of a pile-group foundation may be a sway of the cap on the lateral stiffness of the piles, or a rocking of the cap on their axial stiffness. The question is usually settled by constructing a model, and such a model requires the soil stiffness. That is the least certain quantity in the problem: it depends on strain level, on installation effects and on time, and for a foundation measured during construction it is rarely known to better than a factor of two. It is shown below that for an inclined pile group the classification does not require it. Both mechanisms
-are resisted by the same axial pile stiffness, so it cancels from the ratio of
-their natural frequencies, and that ratio is fixed by geometry and mass
-distribution alone.
+A parallel difficulty arises on the modelling side. The lowest mode of a pile-group foundation may be a sway of the cap or a rocking of the cap. The question is usually settled by constructing a model, and such a model requires the soil stiffness. That is the least certain quantity in the problem: it depends on strain level, on installation effects and on time, and for a foundation measured during construction it is rarely known to better than a factor of two. It is shown below that for an inclined pile group the shape of the lowest mode does not require it. The axial pile springs, through which most of the soil stiffness enters, are nearly concurrent: their axes meet close to one point above the cap. Rotation about that point stretches no pile, so the axial springs fix where the lowest mode rotates but not how fast.
 
-This paper derives a geometric criterion that orders sway and rocking in an inclined pile group, so that a measured band can be assigned to a mechanism without a soil model. It also sets out acceptance requirements that follow from the definition of a mode and can be evaluated on raw records. The two are brought together on a construction-stage measurement of an inclined pile group, where the mechanism predicted from the setting-out drawing proves to be the mechanism the records display.
+This paper derives that prediction from the six-degree-of-freedom stiffness of a rigid cap and states it in a form the records can test: a bound on the vertical component of the lowest mode, set by geometry alone. It also sets out acceptance requirements that follow from the definition of a mode and can be evaluated on raw records. The two are brought together on a construction-stage measurement of an inclined pile group.
 
-Section~\ref{sec:related} sets both parts against the work on which they draw. Section~\ref{sec:structure} describes the foundation, the ground and the records. Section~\ref{sec:model} derives the criterion from geometry alone.
+Section~\ref{sec:related} sets both parts against the work on which they draw. Section~\ref{sec:structure} describes the foundation, the ground and the records. Section~\ref{sec:model} derives the prediction from the geometry.
 Section~\ref{sec:ident} identifies the modes and decides which poles belong to
 the structure. Section~\ref{sec:interp} combines the two independent lines of evidence.
 
@@ -138,19 +136,18 @@ Four bodies of work bear on the problem: the stiffness of inclined pile groups, 
 \subsection{Stiffness of inclined pile groups}
 \label{sec:rw-piles}
 
-The stiffness model of Section~\ref{sec:model} is classical. Hrennikoff \cite{hrennikoff1950} analysed a rigid cap on batter piles by resolving the axial and transverse resistance of each pile onto the displacements of the cap, which is the route by which inclination turns axial stiffness into lateral stiffness. Saul \cite{saul1968} cast the analysis as a matrix of stiffness coefficients from which the natural frequencies of a pile foundation also follow, and Poulos and Davis \cite{poulos1980} give the standard treatment of pile groups. Randolph and Wroth \cite{randolph1978,randolph1979} provide the closed-form axial stiffness of a single pile and the axial interaction factors used in Section~\ref{sec:criterion}. The benefit of inclination depends on the axial capacity it mobilises: in centrifuge tests McVay et al.\ \cite{mcvay1996} found battered groups to carry 20 to 50\,\% more lateral load than plumb groups in dense sand, but little more in loose sand, where the tension capacity of the piles was limited.
+The stiffness model of Section~\ref{sec:model} is classical. Hrennikoff \cite{hrennikoff1950} analysed a rigid cap on batter piles by resolving the axial and transverse resistance of each pile onto the displacements of the cap, which is the route by which inclination turns axial stiffness into lateral stiffness. Saul \cite{saul1968} cast the analysis as a matrix of stiffness coefficients from which the natural frequencies of a pile foundation also follow, and Poulos and Davis \cite{poulos1980} give the standard treatment of pile groups. Implicit in those matrices is a condition that Section~\ref{sec:model} makes central: piles whose axes pass through one point offer no axial resistance to rotation about that point. Randolph and Wroth \cite{randolph1978,randolph1979} provide the closed-form axial stiffness of a single pile and the axial interaction factors used in Section~\ref{sec:stiffness}. The benefit of inclination depends on the axial capacity it mobilises: in centrifuge tests McVay et al.\ \cite{mcvay1996} found battered groups to carry 20 to 50\,\% more lateral load than plumb groups in dense sand, but little more in loose sand, where the tension capacity of the piles was limited.
 
 Dynamic interaction within pile groups was established by Kaynia and Kausel \cite{kaynia1982}, who found group impedances to depend strongly on frequency, and reduced to practice through the interaction factors of Dobry and Gazetas \cite{dobry1988} and of Gazetas and Makris \cite{gazetas1991,makris1992}. For inclined piles, Gerolymos et al.\ \cite{gerolymos2008} showed that batter piles may be beneficial or detrimental according to superstructure slenderness and pile--cap connection, and Giannakou et al.\ \cite{giannakou2010} that the response depends on the balance between overturning moment and shear. Padr\'on et al.\ \cite{padron2010} computed the complete vertical, horizontal, rocking and cross-coupled impedance functions of inclined piles and pile groups with a coupled boundary-element and finite-element formulation. The same line of work has since examined the effect of the angle of inclination on the dynamic properties of piled structures \cite{medina2015}, extended the impedances to layered soils \cite{alamo2016}, and provided ready-to-use vertical and rocking impedances of pile groups for offshore wind turbine foundations \cite{rodriguez2025}, while Goit and Saitoh \cite{goit2016} measured the interaction factors and impedances of inclined piles experimentally. Huang and Zhong \cite{huang2014} derived the coupled horizontal--rocking impedance of partially embedded pile groups, the configuration of an elevated cap, and showed its effect on the resonance of offshore wind turbines, for vertical piles. Arany et al.\ \cite{arany2016,arany2017} derived closed-form estimates of offshore wind turbine frequencies that include foundation flexibility.
 
-These studies predict an impedance, a response or a frequency, and each requires the stiffness of the soil to do so. To the authors' knowledge none forms the ratio of the sway and rocking frequencies of an inclined group, from which the common axial pile stiffness cancels, or uses that ratio to assign a measured mode to a mechanism. The result of Section~\ref{sec:model} is narrower than an impedance analysis and less demanding: it gives a ratio in place of an impedance and a classification in place of a response, without the soil model those studies require.
+These studies predict an impedance, a response or a frequency, and each requires the stiffness of the soil to do so. The near-concurrency of the pile axes of a practical inclined group, and its consequence for the shape of the lowest mode of an elevated cap, have not to the authors' knowledge been used to predict a measurable property of that mode. The result of Section~\ref{sec:model} is narrower than an impedance analysis. It does not give the frequency, which still depends on the soil, but it bounds the vertical component of the lowest mode from the setting-out drawing alone, and that bound can be checked against records.
 
 \subsection{Field identification of wind turbine foundations}
 \label{sec:rw-field}
 
 Output-only identification of offshore wind turbines is established. Devriendt et al.\ \cite{devriendt2014} automated operational modal analysis to track the support-structure modes of a turbine in the Belgian North Sea, Damgaard et al.\ \cite{damgaard2013} identified cross-wind modal properties of offshore turbines by full-scale testing, and Dong et al.\ \cite{dong2018} combined vibration monitoring with operational modal analysis of an offshore turbine structure. Weijtjens et al.\ \cite{weijtjens2016} used resonance frequencies to monitor a monopile foundation, and Nor\'en-Cosgriff and Kaynia \cite{noren2021} found the first natural frequency to fall and damping to rise with load level. Tcherniak et al.\ \cite{tcherniak2011} examined where the assumptions of the method break down on operating turbines, and van Vondelen et al.\ \cite{vanvondelen2022} reviewed damping identification for offshore turbines. Separating a structural change from environmental and operational variability requires long records with environmental covariates \cite{peeters2001z24,kjeld2023}, which construction-stage campaigns rarely provide.
 
-Measured frequencies of monopile-supported turbines commonly exceed design predictions. Sastre Jurado et al.\ \cite{sastre2024} found the parked eigenfrequencies of a North Sea wind farm to be systematically underestimated by the design models and identified foundation stiffness as a key source of the discrepancy, and Winkler et al.\ \cite{winkler2024} benchmarked soil--structure interaction models against monopiles measured before the tower was installed. Over 47 locations, Nernheim et al.\ \cite{nernheim2025} found design frequencies between about 85 and 97\,\% of the measured values, a gap that stiffening the soil springs alone did not close. The inclined group studied here shows the opposite sign: the axial pile stiffness inverted from the measurement lies below the forward estimate, and the two are reconciled only when pile--soil--pile interaction is included (Section~\ref{sec:stiffness}).
-
+Measured frequencies of monopile-supported turbines commonly exceed design predictions. Sastre Jurado et al.\ \cite{sastre2024} found the parked eigenfrequencies of a North Sea wind farm to be systematically underestimated by the design models and identified foundation stiffness as a key source of the discrepancy, and Winkler et al.\ \cite{winkler2024} benchmarked soil--structure interaction models against monopiles measured before the tower was installed. Over 47 locations, Nernheim et al.\ \cite{nernheim2025} found design frequencies between about 85 and 97\,\% of the measured values, a gap that stiffening the soil springs alone did not close.
 Measurements during construction are fewer. Fernandes et al.\ \cite{fernandes2022} tracked resonance frequencies through every installation stage of 48 monopile-supported turbines, Seo et al.\ \cite{seo2020} tested a turbine on tripod suction buckets at four construction stages, and Louw and Kearsley \cite{louw2026} monitored the strains of an onshore piled raft through turbine installation and its first year of operation. Pile groups under an elevated cap, the foundation of the Donghai Bridge wind farm in China and of the nearshore farms of the Mekong Delta \cite{worldbank2021,nguyen2022}, have been studied mainly for bearing capacity \cite{lang2014}. Li et al.\ \cite{li2022} identified the modes of an operating 4~MW turbine on such a foundation, eight piles inclined at 6:1 under a 15~m cap, from accelerometers distributed along the tower, and found the first mode at 0.36~Hz; Liu et al.\ \cite{liu2026} studied a cap--pile group of the Donghai Bridge farm by experimental modal analysis. In Vietnam, Huynh \cite{huynh2024} modelled a single pile foundation as a rigid body to study the loads from blade breakage. These studies identify the modes of the turbine as a whole, measured along the tower or at a single level. None that was found instruments the cap of an inclined group so that its pattern of motion, and not its frequency alone, can be compared with a mechanism predicted beforehand.
 
 \subsection{Acceptance of identified poles}
@@ -169,7 +166,7 @@ A deterministic harmonic can be identified as a structural pole \cite{mohanty200
 
 A resonance need not belong to the structure the sensors were placed to characterise. The mounting of an accelerometer alters the response it records \cite{shokrollahi2017,iso5348}, and local modes at frequencies close to global ones complicate identification, as Abdelnour and Zabel \cite{abdelnour2024} showed for a space truss, separating the two by a modal strain energy indicator. The effective channel count of Section~\ref{sec:procedure} is the participation ratio introduced by Bell and Dean \cite{bell1970} to measure the spatial extent of vibrational modes, and localisation of vibration by structural irregularity was established by Hodges \cite{hodges1982} and by Pierre and Dowell \cite{pierre1987}. No use of the participation ratio as an acceptance criterion in operational modal analysis was found.
 
-Each of the three requirements of Section~\ref{sec:procedure} therefore has an antecedent: the damping bound in the harmonic indicators of Jacobsen, invariance across setups in multi-setup identification, and the effective channel count in the participation ratio of localisation physics. What was not found is their joint use as acceptance tests on construction-stage records, or a mechanism criterion derived independently of the records against which the accepted mode can be checked.
+Each of the three requirements of Section~\ref{sec:procedure} therefore has an antecedent: the damping bound in the harmonic indicators of Jacobsen, invariance across setups in multi-setup identification, and the effective channel count in the participation ratio of localisation physics. What was not found is their joint use as acceptance tests on construction-stage records, or a mode-shape prediction derived independently of the records against which the accepted mode can be checked.
 
 % =====================================================================
 \section{The offshore wind turbine foundation and the field measurements}
@@ -190,8 +187,7 @@ soffit is at elevation $+5.435$ and the seabed at $-6.900$, so each pile stands
 free in water over 12.34~m before entering the ground; the toe is at
 approximately $-40.5$.
 
-Two quantities govern the whole of Section~\ref{sec:model}: the radius of each ring and the inclination of the piles in it. They resolve a force acting along a pile axis onto the horizontal and rotational degrees of freedom of the cap. Nothing else about the pile enters that resolution: not its section, not its
-material, not the soil around it. The result of Section~\ref{sec:criterion} therefore does not depend on the pile section or the concrete grade at all.
+Two quantities govern the central result of Section~\ref{sec:model}: the radius of each ring and the inclination of the piles in it. Together they fix the height $r\cot\alpha$ at which the axes of each ring meet. Nothing else about the pile enters that height: not its section, not its material, not the soil around it. The section, the material and the soil enter the frequencies instead.
 
 The arrangement was read from the pile setting-out sheet and is reproduced in
 Figure~\ref{fig:layout}. It was then checked against the dimension string printed along the top of the
@@ -211,7 +207,7 @@ the drawing rather than a measurement from a scanned image.
 
 \begin{table}[htbp]
 \centering
-\caption{Foundation geometry and pile section properties, all read from the design drawings. The section properties enter the absolute frequency of Section~\ref{sec:criterion} and the stiffness comparison of Section~\ref{sec:stiffness}; they do not enter the criterion itself.}
+\caption{Foundation geometry and pile section properties, all read from the design drawings. The section properties enter the frequencies of Section~\ref{sec:criterion} and the fixity analysis of Section~\ref{sec:stiffness}; they do not enter the focal heights.}
 \label{tab:geometry}
 \begin{tabularx}{\linewidth}{@{}lL@{}}
 \toprule
@@ -258,7 +254,7 @@ arrangement. The position of the frame on the 20.5~m cap is not documented, and 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.98\linewidth]{fig03_sensor_layout}
-\caption{The instrumented frame. (a) Plan of the $5 \times 5$~m frame on the 20.5~m cap, with channels 1 to 4 at the corners and channel 5 at the centre. (b) Elevation, showing the sixth channel of campaign 2, which is mounted on the tower two metres above the cap surface and so cannot be placed in the plan. Only the six piles cut by a diametral section are drawn, and both they and the tower are shown broken off rather than at full length. The vertical setups measure $Z$ on every channel; the lateral setups measure horizontally on channels 1, 2, 3 and 5 and vertically on channel 4. The position of the frame on the cap is not documented, and it is drawn concentric on the inference that channel 6, being on the tower, lies close to the cap centre}
+\caption{The instrumented frame. (a) Plan of the $5 \times 5$~m frame on the 20.5~m cap, with channels 1 to 4 at the corners and channel 5 at the centre. (b) Elevation, showing the sixth channel of campaign 2, which is mounted on the tower two metres above the cap surface and so cannot be placed in the plan. Only the six piles cut by a diametral section are drawn, and both they and the tower are shown broken off rather than at full length. The vertical setups measure $Z$ on every channel. In the lateral setup of campaign 2 channels 1, 2, 3, 5 and 6 measure horizontally in one common direction and channel 4 vertically, as recorded in the processing log; the channel orientations of the two lateral setups of campaign 1 are not documented. The position of the frame on the cap is not documented, and it is drawn concentric on the inference that channel 6, being on the tower, lies close to the cap centre}
 \label{fig:sensors}
 \end{figure}
 
@@ -307,168 +303,113 @@ unknown amount, and field studies of offshore support structures report damping
 that varies with load level and operating state \cite{noren2021}. Frequency estimates, in addition, carry more uncertainty than the scatter within a stabilisation cluster suggests, and for that reason Section~\ref{sec:classify} does not rest on frequency agreement between setups.
 
 % =====================================================================
-\section{A geometric criterion for sway and rocking}
+\section{The lowest modes of an inclined pile group}
 \label{sec:model}
 
-The derivation that follows uses no measurement. It starts from the equation of motion of a rigid body supported on axial springs, assembles the lateral and rotational stiffness of an inclined pile group, and shows that the axial pile stiffness cancels from the ratio of the two natural frequencies. Because the result is fixed before any record is examined, the comparison in Section~\ref{sec:mechanism} is a test and not a fit.
+The derivation that follows uses no measurement. It assembles the stiffness of a rigid cap on inclined piles in all six degrees of freedom, separates the part contributed by the axial pile springs, and shows what that part fixes regardless of the soil. Because the result is obtained before any record is examined, the comparison in Section~\ref{sec:mechanism} is a test and not a fit.
 
-\subsection{Idealisation and the stiffness of an inclined pile group}
+\subsection{Idealisation and the stiffness of a rigid cap on inclined piles}
 \label{sec:idealisation}
 
-The cap is treated as a rigid body and each pile as a spring acting along its
-own axis, together with a transverse spring representing its bending. The
-idealisation is appropriate here because the cap is 4~m thick over a 20.5~m span
-while the piles are 1.0~m in diameter over 46~m: the cap is orders of magnitude
-stiffer in the relevant deformation than the elements supporting it. Under this idealisation the foundation has the two degrees of freedom that matter: a translation of the cap, and a rotation about a horizontal axis through its centre. Which mechanism governs the lowest mode is then a question about two stiffnesses.
+The cap is treated as a rigid body. The idealisation is appropriate here because the cap is 4~m thick over a 20.5~m span while the piles are 1.0~m in diameter over 46~m: the cap is orders of magnitude stiffer in the relevant deformation than the elements supporting it. The cap has six degrees of freedom, collected in $\mathbf{q} = (\mathbf{U}, \boldsymbol{\Phi})$: a translation $\mathbf{U}$ and a rotation $\boldsymbol{\Phi}$ about the origin $O$, taken at the centre of the cap soffit, where the pile heads are. Pile $i$ has its head at $\mathbf{p}_i$, at radius $r_i$ and azimuth $\theta_i$, and is inclined outward at $\alpha_i$ from vertical. Its axis has the unit vector $\mathbf{a}_i = (\sin\alpha_i\cos\theta_i,\ \sin\alpha_i\sin\theta_i,\ -\cos\alpha_i)$, pointing from the head to the toe. The head is rigidly connected to the cap, so it displaces by $\mathbf{U} + \boldsymbol{\Phi}\times\mathbf{p}_i$ and rotates by $\boldsymbol{\Phi}$.
 
-Resolving the axial stiffness of a single pile onto those degrees of freedom
-introduces the angle of inclination twice, in two different ways, and this is the origin of the result. Consider a pile at radius $r$ and azimuth $\theta$,
-inclined outward at an angle $\alpha$ from vertical, so that its axis has unit
-vector $(\sin\alpha\cos\theta,\ \sin\alpha\sin\theta,\ \cos\alpha)$. Under a
-horizontal translation $u$ of the cap, the axial extension of that pile is the
-projection $u\sin\alpha\cos\theta$: only the component of cap displacement lying
-along the pile axis stretches it, so the contribution to lateral stiffness
-carries $\sin^2\alpha$. Under a rotation $\varphi$ of the cap about a horizontal
-axis, the pile head is displaced vertically by $\varphi\, r\cos\theta$, of which
-the component along the pile axis is $\varphi\, r\cos\theta\cos\alpha$, so the
-contribution to rotational stiffness carries $r^2\cos^2\alpha$. Summing over the
-group and adding the bending term,
+Each pile is represented by an axial spring $k_{\mathrm{ax}}$ along $\mathbf{a}_i$ and by a beam of bending stiffness $EI$ and torsional stiffness $GJ$, fixed at an effective fixity length $L_{\mathrm{eff}}$ measured along its axis. The beam gives the head the transverse stiffness $12EI/L_{\mathrm{eff}}^3$, the rotational stiffness $4EI/L_{\mathrm{eff}}$ and the coupling $6EI/L_{\mathrm{eff}}^2$ between them. Writing $\mathbf{k}_i$ for this $6\times6$ head stiffness in the axes of the pile and $\boldsymbol{\Lambda}_i$ for the rotation from global to pile axes,
 %
-\begin{align}
-k_{\mathrm{lat}} &= k_{\mathrm{ax}} \sum_i \sin^2\alpha_i
-   + \frac{12EI}{L_{\mathrm{eff}}^{3}} \sum_i \cos^2\alpha_i , \label{eq:klat}\\
-k_{\theta} &= k_{\mathrm{ax}} \sum_i r_i^2 \cos^2\alpha_i , \label{eq:ktheta}
-\end{align}
+\begin{equation}
+\mathbf{K} = \sum_i \mathbf{B}_i^{\mathsf T}\,\mathbf{k}_i\,\mathbf{B}_i ,
+\qquad
+\mathbf{B}_i = \begin{bmatrix}\boldsymbol{\Lambda}_i & \mathbf{0}\\ \mathbf{0} & \boldsymbol{\Lambda}_i\end{bmatrix}
+\begin{bmatrix}\mathbf{I} & -\mathbf{S}(\mathbf{p}_i)\\ \mathbf{0} & \mathbf{I}\end{bmatrix},
+\label{eq:K}
+\end{equation}
 %
-in which $k_{\mathrm{ax}}$ is the axial stiffness of one pile and
-$L_{\mathrm{eff}}$ its effective fixity length.
+in which $\mathbf{S}(\mathbf{p})$ is the skew matrix of the cross product. Nothing in \eqref{eq:K} decouples translation from rotation; all cross terms are retained.
 
-Figure~\ref{fig:mechanisms} shows the two mechanisms and the sense in which each
-loads the piles. Two features of the formulation matter.
-First, both mechanisms load the piles axially, and in both the axial
-displacement field is antisymmetric in azimuth, proportional to $\cos\theta$ in
-each case; this becomes important when pile-group interaction is considered in
-Section~\ref{sec:criterion}. Second, the formulation already marks a boundary of
-the result: a group of vertical piles has $\sin\alpha = 0$ and therefore no axial contribution to lateral stiffness. For such a group, sway is
-resisted by pile bending alone, the two stiffnesses are no longer proportional
-to a common quantity, and the criterion derived next does not apply.
+The mass matrix is that of the rigid cap, $3.30\times10^{6}$~kg with its centroid 2~m above $O$, together with a participating share of the piles and of the water they carry. That share is lumped at the pile heads. The central value is 13/35 of the mass of each pile over $L_{\mathrm{eff}}$ and of the added water over the free length, the equivalent mass of a beam fixed at one end and guided at the other; the bounds 0 and 1 are carried through every result.
+
+\subsection{What the axial springs fix}
+\label{sec:criterion}
+
+The axial springs contribute $k_{\mathrm{ax}}\,\mathbf{g}_i\mathbf{g}_i^{\mathsf T}$ to $\mathbf{K}$, with $\mathbf{g}_i = (\mathbf{a}_i,\ \mathbf{p}_i\times\mathbf{a}_i)$. The axial part of the stiffness is therefore $k_{\mathrm{ax}}\mathbf{G}$, in which $\mathbf{G}$ depends on the pile positions and inclinations alone. For translation $u$ in $x$ and rotation $\varphi$ about $y$,
+%
+\begin{equation}
+\begin{aligned}
+G_{uu} &= \sum_i \sin^2\alpha_i\cos^2\theta_i , \qquad
+G_{u\varphi} = \sum_i r_i\sin\alpha_i\cos\alpha_i\cos^2\theta_i , \\
+G_{\varphi\varphi} &= \sum_i r_i^2\cos^2\alpha_i\cos^2\theta_i .
+\end{aligned}
+\label{eq:G}
+\end{equation}
+%
+The axial extension of pile $i$ under $(u,\varphi)$ is $\cos\alpha_i\cos\theta_i\,(u\tan\alpha_i + r_i\varphi)$. For one ring of piles sharing a radius and an inclination, it vanishes for every pile at once when $u = -r\varphi\cot\alpha$. That is a rotation of the cap about the point on its axis at height
+%
+\begin{equation}
+z_f = r\cot\alpha ,
+\label{eq:focal}
+\end{equation}
+%
+where the axes of the ring meet. Such a ring offers no axial resistance to rotation about its focal point, and its block of $\mathbf{G}$ is singular. Figure~\ref{fig:mechanisms}(a) shows the motion. A group of several inclined rings is singular only if their focal points coincide. In the T18 group they lie close together, because the steeper rake is given to the outer ring. For the T18 group the middle ring meets at 42.0~m above the pile heads and the outer ring at 45.0~m. The inner ring is vertical and contributes to $G_{\varphi\varphi}$ alone.
+
+Table~\ref{tab:sums} gives the values. The coupling coefficient $G_{u\varphi}/\sqrt{G_{uu}G_{\varphi\varphi}}$ is 0.990, so translation and rotation cannot be treated separately. The two eigenvectors of the block are rotations about centres at 45.1~m and at $-0.02$~m. About the first centre the axial springs provide a rotational stiffness of $G_{\varphi\varphi} - G_{u\varphi}^2/G_{uu}$ per unit $k_{\mathrm{ax}}$, 2\,\% of what they provide about the pile heads.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.95\linewidth]{fig05_mechanisms}
-\caption{The two mechanisms available to a rigid cap on an inclined pile group. (a) Sway, resisted by the axial stiffness of the inclined piles together with pile bending. (b) Rocking, resisted by the same axial stiffness acting on the lever arms. Dashed outlines give the displaced position; C marks a pile in compression and T a pile in tension}
+\includegraphics[width=\linewidth]{fig05_mechanisms}
+\caption{The two lateral mechanisms of a rigid cap on an inclined pile group. (a) Rotation about the focal point F at which the axes of the inclined piles meet, which stretches none of them; at the cap it is nearly a translation, and it is resisted mainly by pile bending. (b) Rocking about a centre near the pile heads, resisted by the axial pile stiffness acting on the lever arms. Dashed outlines give the displaced position; C marks a pile in compression and T a pile in tension. Only one ring of inclined piles is drawn}
 \label{fig:mechanisms}
 \end{figure}
 
-\subsection{Cancellation of the soil stiffness}
-\label{sec:criterion}
+Three consequences follow, and each holds whatever the value of $k_{\mathrm{ax}}$.
 
-Both stiffnesses in \eqref{eq:klat} and \eqref{eq:ktheta} are proportional to
-the same axial pile stiffness. Setting the bending term aside for the moment,
-$k_{\mathrm{ax}}$ cancels when the ratio of the corresponding natural
-frequencies is formed:
+\emph{The lowest lateral mode rotates about a centre near or above the focal point.} The axial springs cannot resist that motion, so its stiffness comes mainly from pile bending, and its centre of rotation $z_c$ stays close to $z_f$. Bending adds lateral restraint at the pile heads and moves the centre further up, towards pure translation. At the top of the cap, at height $h$ above the pile heads, a point at horizontal distance $d$ from the rotation axis then moves vertically by $d/(z_c-h)$ of the horizontal motion. With $z_c \geq z_f$ this ratio is bounded by
 %
 \begin{equation}
-\frac{f_{\mathrm{rock}}}{f_{\mathrm{sway}}}
-= \sqrt{\frac{k_\theta / J}{k_{\mathrm{lat}} / M}}
-= \sqrt{\frac{\sum r_i^2\cos^2\alpha_i \big/ J}{\sum \sin^2\alpha_i \big/ M}} ,
-\label{eq:ratio}
+\frac{w}{u}\bigg|_{\mathrm{top}} \leq \frac{d}{z_f - h} ,
+\label{eq:vh}
 \end{equation}
 %
-in which $J$ is the mass moment of inertia of the foundation about the rotation
-axis and $M$ its mass. Nothing on the right-hand side refers to the soil, to the
-pile section or to the pile material. For a group in which all piles share one
-angle of inclination the expression simplifies further. Writing $\sum r^2 = n\,
-r_{\mathrm{rms}}^2$ and $\sum \sin^2\alpha = n \sin^2\alpha$, and
-$k_g = \sqrt{J/M}$ for the radius of gyration of the mass,
-%
-\begin{equation}
-\frac{f_{\mathrm{rock}}}{f_{\mathrm{sway}}}
-= \frac{r_{\mathrm{rms}}}{k_g}\,\cot\alpha ,
-\label{eq:dimensionless}
-\end{equation}
-%
-two dimensionless numbers: the reach of the pile ring relative to the inertia of the mass it supports, and the inclination.
+a bound fixed by the setting-out drawing alone. For the T18 cap, $h = 4$~m, and a sensor at the corner of the instrumented frame, at $d$ between 2.5 and 3.5~m, gives a bound between 0.06 and 0.09.
 
-This form makes the range of validity explicit. The two mechanisms coincide when
-$\tan\alpha = r_{\mathrm{rms}}/k_g$. For a cap whose piles reach beyond its
-radius of gyration, as any practical group does, that angle lies above
-45\degr; for the foundation studied here it is 52\degr. Inclinations used in construction are
-an order of magnitude shallower, between 12:1 and 4:1, or 4.8\degr{} to
-14.0\degr, so the ratio does not fall below about five for any practical inclined group, irrespective of the soil. Figure~\ref{fig:criterion} shows the relation over the
-practical range for several values of $r_{\mathrm{rms}}/k_g$. A single
-low-frequency band identified on such a foundation can only be sway.
+\emph{Rocking lies far above.} The second eigenvector rotates about a centre near the pile heads and is resisted by the axial springs. At the cap top it moves the corners vertically by about as much as the cap moves horizontally. The vertical-to-horizontal ratio therefore separates the two mechanisms by an order of magnitude, and the bound \eqref{eq:vh} is the geometric criterion that this paper applies to the records.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\linewidth]{fig06_criterion}
-\caption{The criterion \eqref{eq:dimensionless} in dimensionless form, for several values of $r_{\mathrm{rms}}/k_g$. The shaded band covers the inclinations used in construction, 12:1 to 4:1. The horizontal line is $f_{\mathrm{rock}} = f_{\mathrm{sway}}$, reached only at the marked angle $\alpha_{\mathrm{crit}}$, which lies far outside that band}
-\label{fig:criterion}
-\end{figure}
+\emph{Torsion lies close to the lowest lateral mode.} Outward-inclined piles lie in radial planes, so a twist of the cap moves each head perpendicular to its axis and stretches none of them. Torsion is resisted by pile bending alone, as the lowest lateral mode mainly is, and the two cannot be far apart.
 
-One mechanism could break the cancellation. Pile--soil--pile interaction reduces the stiffness of a group below the sum of its isolated piles, and it would not cancel if the two mechanisms mobilised the soil differently. It is therefore computed here rather than assumed away. Elastic axial interaction factors
-\cite{randolph1979}, $\alpha_{ij} = \ln(r_m/s_{ij}) / \ln(r_m/r_0)$ with
-$r_m = 2.5\,L_{\mathrm{emb}}(1-\nu)$, are assembled over the 34 actual pile
-positions. For a rigid cap, a mechanism whose unit axial displacement vector is
-$\mathbf{v}$ then has group efficiency
-$\eta = (\mathbf{v}^{\mathsf T}\mathbf{A}^{-1}\mathbf{v})/(\mathbf{v}^{\mathsf T}\mathbf{v})$.
-The effect very nearly cancels as well, for the reason identified in
-Section~\ref{sec:idealisation}: both mechanisms produce axial displacement
-fields proportional to $\cos\theta$, so in both the interactions between piles
-on opposite sides of the cap oppose one another. The efficiencies are 0.447 for
-sway and 0.399 for rocking, against 0.075 for uniform settlement, in which all
-piles move in the same sense and the interactions accumulate instead. The ratio
-is corrected by $\sqrt{0.399/0.447} = 0.945$.
-
-Table~\ref{tab:sums} collects the geometric sums and the resulting values for
-this foundation. The ratio is 7.69 with the group treated as isolated piles and
-7.26 with interaction included, and the bending term, when restored, moves it
-between 6.15 and 7.48 over a tenfold range of assumed axial stiffness. Rocking lies approximately seven times above sway on this foundation, and no plausible variation of the assumptions brings it within a factor of five.
+The frequencies themselves are not fixed by the geometry. Table~\ref{tab:sums} and Figure~\ref{fig:criterion} give them over the full range of the uncertain inputs. The axial stiffness was varied from $1.5$ to $6\times10^{8}$~N/m per pile, which brackets the estimates of Section~\ref{sec:stiffness}. The fixity length was varied from 3 to 12 pile diameters below the seabed, and the pile mass share between its bounds. The lowest lateral pair falls between 0.62 and 1.34~Hz. It depends on $L_{\mathrm{eff}}$ through pile bending and hardly at all on $k_{\mathrm{ax}}$: a fourfold increase in $k_{\mathrm{ax}}$ raises it by 5\,\%. Its centre of rotation lies between 48 and 105~m above the pile heads, never below the focal points, so the bound \eqref{eq:vh} holds throughout the sweep. Torsion lies between 1.09 and 1.21 times the lowest lateral pair. The rocking pair lies between 5.4 and 12.3~Hz, 5.0 to 16 times the lowest lateral pair, and it scales with $k_{\mathrm{ax}}$. The vertical mode lies with it.
 
 \begin{table}[htbp]
 \centering
-\caption{Geometric sums and the resulting frequency ratio for the T18 group.}
+\caption{The axial part of the stiffness of the T18 group, which depends on geometry alone, and the modes of the full model over the swept range of axial stiffness ($1.5$--$6\times10^{8}$~N/m per pile), depth to fixity (3--12 pile diameters) and participating pile mass (0--1 of the pile over $L_{\mathrm{eff}}$ and the added water). The vertical-to-horizontal ratio is evaluated at the cap top for a point 2.5 or 3.5~m from the rotation axis}
 \label{tab:sums}
-\begin{tabular}{@{}lr@{}}
+\begin{tabularx}{\linewidth}{@{}Lr@{}}
 \toprule
-$\sum r^2\cos^2\alpha$ & 1861.3~m$^2$ \\
-$\sum \sin^2\alpha$ & 0.9323 \\
-$\sum \cos^2\alpha$ & 33.07 \\
-$M$ (cap, piles and added water) & $5.03\times10^{6}$~kg \\
-$J$ & $1.698\times10^{8}$~kg\,m$^2$ \\
-$r_{\mathrm{rms}}$ , $k_g$ & 7.53~m , 5.81~m \\
-Group efficiency: sway / rocking / uniform & 0.447 / 0.399 / 0.075 \\
-$f_{\mathrm{rock}}/f_{\mathrm{sway}}$, isolated piles & \textbf{7.69} \\
-$f_{\mathrm{rock}}/f_{\mathrm{sway}}$, with group interaction & \textbf{7.26} \\
-Inclination at which the mechanisms coincide & 52\degr \\
+\multicolumn{2}{@{}l}{\emph{Axial springs only, per unit $k_{\mathrm{ax}}$}} \\
+$G_{uu}$, $G_{u\varphi}$, $G_{\varphi\varphi}$, Eq.~\eqref{eq:G} & 0.466 ; 20.6~m ; 930.6~m$^2$ \\
+Coupling coefficient $G_{u\varphi}/\sqrt{G_{uu}G_{\varphi\varphi}}$ & 0.990 \\
+Focal height $r\cot\alpha$, middle and outer ring & 42.0~m ; 45.0~m \\
+Centres of rotation of the two eigenvectors & 45.1~m ; $-0.02$~m \\
+\midrule
+\multicolumn{2}{@{}l}{\emph{Full model, axial springs with pile bending and torsion}} \\
+Lowest lateral pair, $f_1$ & 0.62--1.34~Hz \\
+\quad centre of rotation above the pile heads & 48--105~m \\
+\quad vertical/horizontal at the cap top, $d = 2.5$; 3.5~m & 0.025--0.057 ; 0.035--0.081 \\
+Torsion, $f_{\mathrm{tor}}/f_1$ & 1.09--1.21 \\
+Rocking pair, $f_{\mathrm{rock}}$ & 5.4--12.3~Hz \\
+\quad $f_{\mathrm{rock}}/f_1$ & 5.0--16 \\
+\quad centre of rotation above the pile heads & 0.9--1.7~m \\
+\quad vertical/horizontal at the cap top, $d = 2.5$; 3.5~m & 0.8--1.1 ; 1.1--1.5 \\
+Increase of $f_1$ for a fourfold increase of $k_{\mathrm{ax}}$ & 5\,\% \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
-
-The cancellation is a first-order result under the idealisation of
-Section~\ref{sec:idealisation}, not a universal property of inclined pile groups,
-and the limits belong with it. It assumes a rigid cap, small motion, a single
-effective axial stiffness entering both mechanisms, and static rather than
-frequency-dependent pile stiffness. Full impedance analyses of inclined pile
-groups show that group stiffnesses depend on excitation frequency, on the
-soil--pile stiffness ratio, on spacing and on direction of inclination, and that
-horizontal--rocking cross-coupling can be significant and can change sign with
-configuration \cite{padron2010}. The ordering survives those complications; the numerical value does not.
-The two mechanisms are separated by a factor of seven under the present
-idealisation, whereas the corrections a full impedance treatment would
-introduce are of order tens of per cent. The
-criterion should be read as a screening test for which mechanism to expect, to
-be set aside where a full impedance model is available.
-
-The section does not give the absolute frequency. That depends on $k_{\mathrm{ax}}$, and therefore on the soil and on the effective fixity length, neither of which is known here to better than a factor of two; sweeping them spans 1.06 to 2.13~Hz, as Figure~\ref{fig:sensitivity} shows. The
-model answers which mechanism governs, not at what frequency it appears.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.8\linewidth]{fig07_sensitivity}
-\caption{Sensitivity of the predicted sway frequency to the two governing assumptions, the effective fixity length $L_{\mathrm{eff}}$ and the axial pile stiffness $k_{\mathrm{ax}}$. The horizontal lines are the campaign means and the shaded strip the measured band, 1.05 to 1.33~Hz}
-\label{fig:sensitivity}
+\includegraphics[width=\linewidth]{fig06_criterion}
+\caption{Modes of the rigid-cap model of the T18 group against the effective fixity length, for axial pile stiffness $2.5$ and $5.8\times10^{8}$~N/m (solid and dashed). (a) Natural frequencies, with the measured band shaded. The lowest lateral pair and torsion are governed by pile bending; rocking and the vertical mode by the axial stiffness. (b) Vertical-to-horizontal amplitude ratio at the cap top, for points 2.5 and 3.5~m from the rotation axis. The dotted line is the bound \eqref{eq:vh} from the focal height at $d = 2.5$~m; the shaded strip is the range measured in Section~\ref{sec:mechanism}}
+\label{fig:criterion}
 \end{figure}
+
+The result rests on the idealisation of Section~\ref{sec:idealisation}, and the limits belong with it. It assumes a rigid cap, small motion, one axial stiffness common to all piles and static rather than frequency-dependent pile stiffness. It also represents the restraint of the soil on each pile by fixity at a single depth. Full impedance analyses of inclined pile groups show that group stiffnesses depend on excitation frequency, on spacing and on the direction of inclination, and that horizontal--rocking cross-coupling can be large and can change sign with configuration \cite{padron2010}. The focal height does not depend on any of these, since it is a property of the pile axes. What can change is how close to it the lowest mode rotates, and the frequencies of the modes. The prediction that survives is therefore qualitative but testable: a near-translational lowest pair with a small vertical component bounded by \eqref{eq:vh}, torsion close to it, and rocking well above.
 
 % =====================================================================
 \section{Modal identification}
@@ -686,16 +627,14 @@ design places the fundamental mode of a tower of this class between the $1P$ and
 $3P$ rotor harmonics, near 0.3~Hz \cite{arany2017}. The records were therefore
 reanalysed with a further decimation to 12.9~Hz and $i = 150$, a window of
 11.6~s or 3.5 periods at 0.3~Hz, and searched from 0.18~Hz. No pole below 0.5~Hz
-satisfies the criteria in any setup of either campaign. The only features there are peaks near 0.21~Hz in campaign 1 and 0.32~Hz in
-campaign 2, each consistent between the setups of its own campaign. Their
-periods are 4.7~s and 3.2~s, and they move upward between campaigns, which no
-added-mass mechanism can produce. They are attributed to wave excitation under differing sea states.
+satisfies the criteria in any setup of either campaign. The only features there are spectral peaks near 0.21~Hz in campaign 1 and 0.32~Hz in
+campaign 2, each consistent between the setups of its own campaign; neither yields a stable pole. The 0.21~Hz peak was recorded before the tower stood and cannot belong to it; with a period of 4.7~s it is consistent with wave excitation. The 0.32~Hz peak lies where the first mode of the tower is expected, and it may be that mode seen weakly at the cap. It is not interpreted further, because the cap records alone cannot separate a tower mode from wave excitation at that frequency.
 Figure~\ref{fig:lowband} shows the search.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\linewidth]{fig12_low_band}
-\caption{Search below the analysis band, with the records decimated to 12.9~Hz and a covariance window of 11.6~s. The only features below 0.5~Hz are the peaks marked at 0.21~Hz in campaign 1 and 0.32~Hz in campaign 2, which move upward between campaigns and are attributed to wave excitation}
+\caption{Search below the analysis band, with the records decimated to 12.9~Hz and a covariance window of 11.6~s. The only features below 0.5~Hz are the peaks marked at 0.21~Hz in campaign 1 and 0.32~Hz in campaign 2. The first, recorded before the tower stood, is consistent with wave excitation; the second lies where the first tower mode is expected. Neither yields a stable pole}
 \label{fig:lowband}
 \end{figure}
 
@@ -719,106 +658,71 @@ Group & $N_{\mathrm{eff}}/n$ & Same in every setup & Damping & Verdict \\
 \end{table}
 
 % =====================================================================
-\section{Physical interpretation of the identified mode}
+\section{Physical interpretation of the identified band}
 \label{sec:interp}
 
-Sections~\ref{sec:model} and \ref{sec:ident} are independent of one another: the first uses only the geometry of the foundation, the second only the recorded motion. Combining them tests whether the mechanism the geometry requires is the mechanism the measurements show, and yields two quantities that neither line of evidence could give alone.
+Sections~\ref{sec:model} and \ref{sec:ident} are independent of one another: the first uses only the geometry of the foundation, the second only the recorded motion. Combining them tests whether the band admitted by the records has the shape the geometry predicts. It also yields a quantity that neither line of evidence gives alone.
 
-\subsection{Sway as the governing mechanism}
+\subsection{The lowest mode as rotation about the focal point}
 \label{sec:mechanism}
 
-The geometry of Section~\ref{sec:model} places rocking 7.3 times above sway on this foundation, and the admitted band is the only low-frequency band in the records. The band is therefore sway. That conclusion is reached without any measurement, and it predicts what the measurements should show.
+Section~\ref{sec:model} predicts that the lowest band of this foundation is not a single mode. It should contain the lowest lateral pair, rotating about centres 48 to 105~m above the pile heads, and a torsional mode close to it. Rocking should lie five to sixteen times higher. The admitted band, 1.05 to 1.33~Hz, is the only low-frequency band in the records, and its spread within a campaign already exceeds the identification scatter by an order of magnitude. Three tests compare it with the prediction.
 
-Sway of a rigid cap on inclined piles has a specific signature, and it is not a
-pure translation. The cap translates horizontally under the lateral stiffness of
-the group; but because the axial path through the piles is far stiffer than the
-lateral one, the same motion also produces a small rotation about the cap
-centre. The two components are seen by different sensors. A horizontally
-oriented sensor sees the translation, which is common to every point of a rigid
-cap, so all horizontal channels move in phase with comparable amplitude. A
-vertically oriented sensor cannot see the translation at all, and records only
-the rotation, which appears as opposite edges of the cap moving in antiphase
-about a nodal line through its centre.
+\emph{The vertical setups do not discriminate.} In every vertical setup opposite corners of the frame move in antiphase about a nodal line (Section~\ref{sec:classify}). That is the vertical component of a rotation about a horizontal axis. Focal-point sway and rocking both produce it, and so does any rotation about a centre away from the measured surface; only the height of the centre separates them. The vertical pattern establishes that the band involves rotation about a horizontal axis and excludes pure torsion as its dominant member, but no more.
 
-That is what Section~\ref{sec:classify} found, in every setup of both
-campaigns: horizontal channels in phase, and vertical channels in antiphase
-about a nodal line. Between corresponding clusters of the two vertical setups
-the modal assurance criterion is 0.967, over the five points they instrument in
-common. The prediction and the observation are drawn from disjoint information,
-one from a setting-out drawing and the other from accelerometer records, and
-their agreement is the central result of this paper.
+\emph{The lateral setup of campaign 2 measures the height of the centre.} Its processing log records the orientation of every channel: channels 1, 2, 3, 5 and 6 measure horizontally in one direction and channel 4 vertically. The ratio of the vertical amplitude at channel 4 to the mean horizontal amplitude is therefore the quantity bounded by \eqref{eq:vh}. Table~\ref{tab:vh} gives it from three estimators. The first singular vector at the band peak gives 0.084. The ratio of power spectral densities gives 0.116, but the coherence between channel 4 and the central horizontal channel is only 0.50 there, so part of that amplitude is noise; weighting by the coherence gives 0.082. The SSI shape of the translational pole at 1.215~Hz gives 0.16. Focal-point sway predicts 0.025 to 0.081 for a channel 2.5 to 3.5~m from the rotation axis, and rocking 0.8 to 1.5. The measurement lies at the upper end of the first range and an order of magnitude below the second. A residual vertical reading of a few per cent is also expected from the transverse sensitivity of the accelerometer and from any offset of the frame from the cap centre, which would increase $d$.
 
-Two qualifications apply. The nodal line
-is located with respect to the instrumented frame, and the position of that
-frame on the cap is not documented; the identification of its centre with the
-cap centre rests on the inference set out in Section~\ref{sec:records}. The admitted band, moreover, is not a single mode: its spread within a campaign exceeds the
-identification scatter by an order of magnitude, and the longest record resolves
-three distinct poles within it, at 1.073, 1.198 and 1.230~Hz. The simplest explanation is a closely spaced orthogonal pair, resolved unequally by
-setups having between three and six channels in one or two directions.
-Section~\ref{sec:classify} supplies a second indication of the same effect: the two
-vertical setups of campaign 2 are dominated by different members of the group,
-so that their spectral peaks disagree even though their corresponding poles have
-nearly identical shapes. Nothing in the mechanism argument depends on resolving
-them.
+Rocking could reproduce a ratio as small as 0.16 only if the cap moved within about $\pm6$\degr{} of the one direction that places channel 4 on the rotation axis. The orientation of the frame relative to the motion is not known, so this cannot be excluded outright. It would, however, require a coincidence that the vertical setups do not suggest, since their nodal lines take different orientations. The two lateral setups of campaign 1 cannot be used for this test, because the orientation of their channel 4 is not documented.
 
-\subsection{Equivalent axial pile stiffness}
-\label{sec:stiffness}
-
-Once the mechanism is fixed, so is the relation between the measured frequency
-and the axial pile stiffness, and the measurement can be inverted for a quantity
-the drawings do not contain. Taking the campaign 1 mean of 1.257~Hz gives
-$k_{\mathrm{ax}}$ between $1.7$ and $2.7\times10^{8}$~N/m per pile, or 0.19
-times the elastic stiffness $EA/L_{\mathrm{free}}$ of the free-standing length
-alone.
-
-This value can be checked against an estimate that uses no measured frequency.
-The shear modulus of each layer follows from its SPT value through the
-correlation of Ohsaki and Iwasaki \cite{ohsaki1973}, $G_0 = 1200\,N^{0.8}$~t/m$^2$,
-or about $11.8\,N^{0.8}$~MPa. The correlation was derived from seismic
-exploration, so it gives the small-strain modulus, which is the modulus that
-ambient vibration mobilises; no degradation for operational strain is applied.
-Over the 33.6~m embedded length the modulus averages 86~MPa, against 164~MPa in
-the layer at the toe. A lower bound of $0.5\,G_0$ is carried as an allowance for
-the scatter of the correlation and for disturbance of the soft clay by pile
-installation. The axial stiffness of the embedded length follows from the
-solution of Randolph and Wroth \cite{randolph1978} for a compressible pile in
-non-homogeneous soil. The pile is long enough for its compressibility to matter,
-with $\mu L$ between 3.2 and 4.5, and the rigid-pile limit
-$2\pi G L_{\mathrm{emb}}/\zeta$ would overstate the stiffness of the embedded
-length by a factor of 2.4 to 3.3. Placed in series with the free length, the
-solution gives $4.7$ to $5.8\times10^{8}$~N/m for an isolated pile.
-
-Pile--soil--pile interaction acts on the embedded length only, since the free
-length shortens under its own load whatever its neighbours carry. The
-flexibility of the pile heads is therefore
-$\mathbf{F} = \mathbf{I}/k_{\mathrm{free}} + \mathbf{A}/k_{\mathrm{emb}}$, with
-$\mathbf{A}$ the interaction matrix of Section~\ref{sec:criterion},
-$k_{\mathrm{free}} = EA/L_{\mathrm{free}}$ and $k_{\mathrm{emb}}$ the stiffness of
-the embedded length, and the effective stiffness per pile in sway is
-$\mathbf{v}^{\mathsf T}\mathbf{F}^{-1}\mathbf{v}/\mathbf{v}^{\mathsf T}\mathbf{v}$.
-The forward prediction becomes $2.5$ to $3.4\times10^{8}$~N/m, against $1.7$ to
-$2.7\times10^{8}$~N/m from the measurement.
-
-The two ranges overlap, the forward estimate lying between 0.95 and 1.9 times
-the inverted one. The forward route rests on an SPT-to-modulus correlation and on
-interaction factors derived for rigid piles, which tend to overstate the
-interaction between piles as compressible as these. Agreement at that level is as
-much as the available information supports, and the comparison is an
-order-of-magnitude check. One narrower conclusion follows: the two estimates
-overlap only when group interaction is included. Omitting it leaves the forward
-estimate 1.8 to 3.3 times above the inverted value, even at the lower bound of
-the soil modulus.
+\emph{The band contains a torsional member.} The same lateral setup returns two poles in the band, and their shapes differ in kind. At 1.215~Hz the four horizontal channels move in phase, within 8\degr, with amplitudes between 0.96 and 1.15 of the central channel: a translation. At 1.052~Hz, channels 1 and 2, on one edge of the frame, move at 165\degr{} to channel 3 on the opposite edge and to the central channel. Horizontal sensors sharing one direction see a rotation about a vertical axis in exactly this way, with opposite edges in antiphase. The pole therefore has a strong torsional component. This is the composition Section~\ref{sec:model} predicts: torsion close to the lowest lateral pair, because both are resisted mainly by pile bending. The model places torsion 9 to 21\,\% above the lateral pair, whereas the measured torsional member lies 13\,\% below the translational one. The model fixes the proximity of the two but not their order, which depends on how the soil restrains a pile radially and tangentially and, in campaign 2, on the tower above the cap.
 
 \begin{table}[htbp]
 \centering
-\caption{Inverted and forward estimates of axial pile stiffness.}
+\caption{Vertical-to-horizontal amplitude ratio in the lateral setup of campaign 2, against the prediction of Section~\ref{sec:model} for a channel 2.5 to 3.5~m from the rotation axis. The horizontal amplitude is the mean of channels 1, 2, 3 and 5}
+\label{tab:vh}
+\begin{tabularx}{\linewidth}{@{}Lrr@{}}
+\toprule
+Estimator & $f$ (Hz) & Vertical / horizontal \\
+\midrule
+First singular vector at the band peak & 1.203 & 0.084 \\
+Power spectral density ratio at the peak & 1.203 & 0.116 \\
+\quad coherence of channels 4 and 5; coherence-weighted ratio & & 0.50 ; 0.082 \\
+SSI shape, translational pole & 1.215 & 0.160 \\
+SSI shape, torsional pole & 1.052 & 0.139 \\
+\midrule
+Predicted, lowest lateral pair & & 0.025--0.081 \\
+Predicted, rocking pair & & 0.8--1.5 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The predicted rocking and vertical modes were not identified. With the axial stiffness of Section~\ref{sec:stiffness} they fall between about 7.5 and 12~Hz. Configuration D of Table~\ref{tab:config} returns poles from 6.8 to 20.6~Hz, and the vertical d1 setup an 11.8~Hz pole, but none of them recurs in a second setup, so none satisfies the second requirement. Ambient excitation at the cap evidently excites them weakly, and the records do not establish them.
+
+Two qualifications apply. The position of the frame on the cap is not documented, and the distance $d$ in \eqref{eq:vh} rests on the inference of Section~\ref{sec:records} that the frame is concentric. The discriminating test, moreover, rests on one setup, the only one whose channel orientations are recorded. Taken together, the three tests support the prediction: a near-translational lowest pair rotating about an elevated centre, with torsion close to it. They exclude rocking unless the motion happened to be aligned with the one direction that hides it.
+
+\subsection{Depth to fixity of the piles}
+\label{sec:stiffness}
+
+Section~\ref{sec:criterion} showed that the lowest lateral pair is governed by pile bending and hardly at all by the axial pile stiffness. The measured frequency therefore cannot be inverted for $k_{\mathrm{ax}}$, as an uncoupled sway model would suggest. It can be inverted for the effective fixity length, once $k_{\mathrm{ax}}$ is bounded independently.
+
+The axial stiffness is estimated forward from the borehole. The shear modulus of each layer follows from its SPT value through the correlation of Ohsaki and Iwasaki \cite{ohsaki1973}, $G_0 = 1200\,N^{0.8}$~t/m$^2$, or about $11.8\,N^{0.8}$~MPa. The correlation was derived from seismic exploration, so it gives the small-strain modulus, which is the modulus that ambient vibration mobilises. A lower bound of $0.5\,G_0$ allows for the scatter of the correlation and for disturbance of the soft clay by pile installation. The solution of Randolph and Wroth \cite{randolph1978} for a compressible pile in non-homogeneous soil then gives the stiffness of the embedded length; placed in series with the free length, it gives $4.7$ to $5.8\times10^{8}$~N/m for an isolated pile. Pile--soil--pile interaction acts on the embedded length only. With the axial interaction factors of Randolph and Wroth \cite{randolph1979} assembled over the 34 pile positions, the head flexibility becomes $\mathbf{F} = \mathbf{I}/k_{\mathrm{free}} + \mathbf{A}/k_{\mathrm{emb}}$. That reduces the effective stiffness per pile to $2.5$ to $3.4\times10^{8}$~N/m. The model of Section~\ref{sec:model} is evaluated over 2.5 to $5.8\times10^{8}$~N/m, a range over which the lowest lateral pair changes by about 3\,\%.
+
+Inverting the setup means of campaign 1, 1.17 to 1.32~Hz, over that range of $k_{\mathrm{ax}}$ and over the bounds of the participating pile mass gives $L_{\mathrm{eff}}$ between 13.9 and 17.0~m. Since 12.34~m of that is free length in water, the piles are effectively fixed 1.6 to 4.7 diameters below the seabed. At the campaign mean of 1.255~Hz the range narrows to 2.1 to 3.8 diameters.
+
+This can be checked against an estimate that uses no measured frequency. For a pile in soil of constant modulus, Davisson and Robinson \cite{davisson1965} place the point of equivalent fixity at $1.4R$ below the ground surface, with $R = (EI/E_s)^{1/4}$. Taking $E_s = 3G$, appropriate to undrained clay, with $G$ averaged over the upper 3 to 5~m of the profile at 0.5 to 1.0 times $G_0$, gives 2.3 to 3.0 diameters. The two ranges overlap. The forward estimate rests on an SPT correlation applied at $N \leq 2$, where it is least reliable, and on a rule derived for static loading. Agreement at this level is as much as the information supports, and the comparison is an order-of-magnitude check. Table~\ref{tab:stiffness} collects the values.
+
+\begin{table}[htbp]
+\centering
+\caption{Axial pile stiffness used as input, and the depth to fixity inverted from the measured frequency and estimated forward from the soil profile.}
 \label{tab:stiffness}
 \begin{tabularx}{\linewidth}{@{}LL@{}}
 \toprule
-Inverted from $f = 1.257$~Hz & $1.7$--$2.7\times10^{8}$~N/m per pile (0.19 $\times\ EA/L_{\mathrm{free}}$) \\
-Forward, isolated pile, $G = 0.5$--$1.0\,G_0$ from the SPT profile & $4.7$--$5.8\times10^{8}$~N/m \\
-Forward, in the group, interaction on the embedded length & $2.5$--$3.4\times10^{8}$~N/m \\
-Ratio, forward to inverted & 0.95--1.9 with interaction; 1.8--3.3 without \\
+Axial stiffness, isolated pile, $G = 0.5$--$1.0\,G_0$ & $4.7$--$5.8\times10^{8}$~N/m \\
+Axial stiffness, in the group, interaction on the embedded length & $2.5$--$3.4\times10^{8}$~N/m \\
+Change of $f_1$ over $2.5$--$5.8\times10^{8}$~N/m & about 3\,\% \\
+Depth to fixity, inverted from $f = 1.17$--$1.32$~Hz & 1.6--4.7 pile diameters \\
+\quad at the campaign 1 mean, 1.255~Hz & 2.1--3.8 pile diameters \\
+Depth to fixity, Davisson and Robinson, $E_s = 3G$, $G = 0.5$--$1.0\,G_0$ & 2.3--3.0 pile diameters \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -826,78 +730,53 @@ Ratio, forward to inverted & 0.95--1.9 with interaction; 1.8--3.3 without \\
 \subsection{Effect of tower installation}
 \label{sec:tower}
 
-If the mechanism and the stiffness are unchanged between the two campaigns, a
-change in frequency can come only from a change in participating mass, and the
-ratio of the frequencies fixes that change without any model of the soil. This route requires nothing that Section~\ref{sec:stiffness} had to assume.
+Campaign 2 was recorded after the tower was erected. The model of Section~\ref{sec:model} is a model of the bare cap. The tower adds mass and rotational inertia far above the cap and its own flexibility, so the model does not predict the campaign 2 frequencies. The question here is narrower: whether the records show a change in the band between the two campaigns.
 
-The unit of independent observation is the setup, not the individual pole,
-because several poles originate in the same record. Averaging within setups gives 1.173, 1.240, 1.322 and 1.284~Hz for campaign 1,
-and 1.133, 1.147 and 1.168~Hz for campaign 2. The two sets are completely
-separated, the smallest value of the first campaign exceeding the largest of
-the second, and the mean changes by $-8.41$\,\%. A two-sided permutation test on the setup means returns $p = 2/35 = 0.057$. That
-is also the smallest value four and three groups can produce, so the separation
-is as complete as the design allows. Falling short of the conventional level
-reflects the number of setups, not the size of the effect. Figure~\ref{fig:shift} and Table~\ref{tab:shift}
-give the values. The individual poles overlap between campaigns, and for that reason the analysis is conducted at setup level.
+Setup means cannot answer it directly, because the setups of the two campaigns differ in direction, and the band contains members of different kinds that different directions weight differently. The means of all setups fall by 8.4\,\% between campaigns, from 1.255 to 1.149~Hz, but that comparison mixes three vertical setups with two lateral ones and a mixed one. Table~\ref{tab:shift} and Figure~\ref{fig:shift} therefore group the setups by measured direction.
+
+Like-for-like comparisons give a much smaller change. The vertical setup of campaign 1 and the two vertical setups of campaign 2 differ by $-2.3$ and $-0.5$\,\%. In the lateral setups, the translational member of campaign 2, at 1.215~Hz, lies 2.0\,\% below the mean of lateral setup 1 of campaign 1. The lateral comparison rises to $-8.6$\,\% only when the torsional member at 1.052~Hz is averaged in. It rises to $-14$\,\% against lateral setup 2, which fails the first requirement. Changes of 0.5 to 2.3\,\% lie well within the spread of the band within one campaign, $\pm6$ to $\pm8$\,\%. The records therefore show no change attributable to the tower that exceeds the resolution of these campaigns. No participating mass is inferred.
+
+Three further limitations apply. The records do not document the state of construction at campaign 2 beyond the presence of the tower. No environmental or operational data, tide level among them, accompany either campaign, and the free length of the piles in water changes with the tide. And the 0.32~Hz peak of campaign 2, which may be the first tower mode (Section~\ref{sec:classify}), shows that the tower does contribute to the cap response at its own frequency.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\linewidth]{fig13_frequency_shift}
-\caption{Low-frequency band by setup for both campaigns, showing the individual poles and the setup means. The setup means of the two campaigns do not overlap: the smallest of campaign 1 exceeds the largest of campaign 2, a change in mean of $-8.41$\,\%. The individual poles do overlap, which is why the analysis is conducted at setup level}
+\caption{Poles of the 1.05--1.33~Hz band by setup, grouped by measured direction, with setup means. Blue: campaign 1, before the tower; red: campaign 2, after it. Like-for-like setups differ by 0.5 to 2.3\,\%. The larger difference between the lateral setups comes from the torsional member at 1.052~Hz in campaign 2}
 \label{fig:shift}
 \end{figure}
 
 \begin{table}[htbp]
 \centering
-\caption{Low-band poles by setup, setup means, and the change between
-campaigns.}
+\caption{Low-band poles by setup, grouped by measured direction, and the change between campaigns for like-for-like setups. V: all channels vertical; H: horizontal, with channel 4 vertical in campaign 2 and undocumented in campaign 1; M: one vertical and two horizontal channels.}
 \label{tab:shift}
-\begin{tabular}{@{}cllr@{}}
+\begin{tabular}{@{}ccllr@{}}
 \toprule
-Camp. & Setup & Poles (Hz) & Setup mean (Hz) \\
+Dir. & Camp. & Setup & Poles (Hz) & Setup mean (Hz) \\
 \midrule
-1 & Vertical & 1.173 & 1.1734 \\
-1 & Lateral 1 & 1.226, 1.254 & 1.2397 \\
-1 & Lateral 2 & 1.322 & 1.3217 \\
-1 & Three-channel & 1.237, 1.331 & 1.2839 \\
-  & \textbf{campaign mean} & & \textbf{1.2547} \\
+V & 1 & Vertical & 1.173 & 1.173 \\
+V & 2 & Vertical d1 & 1.147 & 1.147 \\
+V & 2 & Vertical d2ke & 1.073, 1.198, 1.230 & 1.168 \\
+  &   & \multicolumn{3}{l}{change, vertical: $-2.3$\,\% and $-0.5$\,\%} \\
 \midrule
-2 & Lateral & 1.052, 1.215 & 1.1333 \\
-2 & Vertical d1 & 1.147 & 1.1465 \\
-2 & Vertical d2ke & 1.073, 1.198, 1.230 & 1.1675 \\
-  & \textbf{campaign mean} & & \textbf{1.1491} \\
+H & 1 & Lateral 1 & 1.226, 1.254 & 1.240 \\
+H & 1 & Lateral 2 & 1.322 & 1.322 \\
+H & 2 & Lateral & 1.052 (torsional), 1.215 (translational) & 1.133 \\
+  &   & \multicolumn{3}{l}{change, translational member against lateral 1: $-2.0$\,\%} \\
 \midrule
-  & \textbf{change} & & \textbf{$-8.41$\,\%} \\
+M & 1 & Three-channel & 1.237, 1.331 & 1.284 \\
 \bottomrule
 \end{tabular}
 \end{table}
-
-Applying $M_2/M_1 = (f_1/f_2)^2$ to the campaign means implies an additional
-participating mass of approximately 950~tonnes, which is the correct order of magnitude for the tower, nacelle and rotor of a turbine of this class.
-
-Three considerations support treating this as the same mode observed twice rather than as two different modes. The deformation pattern measured at the cap is the same
-before and after installation. A tower fundamental mode would lie near 0.3~Hz by
-soft-stiff design, a factor of four below the observed band, and the search of
-Section~\ref{sec:classify} found no acceptable pole anywhere below 0.5~Hz. A change of 8\,\% is, finally, of the order expected from added mass and not of the order that separates distinct modes. The first of these is measured, the second is an
-absence rather than a presence, and the third assumes what it supports; the
-inference is reasonable but not proved. The figure obtained is in any case a
-participating mass in this mode, not the physical mass of what was installed,
-since the tower contributes rotational inertia and some stiffness as well as
-mass.
 
 % =====================================================================
 \section{Conclusions}
 \label{sec:conclusions}
 
-The ordering of sway and rocking in an inclined pile group is a matter of geometry
-rather than of soil. Because the two mechanisms are resisted by the same axial
-pile stiffness, that stiffness cancels from the ratio of their frequencies, and
-what remains depends only on the pile positions, the angle of inclination and the distribution of mass. For any inclination used in construction the
-separation between the two is wide, so a single low-frequency band identified
-on such a foundation may be attributed to sway without knowing the ground. The measurements confirm this: the cap translates and rotates in the pattern that sway on inclined piles produces, and the prediction and the observation are drawn from information that does not overlap. The same records also show how readily a measurement of this kind may be misinterpreted. The most prominent poles in them are not modes of the foundation. Some move a single sensor and shift when the sensors are moved. Others decay too slowly to belong to a structure and prove to be interference from the mains supply. Which of them an identification returns depends as much on the settings the analyst chooses as on the foundation itself. Acceptance was therefore made to rest on the properties a mode must possess rather than on how cleanly a pole stabilises. The criterion
-itself is a first-order result. It indicates which mechanism to expect, not the frequency at which it will appear, and it should be set aside wherever a full impedance model is available. It has been demonstrated on one structure, and showing that
-it discriminates correctly where the answer is already known would need a
-documented benchmark. Within those limits it provides a classification obtainable from the setting-out drawing alone.
+The lowest mode of an elevated cap on inclined piles has a shape that the geometry largely fixes. The axial pile springs, which carry most of the soil stiffness into the problem, are nearly concurrent: the axes of each ring meet at a point above the cap. Rotation about that point stretches no pile. The lowest lateral mode therefore rotates about a centre at or above the focal point and is resisted mainly by pile bending. At the cap it is nearly a translation, with a vertical component that the setting-out drawing alone bounds. Rocking lies five to sixteen times higher, and torsion, resisted by bending alone, lies close to the lowest lateral pair. These statements hold whatever the axial pile stiffness. The frequencies do not: they depend on the soil through the depth to fixity, and the measured frequency constrains that depth rather than the axial stiffness.
+
+The records of the T18 foundation agree with this picture as far as they can test it. One band, 1.05 to 1.33~Hz, satisfies the three requirements placed on a physical mode. In the one setup whose channel orientations are documented, its vertical component is 0.08 to 0.16 of its horizontal motion, against 0.03 to 0.08 predicted for rotation about the focal point and about 1 for rocking. One member of the band moves the cap in torsion, as the model expects. The comparison rests on a single setup and on an undocumented frame position, and it leaves the order of the torsional and lateral members unresolved.
+
+The same records show how readily a measurement of this kind may be misinterpreted. The most prominent poles in them are not modes of the foundation. Some move a single sensor and shift when the sensors are moved; others decay too slowly to belong to a structure and prove to be interference from the mains supply. Which of them an identification returns depends as much on the settings the analyst chooses as on the foundation itself. Acceptance was therefore made to rest on the properties a mode must possess rather than on how cleanly a pole stabilises. A frequency change between campaigns, likewise, is meaningful only between setups that measure the same direction. Compared that way, the change after tower installation does not exceed the resolution of these campaigns.
 
 %=====================================================================
 \section*{Statements and Declarations}
@@ -1153,6 +1032,9 @@ European Committee for Standardization (2010) EN 1991-1-4:2005+A1:2010 Eurocode 
 
 \bibitem{ohsaki1973}
 Ohsaki Y, Iwasaki R (1973) On Dynamic Shear Moduli and Poisson's Ratios of Soil Deposits. Soils and Foundations 13(4):61--73. \url{https://doi.org/10.3208/sandf1972.13.4_61}
+
+\bibitem{davisson1965}
+Davisson MT, Robinson KE (1965) Bending and buckling of partially embedded piles. In: Proceedings of the 6th International Conference on Soil Mechanics and Foundation Engineering, Montreal, pp 243--246.
 
 \end{thebibliography}
 

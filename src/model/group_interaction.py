@@ -109,39 +109,19 @@ def main():
     print(f"  lun deu (doi xung)            eta = {e_u:.3f}")
     print(f"  lu ngang qua coc xien         eta = {e_s:.3f}")
     print(f"  lac quanh truc ngang          eta = {e_r:.3f}")
-    print(f"\n  ty so eta_rock / eta_sway     = {e_r/e_s:.3f}")
-    print(f"  => he so hieu chinh ty so tan so = sqrt = {np.sqrt(e_r/e_s):.3f}")
-
     print()
     print("=" * 74)
-    print("HE QUA CHO TY SO f_rock / f_sway")
-    print("=" * 74)
-    base = 7.69
-    print(f"  ty so khi bo qua tuong tac nhom        : {base:.2f}")
-    print(f"  ty so khi ke tuong tac nhom            : {base*np.sqrt(e_r/e_s):.2f}")
-    print(f"  (chan tren/duoi gia dinh truoc day     : 5.44 - 10.87)")
-    print("\n  Ca hai co che deu cho dang chuyen vi doc truc phan doi xung, nen")
-    print("  tuong tac qua dat trieu tieu gan nhu nhau o ca hai; ty so gan 1.")
-
-    print()
-    print("=" * 74)
-    print("DO CUNG DOC TRUC MOI COC: UOC LUONG THUAN vs SUY NGUOC (muc 6.2 bai bao)")
+    print("DO CUNG DOC TRUC MOI COC: UOC LUONG THUAN (muc 6.2 bai bao)")
     print("=" * 74)
     import foundation_stiffness as fs
     k_free, fwd = fs.kax_from_soil()
-    inv_k = [fs.solve_kax_for_frequency(fs.F_MEAS_C1, fs.L_FREE + m * fs.D_OUT)[0]
-             for m in (3, 5, 8)]
-    k_lo, k_hi = min(inv_k), max(inv_k)
     N_av = sum(t * n for t, n in fs.EMBEDDED_LAYERS) / fs.L_EMB
     print(f"  N trung binh doan ngam = {N_av:.1f};  EA/L_free = {k_free:.3e} N/m")
-    print(f"  suy nguoc tu f = {fs.F_MEAS_C1} Hz        : {k_lo:.2e} - {k_hi:.2e} N/m")
-    print(f"  {'G/G0':>5} {'G_avg MPa':>9} {'muL':>5} {'k_ngam':>10} {'k_co_lap':>10} {'k_nhom':>10}"
-          f" {'co_lap/suy_nguoc':>17} {'nhom/suy_nguoc':>15}")
+    print(f"  {'G/G0':>5} {'G_avg MPa':>9} {'muL':>5} {'k_ngam':>10} {'k_co_lap':>10} {'k_nhom':>10}")
     for s, r in fwd.items():
         k_g = group_kax(A, v_sway, r['k_soil'], k_free)
-        print(f"  {s:5.1f} {r['G_avg']/1e6:9.1f} {r['muL']:5.2f} {r['k_soil']:10.2e} {r['k_iso']:10.2e}"
-              f" {k_g:10.2e} {r['k_iso']/k_hi:7.2f} - {r['k_iso']/k_lo:5.2f}"
-              f" {k_g/k_hi:6.2f} - {k_g/k_lo:5.2f}")
+        print(f"  {s:5.1f} {r['G_avg']/1e6:9.1f} {r['muL']:5.2f} {r['k_soil']:10.2e}"
+              f" {r['k_iso']:10.2e} {k_g:10.2e}")
 
 
 if __name__ == '__main__':

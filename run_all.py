@@ -21,11 +21,13 @@ STEPS = [
     "src/oma/low_band_search.py",          # tim mode thap duoi 0.5 Hz
     "src/oma/criterion_calibration.py",    # nguong N_eff bang mo phong
     "src/oma/make_tables.py",              # du lieu cac bang
-    "src/model/foundation_stiffness.py",   # tieu chi hinh hoc, do cung
+    "src/oma/rotation_centre_test.py",     # ty so dung/ngang, mode xoan (muc 6.1)
+    "src/model/foundation_stiffness.py",   # so lieu hinh hoc, do cung doc truc thuan
+    "src/model/rigid_cap_6dof.py",         # dai cung 6 bac tu do, tieu diem, suy nguoc L_eff
     "src/model/group_interaction.py",      # he so hieu qua nhom, do cung thuan
-    "src/figures/make_figures.py",         # hinh 1, 2, 7, 11
-    "src/figures/make_figures_extra.py",   # hinh 3-6, 8, 9, 12, 13
-    "src/figures/fig_harmonics.py",        # hinh 10
+    "src/figures/make_figures.py",         # fig01, fig02, fig11
+    "src/figures/make_figures_extra.py",   # fig03-06, fig08, fig09, fig12, fig13
+    "src/figures/fig_harmonics.py",        # fig10
 ]
 
 

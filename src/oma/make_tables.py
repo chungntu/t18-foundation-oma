@@ -179,27 +179,36 @@ C2 = {"Lateral": [1.0520, 1.2146], "Vertical d1": [1.1465],
       "Vertical d2ke": [1.0735, 1.1985, 1.2305]}
 
 
+# huong do: V = moi kenh dung; H = kenh ngang (kenh 4 dung o dot 2, chua ghi nhan o dot 1);
+# M = hon hop (ga.mat: kenh "dung", "ngang1", "ngang2")
+DIRECTION = {"Vertical": "V", "Lateral 1": "H", "Lateral 2": "H", "Three-channel": "M",
+             "Lateral": "H", "Vertical d1": "V", "Vertical d2ke": "V"}
+
+
 def table9():
     rows = []
     for camp, d in ((1, C1), (2, C2)):
         for name, v in d.items():
-            rows.append(dict(campaign=camp, setup=name, n_poles=len(v),
-                             poles=" ".join("{:.3f}".format(x) for x in v),
+            rows.append(dict(campaign=camp, setup=name, direction=DIRECTION[name],
+                             n_poles=len(v), poles=" ".join("{:.3f}".format(x) for x in v),
                              setup_mean=round(float(np.mean(v)), 4)))
-    a = np.array([np.mean(v) for v in C1.values()])
-    b = np.array([np.mean(v) for v in C2.values()])
     _write("table9_shift.csv", rows)
     print()
     print("=== BANG 9  trung binh theo cau hinh ===")
     for r in rows:
-        print("  C{}  {:<15} {:<24} -> {}".format(r["campaign"], r["setup"],
-                                                  r["poles"], r["setup_mean"]))
+        print("  C{}  {:<15} {} {:<24} -> {}".format(r["campaign"], r["setup"], r["direction"],
+                                                     r["poles"], r["setup_mean"]))
     print()
-    print("  campaign 1 mean = {:.4f} Hz    campaign 2 mean = {:.4f} Hz"
-          .format(a.mean(), b.mean()))
-    print("  change = {:+.2f} %".format(100 * (b.mean() - a.mean()) / a.mean()))
-    print("  min(C1) = {:.4f} > max(C2) = {:.4f}  -> {}"
-          .format(a.min(), b.max(), a.min() > b.max()))
+    print("  So sanh CUNG HUONG do (dot 2 so voi dot 1):")
+    for code in ("V", "H"):
+        for n1, v1 in C1.items():
+            if DIRECTION[n1] != code:
+                continue
+            for n2, v2 in C2.items():
+                if DIRECTION[n2] != code:
+                    continue
+                a, b = np.mean(v1), np.mean(v2)
+                print("    {}  {:<14} -> {:<14} {:+6.2f} %".format(code, n1, n2, 100 * (b - a) / a))
 
 
 if __name__ == "__main__":

@@ -1,8 +1,8 @@
-campaign,setup,n_poles,poles,setup_mean
-1,Vertical,1,1.173,1.1734
-1,Lateral 1,2,1.226 1.254,1.2397
-1,Lateral 2,1,1.322,1.3217
-1,Three-channel,2,1.237 1.331,1.2839
-2,Lateral,2,1.052 1.215,1.1333
-2,Vertical d1,1,1.147,1.1465
-2,Vertical d2ke,3,1.073 1.198 1.230,1.1675
+campaign,setup,direction,n_poles,poles,setup_mean
+1,Vertical,V,1,1.173,1.1734
+1,Lateral 1,H,2,1.226 1.254,1.2397
+1,Lateral 2,H,1,1.322,1.3217
+1,Three-channel,M,2,1.237 1.331,1.2839
+2,Lateral,H,2,1.052 1.215,1.1333
+2,Vertical d1,V,1,1.147,1.1465
+2,Vertical d2ke,V,3,1.073 1.198 1.230,1.1675

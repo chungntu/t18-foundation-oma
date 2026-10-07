@@ -1,0 +1,7 @@
+campaign,setup,f_peak,vh_svd,vh_psd,coherence,sv2_over_sv1,centre_over_corner,max_horiz_phase
+1,Lateral 1,1.247,0.7134,0.7313,0.9379,0.0097,0.9329,3.809
+1,Lateral 2,1.0518,0.0119,0.0193,0.9523,0.0004,0.0083,126.455
+2,Lateral,1.2029,0.0837,0.1162,0.496,0.0103,0.9439,2.9874
+2,Lateral SSI 1.052 Hz,1.052,0.1387,,,,0.4585,165.9
+2,Lateral SSI 1.215 Hz,1.2146,0.1597,,,,0.9308,7.6
+2,Lateral SSI 1.611 Hz,1.6111,0.1566,,,,0.1467,110.3

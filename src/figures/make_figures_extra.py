@@ -29,8 +29,7 @@ sys.path.insert(0, os.path.dirname(HERE))
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "model"))
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "oma"))
 from paths import DATA, FIGURES, save_figure
-from foundation_stiffness import (RINGS, D_CAP, D_OUT, batter_angle,
-                                  dimensionless_ratio, rock_sway_ratio)
+from foundation_stiffness import RINGS, D_CAP, D_OUT, batter_angle
 from oma_lib import (preprocess, ssi_cov, filter_poles, stable_poles,
                      cluster_modes, fdd)
 
@@ -227,92 +226,115 @@ def _kurt(v):
 
 # ============================================================ HINH 5
 def fig_mechanisms():
-    fig, axes = plt.subplots(1, 2, figsize=(11, 5.2))
-    for k, (ax, mode) in enumerate(zip(axes, ("sway", "rock"))):
+    fig, axes = plt.subplots(1, 2, figsize=(11, 6.4))
+    for k, (ax, mode) in enumerate(zip(axes, ("focal", "rock"))):
         _draw_frame(ax, mode, "ab"[k])
-    fig.tight_layout(rect=(0, 0, 1, 0.90))
+    fig.tight_layout()
     _save(fig, "fig05_mechanisms.png")
 
 
+def _rot(pts, c, th):
+    R = np.array([[np.cos(th), -np.sin(th)], [np.sin(th), np.cos(th)]])
+    return (R @ (pts - c).T).T + c
+
+
 def _draw_frame(ax, mode, panel):
-    W, Hc, Lp, rake = 10.0, 1.6, 9.0, 5.0
+    W, Hc, Lp = 10.0, 1.6, 9.0
+    PILES = [(-4.0, 5.0), (-1.5, None), (1.5, None), (4.0, 5.0)]   # (x dau coc, do xien)
+    zf = 4.0 * 5.0                                                  # tieu diem r cot(alpha)
     ax.add_patch(Rectangle((-W/2, 0), W, Hc, fc="0.8", ec="k", lw=1.3, zorder=3))
-    for x0 in (-4.0, -2.0, 2.0, 4.0):
-        dx = np.sign(x0) * Lp / rake
+    for x0, n in PILES:
+        dx = 0.0 if n is None else np.sign(x0) * Lp / n
         ax.plot([x0, x0 + dx], [0, -Lp], color="k", lw=2.2, zorder=2, solid_capstyle="butt")
     ax.plot([-W/2 - 1.2, W/2 + 1.2], [-Lp, -Lp], color="0.4", lw=1.0, ls="--")
+    corners = np.array([[-W/2, 0], [W/2, 0], [W/2, Hc], [-W/2, Hc]])
 
-    d = 1.1
-    if mode == "sway":
-        ax.add_patch(Rectangle((-W/2 + d, 0), W, Hc, fc="none", ec=BLUE, lw=1.3,
-                               ls=(0, (4, 3)), zorder=4))
-        ax.add_patch(FancyArrow(0, Hc + 0.9, d, 0, width=0.09, head_width=0.5,
-                                head_length=0.45, fc=BLUE, ec=BLUE,
-                                length_includes_head=True, zorder=5))
-        ax.text(d/2, Hc + 1.6, "translation $u$", ha="center", fontsize=9.5, color=BLUE)
-        sign = {-4.0: "T", -2.0: "T", 2.0: "C", 4.0: "C"}
-        title = ("Sway\nresisted by the axial stiffness of the inclined piles,\n"
-                 "$k_{lat} = k_{ax}\\,\\Sigma\\sin^2\\alpha + (12EI/L^3)\\,\\Sigma\\cos^2\\alpha$")
+    if mode == "focal":
+        for x0, n in PILES:
+            if n is not None:
+                ax.plot([x0, 0], [0, zf], color=GREY, lw=0.9, ls=(0, (5, 3)), zorder=1)
+        c, th = np.array([0.0, zf]), -0.055
+        ax.plot(*c, 'o', color=RED, ms=7, zorder=5)
+        ax.text(0.5, zf, "F, where the pile axes meet\n$z_f = r\\cot\\alpha$",
+                fontsize=13, color=RED, va="center")
+        ax.annotate("", xy=_rot(np.array([[0.0, zf - 4.0]]), c, -0.25)[0],
+                    xytext=_rot(np.array([[0.0, zf - 4.0]]), c, 0.25)[0],
+                    arrowprops=dict(arrowstyle="->", color=BLUE, lw=1.3,
+                                    connectionstyle="arc3,rad=0.2"))
+        ax.text(1.4, Hc + 1.2, "nearly a translation at the cap,\nresisted mainly by pile bending",
+                fontsize=13, color=BLUE)
+        ylim = (-Lp - 1.5, zf + 2.0)
     else:
-        th = 0.10
-        for xx, yy in [(-W/2, 0), (W/2, 0), (W/2, Hc), (-W/2, Hc)]:
-            pass
-        corners = np.array([[-W/2, 0], [W/2, 0], [W/2, Hc], [-W/2, Hc]])
-        rot = np.array([[np.cos(th), -np.sin(th)], [np.sin(th), np.cos(th)]])
-        ax.add_patch(Polygon((rot @ corners.T).T, closed=True, fc="none", ec=BLUE,
-                             lw=1.3, ls=(0, (4, 3)), zorder=4))
+        c, th = np.array([0.0, 0.0]), 0.10
+        ax.plot(*c, 'o', color=RED, ms=6, zorder=6)
         ax.annotate("", xy=(2.0, Hc + 1.6), xytext=(-2.0, Hc + 0.6),
                     arrowprops=dict(arrowstyle="->", color=BLUE, lw=1.4,
                                     connectionstyle="arc3,rad=0.35"))
-        ax.text(0, Hc + 2.2, "rotation $\\theta$", ha="center", fontsize=9.5, color=BLUE)
-        sign = {-4.0: "C", -2.0: "C", 2.0: "T", 4.0: "T"}
-        title = ("Rocking\nresisted by the same axial stiffness acting on the lever arms,\n"
-                 "$k_{\\theta} = k_{ax}\\,\\Sigma r^2\\cos^2\\alpha$")
+        ax.text(0, Hc + 2.3, "rotation $\\varphi$ about a centre near the pile heads,\n"
+                "resisted by the axial pile stiffness", ha="center", fontsize=13, color=BLUE)
+        for x0, s in ((-4.0, "C"), (-1.5, "C"), (1.5, "T"), (4.0, "T")):
+            col = RED if s == "T" else "#006000"
+            ax.text(x0 + np.sign(x0) * 1.35, -Lp / 2, s, fontsize=14, color=col,
+                    ha="center", va="center", fontweight="bold")
+        ylim = (-Lp - 1.5, Hc + 4.5)
 
-    for x0, s in sign.items():
-        col = RED if s == "T" else "#006000"
-        ax.text(x0 + np.sign(x0) * 1.35, -Lp / 2, s, fontsize=11, color=col,
-                ha="center", va="center", fontweight="bold")
-
+    ax.add_patch(Polygon(_rot(corners, c, th), closed=True, fc="none", ec=BLUE,
+                         lw=1.3, ls=(0, (4, 3)), zorder=4))
     ax.set_xlim(-9.5, 9.5)
-    ax.set_ylim(-Lp - 2.2, Hc + 3.2)
+    ax.set_ylim(*ylim)
     ax.set_aspect("equal")
     ax.axis("off")
-    ax.text(0.0, 1.015, "(%s)" % panel, transform=ax.transAxes,
-            fontsize=10, fontweight="bold", va="bottom", ha="left")
+    ax.text(0.0, 1.0, "(%s)" % panel, transform=ax.transAxes,
+            fontsize=13, fontweight="bold", va="bottom", ha="left")
 
 
 # ============================================================ HINH 6
 def fig_criterion():
-    d = dimensionless_ratio()
-    fig, ax = plt.subplots(figsize=(7.8, 5.4))
-    a = np.linspace(np.radians(1.5), np.radians(60), 400)
-    for shape, col in zip([0.8, 1.0, 1.295, 1.6, 2.0],
-                          ["#c6dbef", "#6baed6", BLUE, "#2171b5", "#08306b"]):
-        lab = f"$r_{{rms}}/k_g$ = {shape:.2f}" + ("  (T18)" if abs(shape - d['shape']) < 1e-3 else "")
-        ax.semilogy(np.degrees(a), shape / np.tan(a), color=col, lw=2.0 if "T18" in lab else 1.3,
-                    label=lab)
+    import rigid_cap_6dof as rc
+    import foundation_stiffness as fsm
+    Le = np.linspace(fsm.L_FREE + 1 * fsm.D_OUT, fsm.L_FREE + 14 * fsm.D_OUT, 40)
+    K_LO, K_HI = 2.5e8, 5.8e8
+    S = {k: [rc.summary(k, L) for L in Le] for k in (K_LO, K_HI)}
 
-    ax.axhline(1.0, color="k", lw=1.0)
-    ax.text(24, 1.06, "rocking = sway", fontsize=8.5, ha="center")
-    ax.plot(d['alpha_crit_deg'], 1.0, 'o', color=RED, ms=7, zorder=5)
-    ax.annotate(f"$\\alpha_{{crit}}$ = {d['alpha_crit_deg']:.0f}°",
-                xy=(d['alpha_crit_deg'], 1.0), xytext=(d['alpha_crit_deg'] - 3, 0.55),
-                fontsize=9, color=RED, arrowprops=dict(arrowstyle="->", color=RED, lw=0.9))
+    fig, (a, b) = plt.subplots(1, 2, figsize=(12.0, 5.0))
+    for k, ls in ((K_LO, "-"), (K_HI, "--")):
+        lab = f"$k_{{ax}}$ = {k:.1e} N/m"
+        a.semilogy(Le, [s["f1"] for s in S[k]], ls, color=BLUE, lw=1.8, label="lowest lateral pair, " + lab)
+        a.semilogy(Le, [s["f_rock"] for s in S[k]], ls, color="#7f3f00", lw=1.5, label="rocking pair, " + lab)
+        a.semilogy(Le, [s["f_ver"] for s in S[k]], ls, color="0.6", lw=1.0, label="vertical, " + lab)
+    a.semilogy(Le, [s["f_tor"] for s in S[K_LO]], ":", color="#006000", lw=2.0,
+               label="torsion (pile bending only)")
+    a.axhspan(1.05, 1.33, color=RED, alpha=.12, zorder=0)
+    a.text(Le[-1], 1.38, "measured band 1.05-1.33 Hz", ha="right", fontsize=8.5, color=RED)
+    a.set_xlabel("Effective fixity length $L_{eff}$ [m]  "
+                 f"(free length in water {fsm.L_FREE:.2f} m)")
+    a.set_ylabel("Natural frequency [Hz]")
+    a.set_ylim(0.4, 20)
+    a.grid(alpha=.3, which="both")
+    a.legend(fontsize=7.4, loc="upper right")
 
-    ax.axvspan(np.degrees(np.arctan(1/12)), np.degrees(np.arctan(1/4)),
-               color="#00a000", alpha=.10)
-    exact = rock_sway_ratio()['ratio_no_bending']
-    ax.plot(np.degrees(np.arctan(1 / 5.94)), exact, '*', color=RED, ms=14, zorder=6)
-    ax.text(np.degrees(np.arctan(1 / 5.94)) + 1.2, exact, f"  T18: {exact:.2f}",
-            fontsize=9, color=RED, va="center")
-
-    ax.set_xlabel("Pile angle of inclination from vertical, $\\alpha$ [degrees]")
-    ax.set_ylabel("$f_{rock} / f_{sway}$")
-    ax.set_xlim(0, 60)
-    ax.set_ylim(0.4, 60)
-    ax.grid(alpha=.3, which="both")
-    ax.legend(fontsize=8.5)
+    for d, ls in ((rc.FRAME_HALF, "-"), (rc.FRAME_HALF * np.sqrt(2), "--")):
+        for k, col in ((K_LO, BLUE), (K_HI, "#08306b")):
+            b.semilogy(Le, [rc.vh_ratio(s["zc1"], d) for s in S[k]], ls, color=col, lw=1.6)
+            b.semilogy(Le, [rc.vh_ratio(s["zc2"], d) for s in S[k]], ls, color="#7f3f00", lw=1.3)
+    b.plot([], [], "-", color=BLUE, label="lowest lateral pair")
+    b.plot([], [], "-", color="#7f3f00", label="rocking pair")
+    b.plot([], [], "-", color="0.4", label="$d$ = 2.5 m")
+    b.plot([], [], "--", color="0.4", label="$d$ = 3.5 m")
+    b.axhspan(0.08, 0.16, color=RED, alpha=.15, zorder=0)
+    b.text(Le[0] + 0.3, 0.17, "measured, lateral setup of campaign 2", fontsize=8.5, color=RED)
+    zf = max(rc.focal_heights().values())
+    b.text(Le[-1], 0.8 * rc.vh_ratio(zf, rc.FRAME_HALF), f"bound from $z_f$ = {zf:.0f} m, $d$ = 2.5 m",
+           ha="right", va="top", fontsize=8)
+    b.axhline(rc.vh_ratio(zf, rc.FRAME_HALF), color="0.3", lw=0.8, ls=":")
+    b.set_xlabel("Effective fixity length $L_{eff}$ [m]")
+    b.set_ylabel("Vertical / horizontal amplitude on the cap top")
+    b.set_ylim(0.01, 3)
+    b.grid(alpha=.3, which="both")
+    b.legend(fontsize=8, loc="center right")
+    for ax, p in ((a, "a"), (b, "b")):
+        ax.text(0.0, 1.01, f"({p})", transform=ax.transAxes, fontsize=10,
+                fontweight="bold", va="bottom")
     fig.tight_layout()
     _save(fig, "fig06_criterion.png")
 
@@ -393,9 +415,9 @@ def fig_low_band():
     ax.axvspan(1.05, 1.33, color=BLUE, alpha=.13,
                label="admitted band, 1.05\u20131.33 Hz")
     ax.axvspan(0.18, 0.26, color="#00a000", alpha=.16,
-               label="wave peak, campaign 1 (0.21 Hz)")
+               label="peak, campaign 1 (0.21 Hz)")
     ax.axvspan(0.28, 0.36, color="#f0a000", alpha=.22,
-               label="wave peak, campaign 2 (0.32 Hz)")
+               label="peak, campaign 2 (0.32 Hz)")
     ax.axvline(0.5, color="k", lw=1.0, ls="--",
                label="lower edge of the analysis band")
 
@@ -415,37 +437,38 @@ C2 = {"Lateral": [1.0520, 1.2146], "Vertical d1": [1.1465],
       "Vertical d2ke": [1.0735, 1.1985, 1.2305]}
 
 
+# huong do: V = moi kenh dung; H = kenh ngang (kenh 4 dung o dot 2); M = hon hop
+DIRECTION = {"Vertical": "V", "Lateral 1": "H", "Lateral 2": "H", "Three-channel": "M",
+             "Lateral": "H", "Vertical d1": "V", "Vertical d2ke": "V"}
+
+
 def fig_frequency_shift():
-    fig, ax = plt.subplots(figsize=(8.4, 5.0))
-    for i, (name, vals) in enumerate(C1.items()):
-        ax.plot(vals, [i] * len(vals), 'o', mfc="none", mec=BLUE, ms=6)
-        ax.plot(np.mean(vals), i, 's', color=BLUE, ms=9)
-        ax.text(1.36, i, name, fontsize=8.5, va="center", color=BLUE)
-    off = len(C1) + 0.6
-    for i, (name, vals) in enumerate(C2.items()):
-        ax.plot(vals, [off + i] * len(vals), 'o', mfc="none", mec=RED, ms=6)
-        ax.plot(np.mean(vals), off + i, 's', color=RED, ms=9)
-        ax.text(1.36, off + i, name, fontsize=8.5, va="center", color=RED)
-
-    a = np.array([np.mean(v) for v in C1.values()])
-    b = np.array([np.mean(v) for v in C2.values()])
-    ax.axvline(a.mean(), color=BLUE, lw=1.2, ls="--")
-    ax.axvline(b.mean(), color=RED, lw=1.2, ls="--")
-    ax.axvspan(b.max(), a.min(), color="0.85", zorder=0)
-    ax.annotate("", xy=(b.mean(), -0.75), xytext=(a.mean(), -0.75),
-                arrowprops=dict(arrowstyle="<->", color="k", lw=1.0))
-    ax.text((a.mean() + b.mean()) / 2, -0.62,
-            f"{100*(b.mean()-a.mean())/a.mean():+.1f} %", ha="center", fontsize=9)
-
+    fig, ax = plt.subplots(figsize=(8.6, 5.2))
+    groups = [("V", "vertical setups"), ("H", "lateral setups"), ("M", "mixed directions")]
+    y, yt, yl = 0.0, [], []
+    for code, title in groups:
+        ax.text(1.025, y - 0.1, title, fontsize=9, fontweight="bold", va="center")
+        y -= 0.6
+        for camp, d, col in ((1, C1, BLUE), (2, C2, RED)):
+            for name, vals in d.items():
+                if DIRECTION[name] != code:
+                    continue
+                ax.plot(vals, [y] * len(vals), 'o', mfc="none", mec=col, ms=6)
+                ax.plot(np.mean(vals), y, 's', color=col, ms=8)
+                yt.append(y)
+                yl.append(f"C{camp}  {name}")
+                y -= 0.6
+        y -= 0.5
+    ax.set_yticks(yt)
+    ax.set_yticklabels(yl, fontsize=8.5)
+    for t, lab in zip(ax.get_yticklabels(), yl):
+        t.set_color(BLUE if lab.startswith("C1") else RED)
     ax.plot([], [], 'o', mfc="none", mec="0.4", label="individual pole")
     ax.plot([], [], 's', color="0.4", label="setup mean")
-    ax.set_yticks([])
-    ax.set_ylim(-1.5, off + len(C2) - 0.3)
-    ax.set_xlim(1.02, 1.47)
+    ax.set_xlim(1.02, 1.36)
     ax.set_xlabel("Frequency [Hz]")
-    ax.text(1.04, len(C1) - 0.5, "campaign 1\nbefore tower", fontsize=9, color=BLUE)
-    ax.text(1.04, off + len(C2) - 1.2, "campaign 2\nafter tower", fontsize=9, color=RED)
-    ax.legend(fontsize=8.5, loc="lower right")
+    ax.set_ylim(y + 0.6, 0.4)
+    ax.legend(fontsize=8.5, loc="upper right")
     ax.grid(axis="x", alpha=.3)
     fig.tight_layout()
     _save(fig, "fig13_frequency_shift.png")
