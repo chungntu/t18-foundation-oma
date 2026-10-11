@@ -149,8 +149,8 @@ def main():
         print(f"  G = {s:.1f} G0: G_avg = {r['G_avg']/1e6:.1f} MPa, muL = {r['muL']:.2f}, "
               f"k_ngam = {r['k_soil']:.2e}, k_co_lap = {r['k_iso']:.2e} N/m")
 
-    print("\n  Tan so uon thu nhat cua mot coc (L_eff suy nguoc 13.9-17.0 m, muc 6.2):")
-    for L in (13.9, 17.0):
+    print("\n  Tan so uon thu nhat cua mot coc (L_eff suy nguoc 14.2-17.0 m, muc 6.2):")
+    for L in (14.2, 17.0):
         print(f"    L = {L:.1f} m: ngam-ngam {pile_bending_frequency(L):.1f} Hz,"
               f" ngam-khop {pile_bending_frequency(L, 'fixed-pinned'):.1f} Hz")
 

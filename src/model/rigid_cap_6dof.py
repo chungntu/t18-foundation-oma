@@ -279,9 +279,16 @@ def main():
     print("\n" + "=" * 74)
     print("3. SUY NGUOC L_eff TU TAN SO DO (k_ax lay tu uoc luong thuan, muc 6.2)")
     print("=" * 74)
+    # trung binh tung setup dot 1, BO Lateral 2 (truot yeu cau 1, muc 5.2)
+    sys.path.insert(0, os.path.join(os.path.dirname(HERE), "oma"))
+    from oma_lib import band_poles_by_setup
+    c1, _ = band_poles_by_setup(RESULTS)
+    means = [float(np.mean(v)) for name, v in c1.items() if name != "Lateral 2" and v]
+    targets = (round(min(means), 4), round(float(np.mean(means)), 4), round(max(means), 4))
+    print(f"  setup mean dot 1 (bo Lateral 2): {np.round(means, 4)}")
     inv_rows = []
     print(f"  {'f [Hz]':>7} {'k_ax':>8} {'frac':>5} {'L_eff':>7} {'(L_eff-L_free)/D':>17}")
-    for f_t in (1.17, 1.2547, 1.32):
+    for f_t in targets:
         for k in (2.5e8, 5.8e8):
             for fr in (0.0, 1.0):
                 Le = invert_L_eff(f_t, k, fr)

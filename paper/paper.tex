@@ -34,7 +34,7 @@
 \graphicspath{{figures/}}
 \hypersetup{
   pdftitle={A Geometric Criterion for Sway and Rocking in Inclined Pile Groups},
-  pdfauthor={Nguyen Hoang Bui, Thi Cam Nhung Nguyen, Huu-Quyet Nguyen, Chung Truong Thanh, Hung Nguyen-Dang},
+  pdfauthor={Nguyen Hoang Bui, Thi Cam Nhung Nguyen, Huu-Quyet Nguyen, Chung Truong Thanh, Hung Nguyen-Dang, Jose C. Matos},
   hypertexnames=false
 }
 \setlength{\emergencystretch}{3em}
@@ -52,11 +52,13 @@
 \author[3]{Huu-Quyet Nguyen}
 \author[4]{Chung Truong Thanh}
 \author[5]{Hung Nguyen-Dang}
+\author[6]{Jos\'e C. Matos}
 \affil[1]{Department of Mechanical and Aerospace Engineering, University at Buffalo, The State University of New York, Buffalo, NY 14260, USA}
 \affil[2]{University of Transport and Communications, No.\ 3 Cau Giay Street, Hanoi, Vietnam}
 \affil[3]{The University of Transport and Communications Limited Company, Vietnam}
 \affil[4]{Nha Trang University, 02 Nguyen Dinh Chieu, Khanh Hoa, Vietnam}
-\affil[5]{University of Li\`ege, Li\`ege, Belgium}
+\affil[5]{Professeur Honoraire Ordinaire de l'Universit\'e de Li\`ege, Li\`ege, Belgium}
+\affil[6]{Department of Civil Engineering, University of Minho, Campus de Azur\'em, 4800-058 Guimar\~aes, Portugal}
 \date{}
 
 \begin{document}
@@ -69,19 +71,18 @@ For an elevated cap on inclined piles the question at the lowest frequency is
 whether the cap sways or rocks, which usually requires the soil stiffness, the
 least certain input. This paper shows that the geometry settles much of it. The six-degree-of-freedom stiffness of a rigid cap
 shows that the axial pile springs, which carry the soil stiffness, leave one
-motion almost unresisted: rotation about the point where the pile axes meet,
-here 42 to 45~m above the pile heads. The lowest lateral mode therefore rotates
+motion almost unresisted: rotation about the focal point where the pile axes
+meet, which for practical rakes lies far above the cap. The lowest lateral mode therefore rotates
 about a centre at or above that focal point and is resisted mainly by pile
 bending, and its vertical component at the cap is bounded by geometry alone. Rocking about a centre near the pile heads
-lies five to sixteen times higher, and torsion falls close to the lowest
-lateral pair. The prediction is tested on an offshore wind turbine foundation
-measured before and after tower installation. Of the identified poles, only one
-band, 1.05 to 1.33~Hz, meets three acceptance requirements derived from the
-definition of a mode. In the setup with a documented vertical channel, the
-vertical-to-horizontal amplitude ratio of that band is 0.08 to 0.16. Focal-point
-sway predicts 0.03 to 0.08 and rocking about 1. One member of the band has a
-torsional pattern. The measured frequency constrains the depth to fixity of the
-piles rather than their axial stiffness.
+lies well above it, and torsion falls close to it. The prediction is tested on
+an offshore wind turbine foundation measured before and after tower
+installation. Only one band of identified poles meets three acceptance
+requirements derived from the definition of a mode. Its vertical motion is about
+a tenth of its horizontal motion, an order of magnitude below what rocking would
+produce and consistent with rotation about the focal point, and one member of
+the band is torsional. The measured frequency then constrains the depth to
+fixity of the piles rather than their axial stiffness.
 \end{abstract}
 
 \noindent\textbf{Keywords:} inclined pile group; pile-group foundation; operational modal analysis; sway and rocking; offshore wind turbine; soil--structure interaction
@@ -143,7 +144,7 @@ Measurements during construction are fewer. Fernandes et al.\ \cite{fernandes202
 \subsection{Acceptance of identified poles}
 \label{sec:rw-acceptance}
 
-Covariance-driven subspace identification \cite{overschee1996,peeters1999} and frequency domain decomposition \cite{brincker2001} are the established output-only methods, and Reynders \cite{reynders2012} reviews them together with the assumptions behind them. Stabilisation is the usual basis for accepting a pole, and the literature that defines it is explicit about what it tests. Peeters and De Roeck \cite{peeters2001rev} describe it as discarding the spurious poles of an over-specified model by requiring agreement with the model one order lower, Döhler and Mevel \cite{dohler2013uq} as separating physical from spurious modes by their constancy across orders, and Zhang et al.\ \cite{zhang2005} judged its power to discriminate limited. Automated procedures add hard and soft validation criteria and cluster the stable poles \cite{magalhaes2009,reynders2012aoma,ubertini2013,neu2017}; modal phase collinearity \cite{pappa1993} and the modal assurance criterion \cite{allemang2003} test the consistency of each shape, and uncertainty bounds quantify the scatter of each estimate \cite{reynders2008,dohler2013uq}. Apart from limits on damping, these tests concern the consistency of the fit and the quality of each pole within one record. They do not test properties that a structural mode must have independently of the fit, such as extending over the instrumented structure or persisting when the sensors are moved.
+Covariance-driven subspace identification \cite{overschee1996,peeters1999} and frequency domain decomposition \cite{brincker2001} are the established output-only methods, and Reynders \cite{reynders2012} reviews them together with the assumptions behind them. Stabilisation is the usual basis for accepting a pole, and the literature that defines it is explicit about what it tests. Peeters and De Roeck \cite{peeters2001rev} describe it as discarding the spurious poles of an over-specified model by requiring agreement with the model one order lower, Döhler and Mevel \cite{dohler2013uq} as separating physical from spurious modes by their constancy across orders, and Zhang et al.\ \cite{zhang2005} judged its power to discriminate limited. Automated procedures add hard and soft validation criteria and cluster the stable poles \cite{magalhaes2009,reynders2012aoma,ubertini2013,neu2017}; modal phase collinearity \cite{pappa1993} and the modal assurance criterion \cite{allemang2003} test the consistency of each shape, and uncertainty bounds quantify the scatter of each estimate \cite{reynders2008,dohler2013uq}. Apart from limits on damping, these tests concern the consistency of the fit and the quality of each pole within one record. They do not test properties that a structural mode must have independently of the fit, such as extending over the instrumented structure or persisting when the sensors are moved. The same question arises for data-driven monitoring, where neural networks trained on bridge records are used to reconstruct missing data \cite{nhung2024} and to detect damage \cite{nguyen2025ec}: what such a model learns is only as structural as the records it is given.
 
 Invariance across setups enters multi-setup identification as an assumption. Reference-based identification \cite{peeters1999} rests on the invariance of an eigenvalue to the sensor configuration, and the merging schemes of Mevel et al.\ \cite{mevel2002} and Döhler and Mevel \cite{dohler2012} fit one state matrix to all setups because the same structure is observed in each. Döhler et al.\ \cite{dohler2013ms} noted that matching modes between setups after identification is fragile and that the assumption may fail in practice. Section~\ref{sec:procedure} uses the same invariance as a test that a candidate pole must pass, not as a constraint imposed on the fit.
 
@@ -529,7 +530,7 @@ patterns. One further observation supports this interpretation. The single verti
 
 The scatter of a single estimate was measured by identifying each record again in three equal segments with the same settings. The low-band poles of one setup move between segments by 1 to 3\,\% from their mean, and by less than 0.3\,\% in the three-channel setup, the one record close to stationary. Lateral setup 2 of campaign 1 is the exception, with segment poles spread over 1.19 to 1.36~Hz. The low group spans 1.174 to 1.331~Hz in campaign 1 and 1.052 to 1.231~Hz in campaign 2, 13 and 16\,\% of its centre, and every setup of each campaign contributes to it; it satisfies the group form of the second requirement.
 
-The 14--24~Hz poles do not. Within campaign 1, three setups recorded within ninety minutes return three disjoint bands, 18.1 to 19.9~Hz, 21.6 to 23.8~Hz and 14.4 to 15.0~Hz, spanning 65\,\% of their centre, and in campaign 2 two of the three setups return no pole above 5~Hz at all. These poles are local in the sense of the first requirement as well. Two sources are plausible. The first bending mode of an individual pile, over the fixity lengths inferred in Section~\ref{sec:stiffness} and carrying its added water, lies between about 8~Hz (one end pinned) and 17~Hz (both ends fixed), overlapping the lower part of the band. The response of the instrument mounting, which was not documented, may lie anywhere in it \cite{shokrollahi2017}. The records cannot separate the two, and neither would be a mode of the cap. The verdict on this band is therefore that it is not a global mode of the foundation, not that its source is known.
+The 14--24~Hz poles do not. Within campaign 1, three setups recorded within ninety minutes return three disjoint bands, 18.1 to 19.9~Hz, 21.6 to 23.8~Hz and 14.4 to 15.0~Hz, spanning 65\,\% of their centre, and in campaign 2 two of the three setups return no pole above 5~Hz at all. These poles are local in the sense of the first requirement as well. Two sources are plausible. The first bending mode of an individual pile, over the fixity lengths inferred in Section~\ref{sec:stiffness} and carrying its added water, lies between about 8~Hz (one end pinned) and 16~Hz (both ends fixed), overlapping the lower part of the band. The response of the instrument mounting, which was not documented, may lie anywhere in it \cite{shokrollahi2017}. The records cannot separate the two, and neither would be a mode of the cap. The verdict on this band is therefore that it is not a global mode of the foundation, not that its source is known.
 
 Three further sets of poles fail the second requirement and are reported without interpretation. A pole at 1.61 to 1.73~Hz appears in three of the seven setups and has no counterpart in the model of Section~\ref{sec:model}, which places nothing between torsion and rocking. The extended search described below returns single poles at 0.69~Hz in lateral setup 1 of campaign 1 and at 0.83~Hz in the lateral setup of campaign 2, each in one setup only. And the vertical d2ke setup returns a pole at 2.30~Hz that no other setup shares.
 
@@ -695,7 +696,7 @@ Section~\ref{sec:criterion} showed that the lowest lateral pair is governed by p
 
 The axial stiffness is estimated forward from the borehole. The shear modulus of each layer follows from its SPT value through the correlation of Ohsaki and Iwasaki \cite{ohsaki1973}, $G_0 = 1200\,N^{0.8}$~t/m$^2$, or about $11.8\,N^{0.8}$~MPa. The correlation was derived from seismic exploration, so it gives the small-strain modulus, which is the modulus that ambient vibration mobilises. A lower bound of $0.5\,G_0$ allows for the scatter of the correlation and for disturbance of the soft clay by pile installation. The solution of Randolph and Wroth \cite{randolph1978} for a compressible pile in non-homogeneous soil then gives the stiffness of the embedded length; placed in series with the free length, it gives $4.7$ to $5.8\times10^{8}$~N/m for an isolated pile. Pile--soil--pile interaction acts on the embedded length only. With the axial interaction factors of Randolph and Wroth \cite{randolph1979} assembled over the 34 pile positions, the head flexibility becomes $\mathbf{F} = \mathbf{I}/k_{\mathrm{free}} + \mathbf{A}/k_{\mathrm{emb}}$. That reduces the effective stiffness per pile to $2.5$ to $3.4\times10^{8}$~N/m. The model of Section~\ref{sec:model} is evaluated over 2.5 to $5.8\times10^{8}$~N/m, a range over which the lowest lateral pair changes by about 3\,\%.
 
-Inverting the setup means of campaign 1, 1.17 to 1.32~Hz, over that range of $k_{\mathrm{ax}}$ and over the bounds of the participating pile mass gives $L_{\mathrm{eff}}$ between 13.9 and 17.0~m. Since 12.34~m of that is free length in water, the piles are effectively fixed 1.6 to 4.7 diameters below the seabed. At the campaign mean of 1.255~Hz the range narrows to 2.1 to 3.8 diameters.
+Inverting the setup means of campaign 1, 1.17 to 1.28~Hz with lateral setup 2 excluded under the first requirement, over that range of $k_{\mathrm{ax}}$ and over the bounds of the participating pile mass gives $L_{\mathrm{eff}}$ between 14.2 and 17.0~m. Since 12.34~m of that is free length in water, the piles are effectively fixed 1.9 to 4.6 diameters below the seabed. At the mean of those setups, 1.233~Hz, the range narrows to 2.3 to 4.0 diameters.
 
 This can be checked against an estimate that uses no measured frequency. For a pile in soil of constant modulus, Davisson and Robinson \cite{davisson1965} place the point of equivalent fixity at $1.4R$ below the ground surface, with $R = (EI/E_s)^{1/4}$. Taking $E_s = 3G$, appropriate to undrained clay, with $G$ averaged over the upper 3 to 5~m of the profile at 0.5 to 1.0 times $G_0$, gives 2.3 to 3.0 diameters. The two ranges overlap. The forward estimate rests on an SPT correlation applied at $N \leq 2$, where it is least reliable, and on a rule derived for static loading. Agreement at this level is as much as the information supports, and the comparison is an order-of-magnitude check. Table~\ref{tab:stiffness} collects the values.
 
@@ -708,8 +709,8 @@ This can be checked against an estimate that uses no measured frequency. For a p
 Axial stiffness, isolated pile, $G = 0.5$--$1.0\,G_0$ & $4.7$--$5.8\times10^{8}$~N/m \\
 Axial stiffness, in the group, interaction on the embedded length & $2.5$--$3.4\times10^{8}$~N/m \\
 Change of $f_1$ over $2.5$--$5.8\times10^{8}$~N/m & about 3\,\% \\
-Depth to fixity, inverted from $f = 1.17$--$1.32$~Hz & 1.6--4.7 pile diameters \\
-\quad at the campaign 1 mean, 1.255~Hz & 2.1--3.8 pile diameters \\
+Depth to fixity, inverted from $f = 1.17$--$1.28$~Hz & 1.9--4.6 pile diameters \\
+\quad at the campaign 1 mean, 1.233~Hz & 2.3--4.0 pile diameters \\
 Depth to fixity, Davisson and Robinson, $E_s = 3G$, $G = 0.5$--$1.0\,G_0$ & 2.3--3.0 pile diameters \\
 \bottomrule
 \end{tabularx}
@@ -773,7 +774,7 @@ The same records show how readily a measurement of this kind may be misinterpret
 
 \paragraph{Conflicts of Interest} The authors declare no conflicts of interest.
 
-\paragraph{Author Contributions} Nguyen Hoang Bui: conceptualization, methodology, software, formal analysis, investigation, visualization, writing -- original draft. Thi Cam Nhung Nguyen: conceptualization, methodology, investigation, resources, data curation, project administration, supervision, writing -- review and editing. Huu-Quyet Nguyen: investigation, data curation. Chung Truong Thanh: software, validation. Hung Nguyen-Dang: writing -- review and editing. All authors read and approved the final manuscript.
+\paragraph{Author Contributions} Nguyen Hoang Bui: conceptualization, methodology, software, formal analysis, investigation, visualization, writing -- original draft. Thi Cam Nhung Nguyen: conceptualization, methodology, investigation, resources, data curation, project administration, supervision, writing -- review and editing. Huu-Quyet Nguyen: investigation, data curation. Chung Truong Thanh: software, validation. Hung Nguyen-Dang: writing -- review and editing. Jos\'e C. Matos: writing -- review and editing. All authors read and approved the final manuscript.
 
 \paragraph{Data Availability Statement} The acceleration records analysed in this study are available from the corresponding author upon reasonable request by e-mail. The design drawings belong to the project owner and are not redistributed; every quantity read from them is given in Table~\ref{tab:geometry} and Figure~\ref{fig:section}.
 
@@ -963,6 +964,12 @@ Allemang RJ (2003) The modal assurance criterion -- twenty years of use and abus
 
 \bibitem{reynders2008}
 Reynders E, Pintelon R, De Roeck G (2008) Uncertainty bounds on modal parameters obtained from stochastic subspace identification. Mechanical Systems and Signal Processing 22(4):948--969. \url{https://doi.org/10.1016/j.ymssp.2007.10.009}
+
+\bibitem{nhung2024}
+Nguyen TCN, Bui NH, Tran QM (2024) Reconstructing health monitoring data of railway truss bridges using one-dimensional convolutional neural networks. Engineering, Technology \& Applied Science Research 14(4):15510--15514. \url{https://doi.org/10.48084/etasr.7515}
+
+\bibitem{nguyen2025ec}
+Nguyen TCN, Vu TM (2025) Damage detection in structural health monitoring using BiLSTM-1DCNN hybrid network: a case study on a large-scale steel truss bridge. Engineering Computations 42(6):2226--2242. \url{https://doi.org/10.1108/ec-08-2024-0714}
 
 \bibitem{mevel2002}
 Mevel L, Basseville M, Benveniste A, Goursat M (2002) Merging sensor data from multiple measurement set-ups for non-stationary subspace-based modal analysis. Journal of Sound and Vibration 249(4):719--741. \url{https://doi.org/10.1006/jsvi.2001.3880}
