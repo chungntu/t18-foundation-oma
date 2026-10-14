@@ -65,24 +65,21 @@
 \maketitle
 
 \begin{abstract}
-Operational modal analysis of a pile-supported foundation returns natural
-frequencies and mode shapes, but not the mechanism that each mode represents.
-For an elevated cap on inclined piles the question at the lowest frequency is
-whether the cap sways or rocks, which usually requires the soil stiffness, the
-least certain input. This paper shows that the geometry settles much of it. The six-degree-of-freedom stiffness of a rigid cap
-shows that the axial pile springs, which carry the soil stiffness, leave one
-motion almost unresisted: rotation about the focal point where the pile axes
-meet, which for practical rakes lies far above the cap. The lowest lateral mode therefore rotates
-about a centre at or above that focal point and is resisted mainly by pile
-bending, and its vertical component at the cap is bounded by geometry alone. Rocking about a centre near the pile heads
-lies well above it, and torsion falls close to it. The prediction is tested on
-an offshore wind turbine foundation measured before and after tower
-installation. Only one band of identified poles meets three acceptance
-requirements derived from the definition of a mode. Its vertical motion is about
-a tenth of its horizontal motion, an order of magnitude below what rocking would
-produce and consistent with rotation about the focal point, and one member of
-the band is torsional. The measured frequency then constrains the depth to
-fixity of the piles rather than their axial stiffness.
+Many nearshore wind turbines stand on an elevated concrete cap carried by
+inclined piles, yet few field vibration measurements of such foundations have
+been reported. Vibration
+measurements on the cap are a cheap way to check such a foundation against its
+design and to monitor it later, but only if two questions are answered first:
+which of the identified modes are real, and whether the lowest one is a sway of
+the cap or a rocking. The two motions are resisted by different parts of the
+foundation, so mistaking one for the other leads to wrong conclusions about the
+piles and the soil. Both questions are normally settled with a numerical model,
+which needs the soil stiffness, the least certain input. This paper answers
+them without a soil model. Three checks derived from the definition of a mode
+separate real modes from electrical interference and local sensor responses,
+using the records alone. The pile layout then tells sway from rocking. The method is applied to the group of 34 piles, raked
+5:1 and 7:1, under turbine T18 of the Dong Hai 1 nearshore wind farm in
+Vietnam, measured before and after tower installation.
 \end{abstract}
 
 \noindent\textbf{Keywords:} inclined pile group; pile-group foundation; operational modal analysis; sway and rocking; offshore wind turbine; soil--structure interaction
@@ -93,25 +90,15 @@ fixity of the piles rather than their axial stiffness.
 \section{Introduction}
 \label{sec:intro}
 
-A modal identification algorithm fits a linear state-space model to measured
-covariances and returns its eigenvalues. Nothing in that operation distinguishes a mode of the structure from mains
-interference or from a resonance of the instrument mounting. All three appear
-as poles, all three can be made to stabilise cleanly across model orders, and
-all three can carry excellent quality indices. Stabilisation measures the internal consistency of a fit; it provides no evidence about what was fitted.
+Many offshore and nearshore wind turbines stand on an elevated pile cap: a concrete cap above the water, carried by a group of inclined piles. It is the foundation of the Donghai Bridge wind farm in China and of the nearshore farms of the Mekong Delta in Vietnam \cite{worldbank2021,nguyen2022,lang2014}. Field vibration measurements of such foundations are still few, far fewer than for monopiles \cite{li2022}. Measuring the vibration of the cap is the cheapest way to check one. The natural frequencies and mode shapes identified from ambient records can be compared with the design. They can serve as a baseline for later monitoring of scour or soil degradation \cite{weijtjens2016,devriendt2014}. And they can be inverted for the soil properties that the design had to assume.
 
-Acceptance must therefore be imported from outside the fit. Two sources are
-available before any measurement is taken. The first is the definition of a
-mode: a pair of eigenvalue and mode shape satisfying the homogeneous equation of
-motion, in which the mass, damping and stiffness belong to the structure and not
-to the instrumentation. The second is the structure of the estimator itself,
-which can only resolve what its covariance window spans. Both yield requirements
-that can be applied to raw records without a validated model, a documented
-sensor layout or environmental data, which matters in construction-stage
-measurement, where none of the three is normally available.
+Two questions must be answered before a measured mode can be used in any of these ways. The first is whether it is a mode of the foundation at all. An identification algorithm fits a model to the records and returns poles. Interference from the mains supply and the resonance of a sensor mounting also appear as poles, and they can stabilise as cleanly as a structural mode. In the records analysed here, most of the prominent poles are of this kind. The second question is which motion the mode represents. At the lowest frequency the cap may sway, moving mainly sideways, or it may rock about a horizontal axis near the pile heads. The two motions are resisted by different parts of the foundation: rocking by the axial stiffness of the piles, sway mainly by their bending and by the soil just below the seabed. A frequency attributed to the wrong motion is inverted for the wrong soil property, and a baseline built on it monitors the wrong part of the foundation.
 
-A parallel difficulty arises on the modelling side. The lowest mode of a pile-group foundation may be a sway of the cap or a rocking of the cap. The question is usually settled by constructing a model, and such a model requires the soil stiffness. That is the least certain quantity in the problem: it depends on strain level, on installation effects and on time, and for a foundation measured during construction it is rarely known to better than a factor of two. It is shown below that for an inclined pile group the shape of the lowest mode does not require it. The axial pile springs, through which most of the soil stiffness enters, are nearly concurrent: their axes meet close to one point above the cap. Rotation about that point stretches no pile, so the axial springs fix where the lowest mode rotates but not how fast.
+Both questions are usually settled with a numerical model of the foundation. Such a model needs the soil stiffness, which is the least certain quantity in the problem: it depends on strain level, on pile installation and on time, and for a foundation measured during construction it is rarely known to better than a factor of two. A classification that rests on the soil model inherits that uncertainty. Measurements made during construction also tend to lack what model updating relies on: a documented sensor layout, a calibrated model and environmental data.
 
-This paper derives that prediction from the six-degree-of-freedom stiffness of a rigid cap and states it in a form the records can test: a bound on the vertical component of the lowest mode, set by geometry alone. It also sets out acceptance requirements that follow from the definition of a mode and can be evaluated on raw records. The two are brought together on a construction-stage measurement of an inclined pile group.
+This paper answers both questions without a soil model. For the first, it sets out three checks, derived from the definition of a mode, that a pole must pass using the measured records alone: a mode moves more than one sensor, it is the same whichever sensors observe it, and it loses energy at a rate a built structure can. For the second, it uses the geometry of the pile group. When the piles are raked outward at the usual shallow angles, their axes meet close to one point high above the cap. The cap can rotate about that point without stretching or compressing any pile, so the axial stiffness of the piles, and with it most of the soil stiffness, does not resist this motion. The lowest mode is therefore a sway about a centre near that point. On the cap it moves almost horizontally, with a vertical component that the pile layout alone bounds to a small fraction of the horizontal; rocking would move the edges of the cap vertically about as much as horizontally. Comparing the two components measured on the cap therefore tells which motion a mode is. The layout fixes the shape of the mode but not its frequency, which still depends on how firmly the soil holds the piles in bending. Once the mode is known to be sway, its measured frequency can be inverted for exactly that.
+
+The approach is applied to the foundation of turbine T18 of the Dong Hai 1 nearshore wind farm in Vietnam: a 20.5~m cap on 34 piles, 30 of them raked, measured before and after the tower was installed. Only one band of poles, near 1.2~Hz, passes the three checks. On the cap its vertical motion is about a tenth of its horizontal motion, so it is sway and not rocking, and its frequency places the effective fixity of the piles two to four diameters below the seabed.
 
 Section~\ref{sec:related} sets both parts against the work on which they draw. Section~\ref{sec:structure} describes the foundation, the ground and the records. Section~\ref{sec:model} derives the prediction from the geometry.
 Section~\ref{sec:ident} identifies the modes and decides which poles belong to
