@@ -233,6 +233,94 @@ def fig_mechanisms():
     _save(fig, "fig05_mechanisms.png")
 
 
+def fig_notation():
+    """Ky hieu cua mo hinh dai cung: mat bang (r, theta) va mat cat dung (alpha, a, L_eff)."""
+    fig, (a, b) = plt.subplots(1, 2, figsize=(12.0, 5.6),
+                               gridspec_kw=dict(width_ratios=[1.0, 1.15]))
+    # ---------------------------------------------------------------- (a) mat bang
+    R = D_CAP / 2
+    a.add_patch(Circle((0, 0), R, fc="0.92", ec="k", lw=1.2))
+    for r, n, nb in RINGS:
+        a.add_patch(Circle((0, 0), r, fc="none", ec=GREY, lw=0.6, ls=(0, (3, 3))))
+        for k in range(n):
+            t = 2 * np.pi * k / n
+            a.plot(r * np.cos(t), r * np.sin(t), 'o', ms=4.5, color="0.35", zorder=3)
+    th = np.radians(40.0)
+    r = 9.0
+    px, py = r * np.cos(th), r * np.sin(th)
+    a.annotate("", xy=(R + 1.6, 0), xytext=(0, 0),
+               arrowprops=dict(arrowstyle="->", color="k", lw=1.0))
+    a.annotate("", xy=(0, R + 1.6), xytext=(0, 0),
+               arrowprops=dict(arrowstyle="->", color="k", lw=1.0))
+    a.text(R + 1.7, -0.6, "$x$", fontsize=12)
+    a.text(-0.9, R + 1.4, "$y$", fontsize=12)
+    a.plot([0, px], [0, py], color=BLUE, lw=1.6)
+    a.plot(px, py, 'o', ms=8, color=RED, zorder=4)
+    a.text(px - 0.6, py + 1.0, "pile $i$, head $\\mathbf{p}_i$", fontsize=11, color=RED, ha="right")
+    a.text(0.45 * px - 1.4, 0.45 * py + 0.5, "$r_i$", fontsize=12, color=BLUE)
+    arc = np.linspace(0, th, 40)
+    a.plot(2.6 * np.cos(arc), 2.6 * np.sin(arc), color=BLUE, lw=1.0)
+    a.text(3.0 * np.cos(th / 2), 3.0 * np.sin(th / 2) - 0.3, "$\\theta_i$", fontsize=12, color=BLUE)
+    a.annotate("", xy=(px + 1.8 * np.cos(th), py + 1.8 * np.sin(th)), xytext=(px, py),
+               arrowprops=dict(arrowstyle="->", color=RED, lw=1.3))
+    a.text(px + 2.0 * np.cos(th) + 0.2, py + 2.0 * np.sin(th) - 0.3, "rake", fontsize=10, color=RED)
+    a.plot(0, 0, 'k+', ms=10)
+    a.text(0.3, -1.0, "$O$", fontsize=12)
+    a.set_xlim(-R - 1, R + 3)
+    a.set_ylim(-R - 1, R + 3)
+    a.set_aspect("equal")
+    a.axis("off")
+    a.text(0.0, 1.0, "(a) plan", transform=a.transAxes, fontsize=12, fontweight="bold", va="top")
+
+    # -------------------------------------------- (b) mat cat dung qua coc i (khong theo ti le)
+    T, Le, al = 1.6, 9.0, np.radians(14)
+    b.add_patch(Rectangle((-5.5, 0), 11.0, T, fc="0.85", ec="k", lw=1.2))
+    hx = 4.0
+    tx, tz = hx + Le * np.sin(al), -Le * np.cos(al)
+    b.plot([hx, tx], [0, tz], color="k", lw=2.6, solid_capstyle="butt")
+    b.plot([-hx, -hx], [0, -Le], color="0.6", lw=2.0)
+    b.plot([-7, 7.5], [-4.2, -4.2], color="#4a7ab0", lw=1.0)
+    b.text(-6.9, -3.9, "seabed", fontsize=10, color="#4a7ab0")
+    b.plot([tx - 1.0, tx + 1.0], [tz, tz], color="k", lw=1.0)
+    for k in range(5):
+        b.plot([tx - 1.0 + 0.45 * k, tx - 0.7 + 0.45 * k], [tz, tz - 0.35], color="k", lw=0.8)
+    b.text(tx + 1.2, tz - 0.1, "fixity", fontsize=10)
+    b.plot([hx, hx], [0, -3.2], color=GREY, lw=0.8, ls=(0, (4, 3)))
+    arc = np.linspace(-np.pi / 2, -np.pi / 2 + al, 30)
+    b.plot(hx + 2.6 * np.cos(arc), 2.6 * np.sin(arc), color=BLUE, lw=1.0)
+    b.text(hx + 0.25, -3.3, "$\\alpha_i$", fontsize=12, color=BLUE)
+    ux, uz = np.sin(al), -np.cos(al)
+    b.annotate("", xy=(hx + 2.0 * ux + 0.9, 2.0 * uz), xytext=(hx + 0.9, 0),
+               arrowprops=dict(arrowstyle="->", color=RED, lw=1.6))
+    b.text(hx + 2.0 * ux + 1.1, 2.0 * uz + 0.2, "$\\mathbf{a}_i$", fontsize=12, color=RED)
+    mx, mz = (hx + tx) / 2, tz / 2
+    b.annotate("", xy=(tx - 0.9 * np.cos(al), tz - 0.9 * np.sin(al)),
+               xytext=(hx - 0.9 * np.cos(al), -0.9 * np.sin(al)),
+               arrowprops=dict(arrowstyle="<->", color=BLUE, lw=1.0))
+    b.text(mx - 2.5, mz - 0.4, "$L_{eff}$", fontsize=12, color=BLUE)
+    b.plot(0, 0, 'ko', ms=5, zorder=5)
+    b.text(0.25, 0.25, "$O$", fontsize=12)
+    b.annotate("", xy=(2.3, 0), xytext=(0, 0), arrowprops=dict(arrowstyle="->", color="k", lw=1.0))
+    b.annotate("", xy=(0, 3.6), xytext=(0, 0), arrowprops=dict(arrowstyle="->", color="k", lw=1.0))
+    b.text(2.4, -0.45, "$x$", fontsize=12)
+    b.text(-0.55, 3.5, "$z$", fontsize=12)
+    b.annotate("", xy=(-1.6, T + 1.1), xytext=(-3.6, T + 1.1),
+               arrowprops=dict(arrowstyle="->", color=BLUE, lw=1.4))
+    b.text(-3.3, T + 1.35, "$\\mathbf{U}$", fontsize=12, color=BLUE)
+    b.annotate("", xy=(2.6, T + 1.8), xytext=(0.8, T + 0.8),
+               arrowprops=dict(arrowstyle="->", color=BLUE, lw=1.4, connectionstyle="arc3,rad=0.4"))
+    b.text(2.4, T + 2.0, "$\\mathbf{\\Phi}$", fontsize=12, color=BLUE)
+    b.text(-5.4, 0.45, "rigid cap", fontsize=10)
+    b.set_xlim(-7.5, 8.5)
+    b.set_ylim(tz - 1.2, T + 3.2)
+    b.set_aspect("equal")
+    b.axis("off")
+    b.text(0.0, 1.0, "(b) section through pile $i$ (not to scale)", transform=b.transAxes,
+           fontsize=12, fontweight="bold", va="top")
+    fig.tight_layout()
+    _save(fig, "fig04b_notation.png")
+
+
 def _rot(pts, c, th):
     R = np.array([[np.cos(th), -np.sin(th)], [np.sin(th), np.cos(th)]])
     return (R @ (pts - c).T).T + c
@@ -296,44 +384,63 @@ def fig_criterion():
     K_LO, K_HI = 2.5e8, 5.8e8
     S = {k: [rc.summary(k, L) for L in Le] for k in (K_LO, K_HI)}
 
-    fig, (a, b) = plt.subplots(1, 2, figsize=(12.0, 5.0))
-    for k, ls in ((K_LO, "-"), (K_HI, "--")):
-        lab = f"$k_{{ax}}$ = {k:.1e} N/m"
-        a.semilogy(Le, [s["f1"] for s in S[k]], ls, color=BLUE, lw=1.8, label="lowest lateral pair, " + lab)
-        a.semilogy(Le, [s["f_rock"] for s in S[k]], ls, color="#7f3f00", lw=1.5, label="rocking pair, " + lab)
-        a.semilogy(Le, [s["f_ver"] for s in S[k]], ls, color="0.6", lw=1.0, label="vertical, " + lab)
-    a.semilogy(Le, [s["f_tor"] for s in S[K_LO]], ":", color="#006000", lw=2.0,
-               label="torsion (pile bending only)")
-    a.axhspan(1.05, 1.33, color=RED, alpha=.12, zorder=0)
-    a.text(Le[-1], 1.38, "measured band 1.05-1.33 Hz", ha="right", fontsize=8.5, color=RED)
-    a.set_xlabel("Effective fixity length $L_{eff}$ [m]  "
-                 f"(free length in water {fsm.L_FREE:.2f} m)")
-    a.set_ylabel("Natural frequency [Hz]")
-    a.set_ylim(0.4, 20)
-    a.grid(alpha=.3, which="both")
-    a.legend(fontsize=7.4, loc="upper right")
+    from matplotlib.ticker import FixedLocator, FixedFormatter, NullLocator
 
-    for d, ls in ((rc.FRAME_HALF, "-"), (rc.FRAME_HALF * np.sqrt(2), "--")):
-        for k, col in ((K_LO, BLUE), (K_HI, "#08306b")):
-            b.semilogy(Le, [rc.vh_ratio(s["zc1"], d) for s in S[k]], ls, color=col, lw=1.6)
-            b.semilogy(Le, [rc.vh_ratio(s["zc2"], d) for s in S[k]], ls, color="#7f3f00", lw=1.3)
-    b.plot([], [], "-", color=BLUE, label="lowest lateral pair")
-    b.plot([], [], "-", color="#7f3f00", label="rocking pair")
-    b.plot([], [], "-", color="0.4", label="$d$ = 2.5 m")
-    b.plot([], [], "--", color="0.4", label="$d$ = 3.5 m")
-    b.axhspan(0.08, 0.16, color=RED, alpha=.15, zorder=0)
-    b.text(Le[0] + 0.3, 0.17, "measured, lateral setup of campaign 2", fontsize=8.5, color=RED)
-    zf = max(rc.focal_heights().values())
-    b.text(Le[-1], 0.8 * rc.vh_ratio(zf, rc.FRAME_HALF), f"bound from $z_f$ = {zf:.0f} m, $d$ = 2.5 m",
-           ha="right", va="top", fontsize=8)
-    b.axhline(rc.vh_ratio(zf, rc.FRAME_HALF), color="0.3", lw=0.8, ls=":")
-    b.set_xlabel("Effective fixity length $L_{eff}$ [m]")
-    b.set_ylabel("Vertical / horizontal amplitude on the cap top")
+    def band(key, fn=lambda v: v):
+        lo = np.minimum([fn(s[key]) for s in S[K_LO]], [fn(s[key]) for s in S[K_HI]])
+        hi = np.maximum([fn(s[key]) for s in S[K_LO]], [fn(s[key]) for s in S[K_HI]])
+        return lo, hi
+
+    def plain_log_axis(ax, ticks):
+        ax.set_yscale("log")
+        ax.yaxis.set_major_locator(FixedLocator(ticks))
+        ax.yaxis.set_major_formatter(FixedFormatter([f"{t:g}" for t in ticks]))
+        ax.yaxis.set_minor_locator(NullLocator())
+
+    BROWN, GREEN = "#7f3f00", "#2e7d32"
+    fig, (a, b) = plt.subplots(1, 2, figsize=(12.0, 5.0))
+
+    # (a) tan so: moi ho mode la mot dai giua hai muc do cung doc truc
+    for key, col, txt in (("f_rock", BROWN, "rocking"), ("f_tor", GREEN, "torsion"),
+                          ("f1", BLUE, "sway (fundamental mode)")):
+        lo, hi = band(key)
+        a.fill_between(Le, lo, hi, color=col, alpha=0.35, lw=0)
+        a.plot(Le, (lo + hi) / 2, color=col, lw=1.6)
+        if key == "f1":
+            a.annotate(txt, xy=(Le[8], lo[8]), xytext=(Le[0], 0.62), color=col, fontsize=10,
+                       fontweight="bold", arrowprops=dict(arrowstyle="->", color=col, lw=1.0))
+        else:
+            i = 4 if key == "f_tor" else 30
+            a.text(Le[i], hi[i] * 1.12, txt, color=col, fontsize=10, va="bottom", fontweight="bold")
+    a.axhspan(1.05, 1.33, color=RED, alpha=.15, zorder=0)
+    a.text(Le[-1], 1.36, "measured 1.05-1.33 Hz", ha="right", fontsize=9, color=RED)
+    plain_log_axis(a, [0.5, 1, 2, 5, 10, 20])
+    a.set_ylim(0.5, 20)
+    a.set_xlabel("Effective fixity length $L_{eff}$ [m]")
+    a.set_ylabel("Natural frequency [Hz]")
+    a.grid(alpha=.3)
+
+    # (b) ty so dung/ngang: dai cho sway va rocking, moi dai phu ca k_ax va d = 2.5-3.5 m
+    for key, col, txt in (("zc1", BLUE, "sway"), ("zc2", BROWN, "rocking")):
+        lo = np.minimum.reduce([[rc.vh_ratio(s[key], d) for s in S[k]]
+                                for k in (K_LO, K_HI) for d in (rc.FRAME_HALF, rc.FRAME_HALF * np.sqrt(2))])
+        hi = np.maximum.reduce([[rc.vh_ratio(s[key], d) for s in S[k]]
+                                for k in (K_LO, K_HI) for d in (rc.FRAME_HALF, rc.FRAME_HALF * np.sqrt(2))])
+        b.fill_between(Le, lo, hi, color=col, alpha=0.35, lw=0)
+        if key == "zc1":
+            b.text(Le[12], lo[12] * 0.85, f"predicted, {txt}", color=col, fontsize=10,
+                   va="top", fontweight="bold")
+        else:
+            b.text(Le[2], hi[2] * 1.15, f"predicted, {txt}", color=col, fontsize=10, fontweight="bold")
+    b.axhspan(0.08, 0.16, color=RED, alpha=.18, zorder=0)
+    b.text(Le[-1], 0.17, "measured", ha="right", fontsize=10, color=RED, fontweight="bold")
+    plain_log_axis(b, [0.01, 0.03, 0.1, 0.3, 1, 3])
     b.set_ylim(0.01, 3)
-    b.grid(alpha=.3, which="both")
-    b.legend(fontsize=8, loc="center right")
+    b.set_xlabel("Effective fixity length $L_{eff}$ [m]")
+    b.set_ylabel("Vertical / horizontal motion on the cap")
+    b.grid(alpha=.3)
     for ax, p in ((a, "a"), (b, "b")):
-        ax.text(0.0, 1.01, f"({p})", transform=ax.transAxes, fontsize=10,
+        ax.text(0.0, 1.01, f"({p})", transform=ax.transAxes, fontsize=11,
                 fontweight="bold", va="bottom")
     fig.tight_layout()
     _save(fig, "fig06_criterion.png")
@@ -487,3 +594,4 @@ if __name__ == '__main__':
     fig_record_quality()
     fig_stabilisation()
     fig_low_band()
+    fig_notation()
