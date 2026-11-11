@@ -222,7 +222,7 @@ def fixity_depth_dr1965(G_scale=1.0, depth=5.0):
 
 
 K_AX_RANGE = (1.5e8, 2.5e8, 3.5e8, 6.0e8)              # N/m, muc 6.2
-L_EFF_MULT = (3, 5, 8, 12)                              # L_eff = L_free + m D
+L_EFF_MULT = (1.5, 3, 5, 8, 12)                         # L_eff = L_free + m D; 1.5 D bao phu ket qua suy nguoc (1.9-4.6 D)
 FRACTIONS = (0.0, 13 / 35, 1.0)
 
 
@@ -234,7 +234,12 @@ def main():
     print(f"  G_uu = {B[0,0]:.4f}   G_u_phi = {B[0,1]:.3f} m   G_phi_phi = {B[1,1]:.1f} m2")
     print(f"  he so ghep |G_u_phi| / sqrt(G_uu G_phi_phi) = {coup:.3f}")
     print(f"  tri rieng (/k_ax): {w[0]:.4f}  {w[1]:.1f}")
-    print(f"  tam xoay hai vec-to rieng: z = {zc_ax[0]:.1f} m  va  {zc_ax[1]:.2f} m")
+    # tam co do cung xoay doc truc nho nhat: z* = G_u_phi / G_uu (khong phu thuoc don vi,
+    # khac voi tam xoay cua vec-to rieng cua khoi co don vi hon hop m / rad)
+    z_star = B[0, 1] / B[0, 0]
+    resid = B[1, 1] - B[0, 1] ** 2 / B[0, 0]
+    print(f"  tam do cung xoay doc truc nho nhat: z* = G_u_phi / G_uu = {z_star:.1f} m")
+    print(f"  do cung xoay con lai quanh z*: {resid:.1f} m2 = {100 * resid / B[1, 1]:.1f} % cua G_phi_phi")
     print("  tieu diem tung vong (r cot alpha):",
           ", ".join(f"R={r:.0f} m -> {h:.1f} m" for r, h in focal_heights().items()))
 

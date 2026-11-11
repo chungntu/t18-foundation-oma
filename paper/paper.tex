@@ -66,27 +66,26 @@
 
 \begin{abstract}
 Many nearshore wind turbines stand on an elevated concrete cap carried by
-inclined piles, yet few field vibration measurements of such foundations have
-been reported. The most useful result of such a measurement is the fundamental
-mode of the foundation, but two things must be known before it can be used:
-whether the mode is a sway or a rocking of the cap, which are resisted by
-different parts of the foundation, and whether the identified pole is a real
-mode at all. Both are normally settled with a numerical model, which needs the
-soil stiffness, the least certain input. This paper settles them without a
-soil model. The axes of outward-raked piles meet near a focal point high above
-the cap, and the cap can rotate about that point without stretching any pile.
-The fundamental mode is therefore a sway, and the pile layout alone bounds its
-vertical motion on the cap to a few per cent of its horizontal motion, whereas
-rocking moves the cap vertically about as much as horizontally. Three checks
-derived from the definition of a mode then separate real modes from electrical
-interference and local sensor responses, using the records alone. The method is
-applied to the group of 34 piles, raked 5:1 and 7:1, under turbine T18 of the
-Dong Hai 1 nearshore wind farm in Vietnam, measured before and after tower
-installation. Only one band of poles, near 1.2~Hz, passes the three checks. Its
-vertical motion is about a tenth of its horizontal motion, so it is a sway. Its
-frequency places the effective fixity of the piles two to four diameters below
-the seabed, and installing the tower changed it by no more than the scatter of
-the measurements.
+inclined piles, yet field vibration measurements of such foundations are few.
+The most useful result of such a measurement is the fundamental mode, but two
+things must be known before it can be used:
+whether the mode is a sway or a rocking of the cap, and whether the identified
+candidate mode is a real mode at all. This paper settles both without a soil
+model. The axes of
+outward-raked piles meet near a focal point high above the cap, and the cap can
+rotate about that point without stretching any pile. The fundamental mode is
+therefore a sway, and the pile layout bounds its vertical motion on the cap to
+less than a tenth of its horizontal motion, whereas rocking moves the cap
+vertically about as much as horizontally. Three checks derived from the
+definition of a mode then separate real modes from electrical interference and
+local sensor responses. The method is applied to
+the 34-pile foundation of turbine T18 of the Dong Hai 1 wind farm in Vietnam,
+measured before and after tower installation.
+Only one band, near 1.2~Hz, passes the three checks. Its vertical motion is at
+most a tenth to a sixth of its horizontal motion, which excludes rocking. Its
+frequency places the effective fixity of the piles two to five diameters below
+the seabed, and no change of this frequency larger than about 5\,\% could be
+resolved after the tower was installed.
 \end{abstract}
 
 \noindent\textbf{Keywords:} inclined pile group; pile-group foundation; operational modal analysis; sway and rocking; offshore wind turbine; soil--structure interaction
@@ -99,19 +98,19 @@ the measurements.
 
 Some offshore and many nearshore wind turbines stand on an elevated pile cap: a concrete cap above the water, carried by a group of inclined piles. It is the foundation of the Donghai Bridge wind farm in China and of the nearshore farms of the Mekong Delta in Vietnam \cite{worldbank2021,nguyen2022,lang2014}. Measuring the vibration of the cap checks such a foundation without interrupting its construction or operation. The natural frequencies and mode shapes identified from ambient records can be compared with the design, can serve as a baseline for later monitoring of scour or soil degradation \cite{weijtjens2016,devriendt2014}, and can be inverted for the soil properties that the design had to assume.
 
-The most useful result of such a measurement is the fundamental mode of the foundation. It is usually the clearest mode in the ambient response, and its stiffness affects the natural frequency of the whole turbine, which must stay away from the rotor and wave frequencies \cite{arany2017}. Two things must be known before this mode can be used. The first is what kind of motion it is. In a sway the cap moves mainly sideways; in a rocking it tilts about a horizontal axis near the pile heads. The two motions are resisted by different parts of the foundation: rocking by the axial stiffness of the piles, sway mainly by their bending and by the soil just below the seabed. A frequency attributed to the wrong motion is inverted for the wrong soil property, and a baseline built on it monitors the wrong part of the foundation. The second is whether the pole taken for this mode is a real mode of the foundation at all. An identification algorithm fits a model to the records and returns poles. Interference from the mains supply and the resonance of a sensor mounting also appear as poles, and they can stabilise as cleanly as a structural mode. In the records analysed here, most of the prominent poles are of this kind.
+The most useful result of such a measurement is the fundamental mode of the foundation. It is usually the clearest mode in the ambient response, and its stiffness affects the natural frequency of the whole turbine, which must stay away from the rotor and wave frequencies \cite{arany2017}. Two things must be known before this mode can be used. The first is what kind of motion it is. In a sway the cap moves mainly sideways; in a rocking it tilts about a horizontal axis near the pile heads. The two motions are resisted by different parts of the foundation: rocking by the axial stiffness of the piles, sway mainly by their bending and by the soil just below the seabed. A frequency attributed to the wrong motion is inverted for the wrong soil property, and a baseline built on it monitors the wrong part of the foundation. The second is whether the pole taken for this mode is a real mode of the foundation at all. An identification algorithm fits a model to the records and returns poles: candidate modes, each with a frequency, a damping ratio and a shape. Interference from the mains supply and the resonance of a sensor mounting also appear as poles, and they can reappear as consistently from one model order to the next as a structural mode. In the records analysed here, most of the prominent poles are of this kind.
 
 Both questions are usually settled with a numerical model of the foundation. The stiffness of a rigid cap on inclined piles is a classical problem \cite{hrennikoff1950,saul1968,poulos1980,randolph1978,randolph1979}, and later work extended it to dynamics: the frequency dependence of pile-group impedances \cite{kaynia1982,dobry1988}, the effect of batter on the superstructure \cite{gerolymos2008,carbonari2017}, experiments on inclined and near-shore piles \cite{goit2016,dezi2013}, the complete impedance functions of inclined groups \cite{padron2010,rodriguez2025}, and the coupled horizontal--rocking impedance of an elevated cap \cite{huang2014}. All of these models need the soil stiffness, which is the least certain quantity in the problem: it depends on strain level, on pile installation and on time, and for a foundation measured during construction it is rarely known to better than a factor of two. A classification that rests on the soil model inherits that uncertainty.
 
-Field measurements cannot yet fill the gap. Output-only identification is well established for offshore wind turbines \cite{devriendt2014,weijtjens2016,noren2021,sastre2024}, but separating a structural change from environmental effects requires long records with environmental data \cite{peeters2001z24}, and almost all of this work concerns monopiles. Measurements during construction are rare \cite{fernandes2022,seo2020}, and they tend to lack what model updating relies on: a documented sensor layout, a calibrated model and environmental data. For elevated caps on pile groups, the few studies available describe the modes of the turbine as a whole \cite{li2022,liu2026,huynh2024}. None measures the motion of the cap itself and compares it with a prediction made beforehand.
+Field measurements have not yet supplied an independent check. Output-only identification is well established for offshore wind turbines \cite{devriendt2014,weijtjens2016,noren2021,sastre2024}, but separating a structural change from environmental effects requires long records with environmental data \cite{peeters2001z24}, and almost all of this work concerns monopiles. Measurements during construction are rare \cite{fernandes2022,seo2020}, and they tend to lack what model updating relies on: a documented sensor layout, a calibrated model and environmental data. For elevated caps on pile groups, the few studies available describe the modes of the turbine as a whole \cite{li2022,liu2026,huynh2024}. None measures the motion of the cap itself and compares it with a prediction made beforehand.
 
 Nor do the usual tools decide which poles are modes. Subspace identification \cite{overschee1996,peeters1999} and frequency domain decomposition \cite{brincker2001} are the established output-only methods \cite{reynders2012}. A pole is normally accepted when it stabilises across model orders, but stabilisation tests the consistency of the fit rather than the physics of the pole \cite{peeters2001rev,zhang2005}, and automated procedures and uncertainty bounds refine the same idea \cite{magalhaes2009,reynders2012aoma,reynders2008}. The question matters beyond modal analysis: neural networks trained on bridge records to reconstruct missing data \cite{nhung2024} or detect damage \cite{nguyen2025ec} learn only what the records actually contain.
 
-This paper answers both questions without a soil model, in two steps. The first step uses the geometry of the pile group. When the piles are raked outward at the usual shallow angles, their axes meet close to one point high above the cap. The cap can rotate about that point without stretching or compressing any pile, so the axial stiffness of the piles, and with it most of the soil stiffness, does not resist this motion. The condition is implicit in the classical stiffness matrices \cite{hrennikoff1950,saul1968}; here it is turned into a prediction that can be measured. The fundamental mode is a sway about a centre near that point. On the cap it moves almost horizontally, with a vertical component that the pile layout alone bounds to a small fraction of the horizontal; rocking would move the edges of the cap vertically about as much as horizontally. Comparing the two components measured on the cap therefore tells which motion a mode is.
+This paper classifies the mode without a soil model, in two steps. The first step uses the geometry of the pile group. When the piles are raked outward at the usual shallow angles, their axes meet close to one point high above the cap. The cap can rotate about that point without stretching or compressing any pile, so the axial stiffness of the piles, and with it most of the soil stiffness, does not resist this motion. The condition is implicit in the classical stiffness matrices \cite{hrennikoff1950,saul1968}; here it is turned into a prediction that can be measured. The fundamental mode is a sway about a centre near that point. On the cap it moves almost horizontally, with a vertical component that the pile layout alone bounds to a small fraction of the horizontal; rocking would move the edges of the cap vertically about as much as horizontally. Comparing the two components measured on the cap therefore tells which motion a mode is. Only the later estimate of the fixity depth of the piles uses the borehole.
 
 The second step applies three checks that any real mode of the foundation must pass, using only the measured records. A real mode moves the whole cap, so it must appear on several sensors; a pole carried by a single sensor is a local response, such as a resonance of that sensor's mounting \cite{shokrollahi2017,abdelnour2024}. A natural frequency belongs to the structure, not to the sensors, so it must reappear when the sensors are moved, which multi-setup identification assumes rather than tests \cite{mevel2002,dohler2013ms}. And a real structure loses energy as it vibrates; a pole that hardly decays is a steady tone, such as a harmonic of the mains supply \cite{mohanty2004,jacobsen2005,motte2015}.
 
-The approach is applied to the foundation of turbine T18 of the Dong Hai 1 nearshore wind farm in Vietnam: a 20.5~m cap on 34 piles, 30 of them raked, measured before and after the tower was installed. Only one band of poles, near 1.2~Hz, passes the three checks. On the cap its vertical motion is about a tenth of its horizontal motion, so it is sway and not rocking. Compared between setups that measure in the same direction, installing the tower changed its frequency by no more than the scatter of the measurements. These results come from a simple campaign, with five or six accelerometers, short records and no environmental data.
+The approach is applied to the foundation of turbine T18 of the Dong Hai 1 nearshore wind farm in Vietnam: a 20.5~m cap on 34 piles, 30 of them raked, measured before and after the tower was installed. Only one band of poles, near 1.2~Hz, passes the three checks. On the cap its vertical motion is at most a tenth to a sixth of its horizontal motion, which excludes rocking. Its frequency places the effective fixity of the piles a few diameters below the seabed. After the tower was installed, no change of this frequency larger than about 5\,\% could be resolved. These results come from a simple campaign, with five or six accelerometers, short records and no environmental data.
 
 Section~\ref{sec:structure} describes the foundation and the measurements. Section~\ref{sec:model} derives the geometric criterion from the pile layout. Section~\ref{sec:ident} identifies the modes and applies the three checks. Section~\ref{sec:interp} compares the measured mode with the prediction and discusses the piles and the effect of the tower. The details of the model are given in two appendices, and supporting analyses in the Supplementary Material.
 
@@ -132,7 +131,7 @@ radius of each ring and the inclination of the piles in it.
 
 \begin{table}[htbp]
 \centering
-\caption{Foundation geometry and pile properties, from the design drawings}
+\caption{Foundation geometry and pile properties, from the design drawings. The wall thickness and the elastic modulus of the piles are not given there and are assumed values for this type of pile}
 \label{tab:geometry}
 \begin{tabularx}{\linewidth}{@{}lL@{}}
 \toprule
@@ -142,8 +141,8 @@ Middle ring & $R = 6.0$~m, 12 piles at 30\degr, inclined 7:1 (8.1\degr{} from ve
 Outer ring & $R = 9.0$~m, 18 piles at 20\degr, inclined 5:1 (11.3\degr{} from vertical) \\
 Pile & prestressed high-strength concrete, 1.0~m outside diameter, 46~m long; toe at $\approx -40.5$~m \\
 Free length in water & 12.34~m (cap soffit $+5.44$~m to seabed $-6.90$~m) \\
-Wall thickness & 130~mm $\rightarrow$ $A = 0.3553$~m$^2$, $I = 0.03437$~m$^4$ \\
-Elastic modulus & 40~GPa $\rightarrow$ $EA = 1.42\times10^{10}$~N, $EI = 1.37\times10^{9}$~N\,m$^2$ \\
+Wall thickness (assumed) & 130~mm $\rightarrow$ $A = 0.3553$~m$^2$, $I = 0.03437$~m$^4$ \\
+Elastic modulus (assumed) & 40~GPa $\rightarrow$ $EA = 1.42\times10^{10}$~N, $EI = 1.37\times10^{9}$~N\,m$^2$ \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -151,7 +150,7 @@ Elastic modulus & 40~GPa $\rightarrow$ $EA = 1.42\times10^{10}$~N, $EI = 1.37\ti
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.72\linewidth]{fig01_pile_layout}
-\caption{Pile layout of the T18 foundation, redrawn from the setting-out sheet \emph{D1000 PHC pile coordinate}: 34 PHC D1000 piles on three concentric rings of radius 3.0, 6.0 and 9.0~m, carrying 4, 12 and 18 piles respectively. Arrows give the direction of inclination; the inner ring is vertical, the middle ring is inclined 7:1 and the outer ring 5:1. The cap is 20.5~m in diameter}
+\caption{Pile layout of the T18 foundation, redrawn from the setting-out sheet \emph{D1000 PHC pile coordinate}: 34 prestressed high-strength concrete (PHC) piles of 1.0~m diameter on three concentric rings of radius 3.0, 6.0 and 9.0~m, carrying 4, 12 and 18 piles respectively. Arrows give the direction of inclination; the inner ring is vertical, the middle ring is inclined 7:1 and the outer ring 5:1. The cap is 20.5~m in diameter}
 \label{fig:layout}
 \end{figure}
 
@@ -168,7 +167,7 @@ The ground is known from borehole DH9 (Figure~\ref{fig:section}). Below the seab
 \subsection{Measurement campaigns}
 \label{sec:records}
 
-Two ambient vibration campaigns were recorded on the top surface of the cap: campaign 1 on 18 May 2024, before the tower was erected, and campaign 2 on 13 July 2024, after. Each was completed within about one and a half hours and comprises several setups that differ in sensor position and measurement direction (Table~\ref{tab:setups}). The sensors sit on a square frame of $5 \times 5$~m concentric with the cap, at its four corners and at its centre; in campaign 2 a sixth channel was added on the tower, two metres above the centre (Figure~\ref{fig:sensors}). The records were acquired with a National Instruments system at 1651.6~Hz. The sensitivities of the accelerometers differ by at most 3\,\% between channels, so amplitudes can be compared directly from one channel to another.
+Two ambient vibration campaigns were recorded on the top surface of the cap: campaign 1 on 18 May 2024, before the tower was erected, and campaign 2 on 13 July 2024, after. Each was completed within about one and a half hours and comprises several setups that differ in sensor position and measurement direction (Table~\ref{tab:setups}). The sensors sit on a square frame of $5 \times 5$~m concentric with the cap, at its four corners and at its centre; in campaign 2 a sixth channel was added on the tower, two metres above the centre (Figure~\ref{fig:sensors}). The records were acquired with a National Instruments system at 1651.6~Hz. The sensitivities of the accelerometers differ by at most 3\,\% between channels, so amplitudes can be compared directly from one channel to another. The orientation of the individual channels is recorded only for the lateral setup of campaign 2.
 
 \begin{figure}[htbp]
 \centering
@@ -179,7 +178,7 @@ Two ambient vibration campaigns were recorded on the top surface of the cap: cam
 
 \begin{table}[htbp]
 \centering
-\caption{Measurement setups. In the lateral setup of campaign 2, channels 1, 2, 3, 5 and 6 measure horizontally in one common direction and channel 4 vertically, as recorded in the processing log}
+\caption{Measurement setups. In the lateral setup of campaign 2, channels 1, 2, 3, 5 and 6 measure horizontally in one common direction and channel 4 vertically, as recorded in the processing log. The labels d1 and d2ke are the field names of the two vertical records of campaign 2}
 \label{tab:setups}
 \begin{tabular}{@{}cllcr@{}}
 \toprule
@@ -216,7 +215,7 @@ Figure~\ref{fig:mechanisms}(a) shows the idea on which the paper builds. The axe
 \label{fig:mechanisms}
 \end{figure}
 
-The height of F follows from the elongation of one pile. Let the cap translate horizontally by $u$ and rotate by $\varphi$ about a horizontal axis through the centre of its soffit, where the pile heads are. A pile with its head at radius $r$ and azimuth $\theta$, raked outward at $\alpha$ from vertical, is stretched by $\cos\alpha\cos\theta\,(u\tan\alpha + r\varphi)$. For a ring of piles with the same radius and inclination this is zero for every pile when $u = -r\varphi\cot\alpha$, which is a rotation about the point on the cap axis at height
+The height of F follows from the elongation of one pile. Let the cap translate horizontally by $u$ and rotate by $\varphi$ about a horizontal axis through the centre of its soffit, where the pile heads are. A pile with its head at radius $r$ and azimuth $\theta$, measured from the direction of $u$, and raked outward at $\alpha$ from vertical, changes length by $\cos\alpha\cos\theta\,(u\tan\alpha + r\varphi)$. For a ring of piles with the same radius and inclination this is zero for every pile when $u = -r\varphi\cot\alpha$, which is a rotation about the point on the cap axis at height
 %
 \begin{equation}
 z_f = r\cot\alpha
@@ -225,52 +224,52 @@ z_f = r\cot\alpha
 %
 above the pile heads: the focal point F of the ring.
 
-In a group with several rings, the focal points need not coincide. In the T18 group they lie close together: 42.0~m above the pile heads for the middle ring and 45.0~m for the outer ring, while the vertical inner ring adds only rotational stiffness. The axial stiffness of the group therefore still leaves one motion almost free, a rotation about a centre 45.1~m above the pile heads. About that centre the piles provide only 2\,\% of the axial rotational stiffness they provide about the pile heads (Appendix~\ref{app:model}).
+In a group with several rings, the focal points need not coincide. In the T18 group they lie close together: 42.0~m above the pile heads for the middle ring and 45.0~m for the outer ring, while the vertical inner ring adds only rotational stiffness. The axial stiffness of the group therefore still leaves one motion almost free, a rotation about a centre 44.2~m above the pile heads, between the two focal points. About that centre the piles provide only 2\,\% of the axial rotational stiffness they provide about the pile heads, almost all of it from the vertical inner ring (Appendix~\ref{app:model}).
 
 \subsection{Sway, rocking and the criterion}
 \label{sec:mechanisms}
 
-Because the axial stiffness hardly resists rotation about F, that motion is resisted mainly by pile bending and is the fundamental mode of the group. Its centre of rotation $z_c$ stays close to F; bending of the piles adds lateral restraint at the pile heads and moves the centre further up, towards a pure translation. Seen on the cap, which lies far below F, the mode is almost a sway. A point on the top of the cap, at height $h$ above the pile heads and at horizontal distance $d$ from the rotation axis, moves vertically by $d/(z_c-h)$ of its horizontal motion. Since $z_c \geq z_f$, the ratio of the vertical motion $w$ to the horizontal motion $u$ is bounded:
+Because the axial stiffness hardly resists rotation about F, that motion is resisted mainly by pile bending and is the fundamental mode of the group. Its centre of rotation $z_c$ stays close to F. In the rigid-cap model it lies above F for every combination of soil parameters examined (Section~\ref{sec:frequencies}), because the inertia of the cap, which sits at the pile heads, offsets most of the translational stiffness. Seen on the cap, which lies far below F, the mode is almost a sway. A point on the top of the cap, at height $h$ above the pile heads and at horizontal distance $d$ from the rotation axis, moves vertically by $d/(z_c-h)$ of its horizontal motion. With $z_c \geq z_f$, the ratio of the vertical motion $w$ to the horizontal motion $u$ is bounded:
 %
 \begin{equation}
 \frac{w}{u}\bigg|_{\mathrm{top}} \leq \frac{d}{z_f - h} .
 \label{eq:vh}
 \end{equation}
 %
-The bound depends only on the pile layout. For T18, $h = 4$~m, and a sensor at a corner of the instrumented frame lies 2.5 to 3.5~m from the rotation axis, so the vertical motion of the fundamental mode is at most 6 to 9\,\% of its horizontal motion.
+The bound contains only the pile layout, but it holds for a cap whose mass lies near the pile heads; a heavy superstructure can lower the centre of rotation. For T18, $h = 4$~m, and a corner of the instrumented frame lies at most 3.5~m from the rotation axis whatever the direction of sway (2.5~m if the sway is parallel to a side of the frame, 3.5~m if it is along a diagonal), so the vertical motion of the fundamental mode is at most 9\,\% of its horizontal motion.
 
 Figure~\ref{fig:mechanisms}(b) shows the other lateral motion, rocking about a centre near the pile heads. The piles on one side are compressed and those on the other side stretched, so rocking is resisted by the full axial stiffness and has a much higher frequency. At the top of the cap its vertical motion is about as large as its horizontal motion.
 
 \emph{The ratio of vertical to horizontal motion measured on the cap therefore separates sway from rocking by an order of magnitude.} This is the geometric criterion.
 
-Torsion, a twist of the cap about its vertical axis, also stretches none of the outward-raked piles, because each pile lies in a radial plane and its head moves at right angles to that plane. Like the fundamental mode, torsion is resisted by pile bending, and its frequency lies close to the fundamental frequency. The fundamental mode is thus expected as a group of closely spaced modes: two lateral modes of equal frequency in perpendicular directions, and torsion near them.
+Torsion, a twist of the cap about its vertical axis, also stretches none of the outward-raked piles, because each pile lies in a radial plane and its head moves at right angles to that plane. Like the fundamental mode, torsion is resisted by pile bending, and its frequency lies close to the fundamental frequency. The fundamental mode is thus expected as a group of closely spaced modes: two lateral modes of equal frequency in perpendicular directions (the fundamental pair), and torsion near them.
 
 \subsection{Predictions for the T18 foundation}
 \label{sec:frequencies}
 
-The pile layout fixes the shapes of these modes but not their frequencies, which depend on the soil through two quantities: the axial stiffness $k_{\mathrm{ax}}$ of a pile and the effective length $L_{\mathrm{eff}}$ over which it bends, from the cap down to its depth of fixity. Table~\ref{tab:sums} gives the predictions of the full model when both are varied over wide ranges: $k_{\mathrm{ax}}$ from $1.5$ to $6\times10^{8}$~N/m, which brackets the values estimated from the soil profile, and the depth to fixity from 3 to 12 pile diameters below the seabed.
+The pile layout fixes the shapes of these modes but not their frequencies, which depend on the soil through two quantities: the axial stiffness $k_{\mathrm{ax}}$ of a pile and its effective fixity length $L_{\mathrm{eff}}$, from the pile head to the point at which it is effectively fixed. The part of this length below the seabed is the depth to fixity. Table~\ref{tab:sums} gives the predictions of the full model when both are varied over wide ranges: $k_{\mathrm{ax}}$ from $1.5$ to $6\times10^{8}$~N/m, which brackets the values estimated from the soil profile (Appendix~\ref{app:fixity}), and the depth to fixity from 1.5 to 12 pile diameters, which covers the values inferred in Section~\ref{sec:stiffness}. The predictions are shown against the measurement in Figure~\ref{fig:criterion}.
 
 \begin{table}[htbp]
 \centering
-\caption{Modes of the rigid-cap model of the T18 group over the swept range of axial stiffness ($1.5$--$6\times10^{8}$~N/m per pile), depth to fixity (3--12 pile diameters) and participating pile mass (Appendix~\ref{app:model}). The vertical-to-horizontal ratio is evaluated at the cap top for a point 2.5 or 3.5~m from the rotation axis}
+\caption{Modes of the rigid-cap model of the T18 group over the swept range of axial stiffness ($1.5$--$6\times10^{8}$~N/m per pile), depth to fixity (1.5--12 pile diameters) and participating pile mass (Appendix~\ref{app:model}). The vertical-to-horizontal ratio is evaluated at the cap top for a point 2.5 or 3.5~m from the rotation axis}
 \label{tab:sums}
 \begin{tabularx}{\linewidth}{@{}Lll@{}}
 \toprule
  & Sway (fundamental pair) & Rocking pair \\
 \midrule
-Frequency & 0.62--1.34~Hz & 5.4--12.3~Hz \\
-Centre of rotation above the pile heads & 48--105~m & 0.9--1.7~m \\
-Vertical/horizontal at the cap top, $d = 2.5$~m & 0.025--0.057 & 0.8--1.1 \\
-Vertical/horizontal at the cap top, $d = 3.5$~m & 0.035--0.081 & 1.1--1.5 \\
+Frequency & 0.62--1.53~Hz & 5.4--12.2~Hz \\
+Centre of rotation above the pile heads & 48--150~m & 0.9--1.8~m \\
+Vertical/horizontal at the cap top, $d = 2.5$~m & 0.017--0.057 & 0.8--1.1 \\
+Vertical/horizontal at the cap top, $d = 3.5$~m & 0.024--0.080 & 1.1--1.6 \\
 \midrule
-Torsion, $f_{\mathrm{tor}}/f_1$ & \multicolumn{2}{l}{1.09--1.21} \\
-Rocking, $f_{\mathrm{rock}}/f_1$ & \multicolumn{2}{l}{5.0--16} \\
+Torsion, $f_{\mathrm{tor}}/f_1$ & \multicolumn{2}{l}{1.08--1.21} \\
+Rocking, $f_{\mathrm{rock}}/f_1$ & \multicolumn{2}{l}{4.4--16} \\
 Increase of $f_1$ for a fourfold increase of $k_{\mathrm{ax}}$ & \multicolumn{2}{l}{5\,\%} \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-Three predictions matter for what follows. First, the centre of rotation of the fundamental pair never falls below the focal points, so the bound \eqref{eq:vh} holds over the whole range: its vertical motion is 3 to 8\,\% of its horizontal motion, against 80 to 150\,\% for rocking. Second, the fundamental frequency depends on the fixity length and hardly on the axial stiffness, whereas rocking lies 5 to 16 times higher and rises with the axial stiffness. Third, torsion lies only 9 to 21\,\% above the fundamental frequency, so the low band of this foundation should contain several poles within about 20\,\% of each other.
+Three predictions matter for what follows. First, the centre of rotation of the fundamental pair stays above the focal points in every case (at least 48~m), so the bound \eqref{eq:vh} holds over the whole range: in the full model its vertical motion is 2 to 8\,\% of its horizontal motion, against 80 to 160\,\% for rocking. Second, the fundamental frequency depends on the fixity length and hardly on the axial stiffness, whereas rocking lies 4 to 16 times higher and rises with the axial stiffness. Third, torsion lies only 8 to 21\,\% above the fundamental frequency, so the low band of this foundation should contain several poles within about 20\,\% of each other.
 
 % =====================================================================
 \section{Identification of the real modes}
@@ -279,7 +278,7 @@ Three predictions matter for what follows. First, the centre of rotation of the 
 \subsection{Identification procedure}
 \label{sec:procedure}
 
-The modes are identified by covariance-driven subspace identification \cite{peeters1999,overschee1996}, with frequency domain decomposition \cite{brincker2001} as an independent check. Subspace identification builds its model from the covariances of the records over a time window; if this window is much shorter than the period of a mode, the mode cannot be resolved \cite{priori2018}. At the acquisition rate the window is only a tenth of a period at 1~Hz. The records are therefore decimated to 51.61~Hz and high-pass filtered at 0.3~Hz, which gives a window of 2.33~s with 120 block rows, and identified over model orders 2 to 80 (Supplementary Section~S4 tests these settings). Poles from successive orders are grouped when they agree within 1\,\% in frequency, 5\,\% in damping and 0.98 in modal assurance criterion, and a group is kept when it contains at least eight poles.
+The modes are identified by covariance-driven subspace identification \cite{peeters1999,overschee1996}, with the spectral peaks of frequency domain decomposition \cite{brincker2001} reported alongside (Supplementary Table~S2). Subspace identification builds its model from the covariances of the records over a time window; if this window is much shorter than the period of a mode, the mode cannot be resolved \cite{priori2018}. At the acquisition rate the window is only 0.09~s, a tenth of a period at 1~Hz. The records are therefore decimated to 51.61~Hz and high-pass filtered at 0.3~Hz, which gives a window of 2.33~s with 120 block rows, and identified over model orders 2 to 80 (tested on one record, Supplementary Section~S4). Poles with a damping ratio outside 0.1 to 15\,\% are discarded. Poles from successive orders are grouped when they agree within 1\,\% in frequency, 5\,\% in damping and 0.98 in modal assurance criterion, and a group is kept when it contains at least eight poles.
 
 \subsection{Three checks from the definition of a mode}
 \label{sec:checks}
@@ -293,16 +292,16 @@ N_{\mathrm{eff}} = \frac{\bigl(\sum_j|\phi_j|^2\bigr)^2}{\sum_j|\phi_j|^4} ,
 \label{eq:neff}
 \end{equation}
 %
-the participation ratio of Bell and Dean \cite{bell1970,hodges1982}, computed from the first singular vector $\boldsymbol{\phi}$ of the cross-power spectral density matrix. It equals the number of channels when all channels respond equally, and 1 when only one responds. To the authors' knowledge it has not been used before to accept or reject poles in operational modal analysis. A pole is rejected when $N_{\mathrm{eff}} < 1.25$, a threshold set by simulation (Supplementary Section~S2). The threshold is not applied to the three-channel setup, where the two cases cannot be told apart.
+the participation ratio of Bell and Dean \cite{bell1970,hodges1982}, computed from the first singular vector $\boldsymbol{\phi}$ of the cross-power spectral density matrix. It equals the number of channels when all channels respond equally, and 1 when only one responds. To the authors' knowledge it has not been used before to accept or reject poles in operational modal analysis. It is evaluated once for each setup and band, at the spectral peak. A band is rejected when $N_{\mathrm{eff}} < 1.25$, a value placed between the 1.0 that a single-channel response gives in simulation and the 1.5 of the measured shape (Supplementary Section~S2). When the levels of the channels differ strongly the check can reject a real mode, in about a fifth of simulated trials; it never accepted a local response. The threshold is not applied to the three-channel setup, where the two cases cannot be told apart.
 
-\paragraph{Check 2: a mode is the same whichever sensors observe it.} Its frequency belongs to the structure, so it must reappear in every setup of a campaign, and where two setups measure the same points, their mode shapes must agree. Because the pile layout predicts a group of closely spaced modes (Section~\ref{sec:frequencies}), the check is applied to the group: every setup must return a pole within it, and the group must be no wider than about 20\,\%.
+\paragraph{Check 2: a mode is the same whichever sensors observe it.} Its frequency belongs to the structure, so it must reappear in every setup of a campaign, and where two setups measure the same points, their mode shapes must agree. Because the pile layout predicts a group of closely spaced modes (Section~\ref{sec:frequencies}), the check is applied to the group: every setup able to observe it must return a pole within it, and the group must be no wider than about 20\,\%. This width is the one input that the checks take from the model.
 
 \paragraph{Check 3: a mode loses energy.} A steady harmonic, such as interference from the mains supply, appears to the estimator as a pole with almost no damping \cite{mohanty2004,jacobsen2005}; such harmonics can also be recognised from the statistics of the response \cite{brincker2000,jacobsen2007} and removed \cite{motte2015,gres2021}. Here poles with a damping ratio below 0.1\,\% are rejected. This bound equals the lowest damping that EN~1991-1-4 gives for any structural element, a logarithmic decrement of 0.006 for parallel cables \cite{en1991}, and lies more than an order of magnitude below the damping of the band finally accepted.
 
 \subsection{Classification of the identified poles}
 \label{sec:classify}
 
-The identification returns poles in three separate regions: a group between 1.05 and 1.33~Hz, a set between 14 and 24~Hz, and a set between 57 and 700~Hz that appears only when the records are analysed at the acquisition rate. Supplementary Table~S2 lists them by setup. Figure~\ref{fig:stab} shows why stabilisation alone cannot sort them: the 1.2~Hz pole and the 18--20~Hz cluster stabilise equally cleanly over all model orders.
+The identification returns poles in three separate regions: a group between 1.05 and 1.33~Hz, a set between 14 and 24~Hz, and a set between 57 and 700~Hz that appears only when the records are analysed at the acquisition rate. Supplementary Table~S2 lists the poles below 25~Hz by setup. Figure~\ref{fig:stab} shows why stabilisation alone cannot sort them: the 1.2~Hz pole and the 18--20~Hz cluster stabilise equally cleanly over all model orders.
 
 \begin{figure}[htbp]
 \centering
@@ -311,7 +310,11 @@ The identification returns poles in three separate regions: a group between 1.05
 \label{fig:stab}
 \end{figure}
 
-\paragraph{The 1.05--1.33~Hz band passes all three checks.} In this band six of the seven setups exceed the threshold of the first check, with effective channel counts from 1.55 to 5.00 (Figure~\ref{fig:neff}). The exception is lateral setup 2 of campaign 1, the record with the least steady signal level; its low-band pole fails the check and is not used in any later comparison. The band also passes the second check. Every setup returns poles within it, and it spans 13\,\% of its centre in campaign 1 and 16\,\% in campaign 2, within the width the model allows. Its mode shapes are the same in every setup that can show them (Figure~\ref{fig:shape}): in all three vertical setups, opposite corners of the frame move in antiphase about a nodal line through its centre, and in the lateral setups all horizontal channels move in phase with similar amplitude. Where the two vertical setups of campaign 2 measure the same five points, the modal assurance criterion between their corresponding poles is 0.967. The damping ratios, 1.3 to 9.9\,\%, are far above the bound of the third check. Re-identifying each record in three equal segments moves a pole by 1 to 3\,\%, which gives the scatter of a single estimate.
+\paragraph{The 1.05--1.33~Hz band passes all three checks.} In this band five of the six setups to which the first check applies exceed its threshold, with effective channel counts from 1.55 to 5.00 (Figure~\ref{fig:neff}). The exception is lateral setup 2 of campaign 1, the record with the least steady signal level; its low-band pole fails the check and is not used in any later comparison, although given that unsteady level the rejection may be a false one.
+
+The band also passes the second check. Every setup returns poles within it, and it spans 13\,\% of its centre in campaign 1 and 16\,\% in campaign 2, within the width the model allows. In the vertical setups opposite corners of the frame move in antiphase, and in the lateral setups that pass the first check all horizontal channels move in phase with similar amplitude (Figure~\ref{fig:shape}; Supplementary Table~S3). Where the two vertical setups of campaign 2 measure the same five points, the best-matching pair of poles (1.147 and 1.074~Hz) has a modal assurance criterion (MAC) of 0.97. The individual members of the band are not resolved from one setup to the next (Supplementary Section~S3).
+
+The damping ratios, 1.3 to 9.9\,\%, are far above the bound of the third check. Re-identifying each record in three equal segments moves a pole by up to 5\,\%, which gives the scatter of a single estimate.
 
 \begin{figure}[htbp]
 \centering
@@ -323,15 +326,15 @@ The identification returns poles in three separate regions: a group between 1.05
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.98\linewidth]{fig11_mode_shape}
-\caption{Measured deformation pattern of the 1.05--1.33~Hz band, taken from the first singular vector at the band peak. (a) Vertical setup of campaign 1. (b) Vertical setup d2ke of campaign 2. (c) Lateral setup of campaign 2. Signed amplitudes are given beside each node. The vertical setups show opposite corners in antiphase about a nodal line; the lateral setup shows the horizontal channels in phase, channel 4 being the only vertically oriented channel there}
+\caption{Measured deformation pattern of the 1.05--1.33~Hz band, taken from the first singular vector at the band peak. (a) Vertical setup of campaign 1. (b) Vertical setup d2ke of campaign 2. (c) Lateral setup of campaign 2. Signed amplitudes are given beside each node. The vertical setups show opposite corners in antiphase about a nodal line; the lateral setup shows the horizontal channels in phase, channel 4 being the only vertically oriented channel there. Vertical setup d1 of campaign 2 is given in Supplementary Table~S3}
 \label{fig:shape}
 \end{figure}
 
-\paragraph{The 14--24~Hz poles are local responses.} In this band five of the seven setups have an effective channel count of 1.17 or less, four of them exactly 1.00: one channel responds and the others record only noise (Figure~\ref{fig:neff}). The poles also fail the second check. Within campaign 1, three setups recorded within ninety minutes return three separate bands, 18.1--19.9~Hz, 21.6--23.8~Hz and 14.4--15.0~Hz, and in campaign 2 two of the three setups return no pole above 5~Hz. These poles may come from the bending of individual piles, whose first mode lies between about 8 and 16~Hz, or from the sensor mountings \cite{shokrollahi2017}; the records cannot tell which.
+\paragraph{The 14--24~Hz poles are local responses.} In this band five of the seven setups have an effective channel count of 1.17 or less, four of them exactly 1.00: one channel responds and the others record only noise (Figure~\ref{fig:neff}). They do not form one group either: in campaign 1 the vertical, the lateral and the three-channel setups return three different bands, 18.1--19.9~Hz, 21.6--23.8~Hz and 14.4--15.0~Hz, and in campaign 2 two of the three setups return no such pole. These poles may come from the bending of individual piles, whose first mode lies between about 8 and 16~Hz, or from the sensor mountings \cite{shokrollahi2017}; the records cannot tell which.
 
-\paragraph{The 57--700~Hz poles are mains harmonics.} Seven of the poles returned at the acquisition rate have damping between 0.007 and 0.042\,\%, far below the 0.1\,\% bound, and all seven lie within 0.2\,\% of a multiple of 50~Hz (Supplementary Section~S4). They enter through the measuring chain \cite{bk0464}, but they look like structural poles to the estimator.
+\paragraph{The poles at the acquisition rate include mains harmonics.} Seven of the twenty poles returned between 57 and 700~Hz have damping between 0.007 and 0.042\,\%, far below the 0.1\,\% bound, and lie within 0.2\,\% of a multiple of 50~Hz (Supplementary Section~S4). They enter through the measuring chain \cite{bk0464}, but they look like structural poles to the estimator. The other thirteen were not classified, because the processing that returns them cannot resolve the structural band.
 
-Table~\ref{tab:classify} summarises the result. A separate search below 0.5~Hz found no pole that passes the checks, only a spectral peak near 0.32~Hz in campaign 2, where the first tower mode is expected (Supplementary Section~S5).
+Table~\ref{tab:classify} summarises the result. A separate search below 0.5~Hz found no pole that passes the checks, only a spectral peak near 0.32~Hz in campaign 2, where the first tower mode is expected (Supplementary Section~S5). A pole at 1.61--1.73~Hz appears in the three setups with horizontal channels that pass the first check; it lies outside the group and is left unclassified (Supplementary Section~S3).
 
 \begin{table}[htbp]
 \centering
@@ -342,9 +345,9 @@ Table~\ref{tab:classify} summarises the result. A separate search below 0.5~Hz f
 \toprule
 Group & Check 1: $N_{\mathrm{eff}}/n$ & Check 2: same in every setup & Check 3: damping & Verdict \\
 \midrule
-1.05--1.33~Hz & 0.31--0.94 in six of seven & yes, as a group; MAC 0.967 between corresponding poles & 1.3--9.9\,\% & structural \\
-14--24~Hz & $1/n$ (one channel) in five of seven & no; three disjoint bands in one campaign, none in two setups of the other & 0.3--11.5\,\% & local; not a mode of the cap \\
-57--700~Hz & --- & --- & 0.007--0.042\,\% & mains harmonics \\
+1.05--1.33~Hz & 0.31--0.94 in five of six & yes, as a group; MAC 0.97 for the best-matching pair & 1.3--9.9\,\% & structural \\
+14--24~Hz & $N_{\mathrm{eff}} \leq 1.17$ in five of seven & no; three different bands in one campaign, none in two setups of the other & 0.3--6.0\,\% & local; not a mode of the cap \\
+57--700~Hz & --- & --- & 0.007--0.042\,\% (7 of 20 poles) & mains harmonics \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -353,14 +356,16 @@ Group & Check 1: $N_{\mathrm{eff}}/n$ & Check 2: same in every setup & Check 3: 
 \section{Results and discussion}
 \label{sec:interp}
 
-The geometric criterion and the identification use separate information: the first only the geometry of the foundation, the second only the recorded motion. This section compares them.
+The geometric criterion uses only the geometry of the foundation. The identification uses the recorded motion, with one input from the model, the width allowed in the second check. The quantity compared below, the ratio of vertical to horizontal motion, plays no part in the checks.
 
-\subsection{The fundamental mode is a sway about the focal point}
+\subsection{The fundamental mode is a sway, not a rocking}
 \label{sec:mechanism}
 
 The vertical setups show that the band involves a rotation about a horizontal axis: opposite corners of the frame move in antiphase about a nodal line (Figure~\ref{fig:shape}). This pattern alone does not separate sway from rocking, since both rotate the cap. Only the height of the centre of rotation does.
 
-The lateral setup of campaign 2 measures that height. In this setup channel 4 measures vertically and the other cap channels horizontally, so the ratio of the vertical to the horizontal amplitude is the quantity bounded by \eqref{eq:vh}. Table~\ref{tab:vh} gives it from several estimators: 0.08 to 0.16. Sway about the focal point predicts at most 0.08 for this channel, and rocking about 1. The measured ratio is therefore an order of magnitude below rocking and close to the sway prediction (Figure~\ref{fig:criterion}). The small excess is consistent with noise on channel 4, whose coherence with the central channel is only 0.5, and with the transverse sensitivity of the accelerometer. Rocking could produce so small a ratio only if the cap happened to move within about $\pm6$\degr{} of the one direction that places channel 4 on the rotation axis. The test rests on this one setup, the only one whose channel orientations are recorded.
+The lateral setup of campaign 2 measures that height. In this setup channel 4 measures vertically and the other cap channels horizontally, so the ratio of the vertical to the horizontal amplitude is the quantity bounded by \eqref{eq:vh}. Table~\ref{tab:vh} gives it from several estimators: 0.08 to 0.16. Rocking predicts a ratio near 1, so the measured ratio is 5 to 10 times too small for rocking (Figure~\ref{fig:criterion}). It lies at or slightly above the sway bound of 0.09. The vertical signal of channel 4 is weak: its coherence with the central channel is 0.5, from about five spectral averages, which is not significant, so the ratio is an upper bound set by noise and by the transverse sensitivity of the accelerometer rather than a measured rotation. The data therefore exclude rocking and are compatible with sway; they do not locate the centre of rotation at the focal point. Rocking could produce so small a ratio only if the cap happened to move within about $\pm6$\degr{} of the one direction that places channel 4 on the rotation axis.
+
+Two limits apply. The test rests on one setup, the only one whose channel orientations are recorded. And the bound was derived for the cap without the tower, whereas this setup was recorded with the tower standing; the tower may lower the centre of rotation and contribute to the excess.
 
 \begin{table}[htbp]
 \centering
@@ -372,12 +377,12 @@ Estimator & $f$ (Hz) & Vertical / horizontal \\
 \midrule
 First singular vector at the band peak & 1.203 & 0.084 \\
 Power spectral density ratio at the peak & 1.203 & 0.116 \\
-\quad coherence of channels 4 and 5; coherence-weighted ratio & & 0.50 ; 0.082 \\
-SSI shape, translational pole & 1.215 & 0.160 \\
-SSI shape, torsional pole & 1.052 & 0.139 \\
+\quad the same, coherence-weighted (coherence 0.50) & 1.203 & 0.082 \\
+Shape of the subspace pole & 1.215 & 0.160 \\
 \midrule
-Predicted, sway (fundamental pair) & & 0.025--0.081 \\
-Predicted, rocking pair & & 0.8--1.5 \\
+Predicted, sway: geometric bound \eqref{eq:vh} & & $\leq 0.09$ \\
+Predicted, sway: full model & & 0.017--0.080 \\
+Predicted, rocking pair & & 0.8--1.6 \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -385,30 +390,30 @@ Predicted, rocking pair & & 0.8--1.5 \\
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{fig06_criterion}
-\caption{Predictions of the rigid-cap model of the T18 group against the effective fixity length $L_{\mathrm{eff}}$, compared with the measurement (red strip). Each coloured band covers the axial pile stiffnesses estimated from the borehole, 2.5 to $5.8\times10^{8}$~N/m (Appendix~\ref{app:fixity}). (a) Natural frequencies: sway (the fundamental mode) and torsion fall in the measured range, rocking lies far above. (b) Vertical-to-horizontal motion at the cap top for a sensor 2.5 to 3.5~m from the rotation axis: the measured ratio lies close to the sway prediction and an order of magnitude below rocking}
+\caption{Predictions of the rigid-cap model of the T18 group against the effective fixity length $L_{\mathrm{eff}}$, compared with the measurement (red strip). Each coloured band covers the axial pile stiffnesses estimated from the borehole, 2.5 to $5.8\times10^{8}$~N/m (Appendix~\ref{app:fixity}). (a) Natural frequencies: sway (the fundamental mode) and torsion fall in the measured range, rocking lies far above. (b) Vertical-to-horizontal motion at the cap top for a sensor 2.5 to 3.5~m from the rotation axis: the measured ratio lies at or slightly above the sway prediction and far below rocking}
 \label{fig:criterion}
 \end{figure}
 
-Two further observations agree with the prediction. The band contains several poles, as a group of closely spaced modes should. And the same lateral setup shows a torsional member in the band: at 1.215~Hz all horizontal channels move in phase with similar amplitude, a translation, whereas at 1.052~Hz the channels on one edge of the frame move in antiphase with those on the opposite edge, the pattern of a rotation about a vertical axis. The model places torsion slightly above the fundamental pair, whereas the measured torsional member lies slightly below; the model fixes how close the two are, not their order.
+The same setup returns a second pole at 1.052~Hz, in which the channels on one edge of the frame move in antiphase with those on the opposite edge, as in a rotation about a vertical axis. The assignment is not secure. The central channel still carries 46\,\% of the corner amplitude, where torsion about the cap axis would give none, and the model places torsion 8 to 21\,\% above the fundamental pair for every combination of parameters, whereas this pole lies 13\,\% below the 1.215~Hz pole. The torsional mode is therefore not identified, and the pole is referred to below by its frequency.
 
-The rocking and vertical modes were not identified. The model places them between about 7.5 and 12~Hz for the axial stiffness estimated from the borehole, and no pole in that range recurs in a second setup. Ambient excitation at the cap evidently excites them only weakly.
+The rocking mode was not identified either. The model places it between about 7 and 12~Hz for the axial stiffness estimated from the borehole (Appendix~\ref{app:fixity}), and no pole in that range recurs in a second setup. Whether it is weakly excited or masked cannot be decided from these records.
 
 \subsection{Depth to fixity of the piles}
 \label{sec:stiffness}
 
-Because the fundamental mode is resisted mainly by pile bending, its frequency depends on how deep below the seabed the piles are effectively fixed, and hardly on their axial stiffness. The measured frequency can therefore be inverted for the fixity length once the axial stiffness is bounded, here from the borehole (Appendix~\ref{app:fixity}). Inverting the setup means of campaign 1, 1.17 to 1.28~Hz, gives an effective fixity length of 14.2 to 17.0~m. Since 12.34~m of it is free length in water, the piles are effectively fixed 1.9 to 4.6 diameters below the seabed. An estimate that uses no measured frequency agrees: the rule of Davisson and Robinson \cite{davisson1965} gives 2.3 to 3.0 diameters. Given the uncertainty of the soil properties at $N \leq 2$, the agreement should be read as an order-of-magnitude check.
+Because the fundamental mode is resisted mainly by pile bending, its frequency depends on how deep below the seabed the piles are effectively fixed, and hardly on their axial stiffness. The measured frequency can therefore be inverted for the fixity length once the axial stiffness is bounded, here from the borehole (Appendix~\ref{app:fixity}). Inverting the setup means of campaign 1, 1.17 to 1.28~Hz, gives an effective fixity length of 14.2 to 17.0~m. Since 12.34~m of it is free length in water, the piles are effectively fixed 1.9 to 4.6 diameters below the seabed. An estimate that uses no measured frequency, the rule of Davisson and Robinson \cite{davisson1965}, gives 2.3 to 3.0 diameters, inside this range. The inverted value is an equivalent length for the group: it absorbs the interaction between piles, any flexibility of the pile--cap connection and the section assumed for the piles. Given also the uncertainty of the soil properties at $N \leq 2$, the comparison is a plausibility check, not a validation.
 
 \subsection{Effect of tower installation}
 \label{sec:tower}
 
 Campaign 2 was recorded after the tower was erected. To see whether the band changed, the two campaigns must be compared between setups that measure in the same direction, because setups in different directions weight different members of the band (Figure~\ref{fig:shift}; Supplementary Section~S6).
 
-Compared this way, the change is small. The vertical setups differ by $-2.3$ and $-0.5$\,\%, and the translational member of the lateral setup by $-2.0$\,\%. Larger differences appear only when the torsional member, or the lateral setup that failed the first check, is included. Changes of 0.5 to 2.3\,\% are no larger than the 1 to 3\,\% by which a single pole moves between segments of one record. The records therefore show no change due to the tower beyond the resolution of these campaigns. Two limits apply. Environmental data, including the tide level, which changes the free length of the piles, were not recorded with either campaign. And the 0.32~Hz peak of campaign 2 suggests that the tower does contribute to the cap response at its own frequency.
+Compared this way, the setup means differ by $-2.3$ and $-0.5$\,\% in the vertical setups and by $-2.0$\,\% for the 1.215~Hz pole of the lateral setup. These differences are smaller than the uncertainty of a single estimate. A pole moves by up to 5\,\% between segments of one record, the best-matching poles of the two vertical setups of campaign 2 differ by 7\,\%, and the spectral peaks differ from the subspace poles by up to 5\,\% (Supplementary Section~S6). A change of the fundamental frequency smaller than about 5\,\% can therefore be neither detected nor excluded. Two further limits apply. Environmental data, including the tide level, which changes the free length of the piles, were not recorded with either campaign. And the 0.32~Hz peak of campaign 2 suggests that the tower does contribute to the cap response at its own frequency.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\linewidth]{fig13_frequency_shift}
-\caption{Poles of the 1.05--1.33~Hz band by setup, grouped by measured direction, with setup means. Blue: campaign 1, before the tower; red: campaign 2, after it. Like-for-like setups differ by 0.5 to 2.3\,\%. The larger difference between the lateral setups comes from the torsional member at 1.052~Hz in campaign 2}
+\caption{Poles of the 1.05--1.33~Hz band by setup, grouped by measured direction, with setup means. Blue: campaign 1, before the tower; red: campaign 2, after it. The means of like-for-like setups differ by 0.5 to 2.3\,\%. The larger difference between the lateral setups comes from the 1.052~Hz pole of campaign 2}
 \label{fig:shift}
 \end{figure}
 
@@ -419,10 +424,10 @@ Compared this way, the change is small. The vertical setups differ by $-2.3$ and
 This paper has shown how to tell sway from rocking in the fundamental mode of an elevated cap on inclined piles without a model of the soil, and how to decide from the records alone which identified poles are modes.
 
 \begin{itemize}
-\item When the piles are raked outward, their axes meet close to one point high above the cap, and the axial stiffness of the piles does not resist rotation about that point. The fundamental mode is therefore a sway about that point, resisted mainly by pile bending, and its vertical motion at the cap is bounded by the pile layout alone. Rocking moves the cap vertically about as much as horizontally. The ratio of vertical to horizontal motion measured on the cap tells the two apart.
+\item When the piles are raked outward, their axes meet close to one point high above the cap, and the axial stiffness of the piles does not resist rotation about that point. The fundamental mode is therefore a sway about that point, resisted mainly by pile bending, and its vertical motion at the cap is bounded by the pile layout, for a cap whose mass lies near the pile heads. Rocking moves the cap vertically about as much as horizontally. The ratio of vertical to horizontal motion measured on the cap tells the two apart.
 \item Three checks based on the definition of a mode --- it moves several sensors, it is the same in every setup, and it loses energy --- showed that most poles in the records of the T18 foundation are electrical interference or local responses, and that only the band near 1.2~Hz is a mode of the foundation.
-\item The vertical motion of that band is about a tenth of its horizontal motion, so it is sway. Its frequency places the effective fixity of the piles two to four diameters below the seabed.
-\item Compared between setups measuring in the same direction, the installation of the tower changed this frequency by no more than the scatter of the measurements.
+\item The vertical motion of that band is at most a tenth to a sixth of its horizontal motion. This excludes rocking and is compatible with sway; the single vertical channel available cannot place the centre of rotation more closely. The frequency of the band places the effective fixity of the piles two to five diameters below the seabed.
+\item Compared between setups measuring in the same direction, no change of this frequency larger than about 5\,\% could be resolved after the tower was installed.
 \end{itemize}
 
 These results come from a modest campaign: five or six accelerometers, records of 9 to 26 minutes, no environmental data, and records disturbed by electrical interference, knocks on the sensors and unsteady excitation. A short campaign of this kind, with a few horizontal channels on the cap and at least one vertical channel away from its centre, is therefore already useful, provided its poles are checked before they are interpreted.
@@ -470,7 +475,7 @@ G_{\varphi\varphi} &= \sum_i r_i^2\cos^2\alpha_i\cos^2\theta_i .
 \label{eq:G}
 \end{equation}
 %
-Pile $i$ is stretched by $\cos\alpha_i\cos\theta_i\,(u\tan\alpha_i + r_i\varphi)$, which gives the focal height \eqref{eq:focal} for a single ring. Table~\ref{tab:G} lists the values for the T18 group. The two eigenvectors of this $2\times2$ block are rotations about centres 45.1~m above and 0.02~m below the pile heads; the first carries only 2\,\% of the rotational stiffness $G_{\varphi\varphi}$ about the pile heads. Translation and rotation are strongly coupled, with a coupling coefficient of 0.990, and cannot be treated separately.
+Pile $i$ changes length by $\cos\alpha_i\cos\theta_i\,(u\tan\alpha_i + r_i\varphi)$, which gives the focal height \eqref{eq:focal} for a single ring. Table~\ref{tab:G} lists the values for the T18 group. The axial rotational stiffness is least about the centre at height $z^* = G_{u\varphi}/G_{uu} = 44.2$~m, where it is $G_{\varphi\varphi} - G_{u\varphi}^2/G_{uu} = 18.8$~m$^2$, 2\,\% of its value $G_{\varphi\varphi}$ about the pile heads. Almost all of this remainder comes from the vertical inner ring. Translation and rotation are strongly coupled, with a coupling coefficient of 0.990, and cannot be treated separately.
 
 \begin{table}[htbp]
 \centering
@@ -481,12 +486,13 @@ Pile $i$ is stretched by $\cos\alpha_i\cos\theta_i\,(u\tan\alpha_i + r_i\varphi)
 $G_{uu}$, $G_{u\varphi}$, $G_{\varphi\varphi}$, Eq.~\eqref{eq:G} & 0.466 ; 20.6~m ; 930.6~m$^2$ \\
 Coupling coefficient $G_{u\varphi}/\sqrt{G_{uu}G_{\varphi\varphi}}$ & 0.990 \\
 Focal height $r\cot\alpha$, middle and outer ring & 42.0~m ; 45.0~m \\
-Centres of rotation of the two eigenvectors & 45.1~m ; $-0.02$~m \\
+Centre of least axial rotational stiffness, $G_{u\varphi}/G_{uu}$ & 44.2~m \\
+Rotational stiffness remaining about that centre & 18.8~m$^2$ (2.0\,\%) \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\paragraph{Parameter sweep.} The modes of Table~\ref{tab:sums} are the eigenmodes of $\mathbf{K}$ and the mass matrix over all combinations of three uncertain inputs: the axial pile stiffness, from $1.5$ to $6\times10^{8}$~N/m per pile; the depth to fixity, from 3 to 12 pile diameters below the seabed; and the participating pile mass, between its bounds 0 and 1. Over this range a fourfold increase in $k_{\mathrm{ax}}$ raises the fundamental frequency by only 5\,\%, the centre of rotation of the fundamental pair stays between 48 and 105~m above the pile heads, and the vertical mode lies close to the rocking pair.
+\paragraph{Parameter sweep.} The modes of Table~\ref{tab:sums} are the eigenmodes of $\mathbf{K}$ and the mass matrix over all combinations of three uncertain inputs: the axial pile stiffness, from $1.5$ to $6\times10^{8}$~N/m per pile; the depth to fixity, from 1.5 to 12 pile diameters below the seabed; and the participating pile mass, between its bounds 0 and 1. Over this range a fourfold increase in $k_{\mathrm{ax}}$ raises the fundamental frequency by only 5\,\%, and the centre of rotation of the fundamental pair stays between 48 and 150~m above the pile heads. The inequality $z_c \geq z_f$ used in \eqref{eq:vh} is thus a property of this model, in which the mass lies near the pile heads, and not a theorem.
 
 \section{Axial pile stiffness and depth to fixity}
 \label{app:fixity}

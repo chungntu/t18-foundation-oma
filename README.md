@@ -86,13 +86,13 @@ paper.tex` (three passes) in `paper/`.
 
 | | |
 |---|---|
-| Admitted band | 1.05–1.33 Hz, present in all seven setups of both campaigns, MAC 0.966 |
-| Mechanism | sway of the pile group; rocking lies 7.3 times higher, a ratio in which the soil stiffness cancels |
-| Raked piles | provide 82% of the lateral stiffness; pile bending 18% |
-| Rejected, local | 14–24 Hz: single-channel response (N_eff = 1.00 of 5 or 6) in five of seven setups, and three different bands in three setups of one campaign |
-| Rejected, harmonic | 57–700 Hz: damping 0.007–0.042%, seven poles within 0.16% of a multiple of 50 Hz |
-| Change after tower installation | −8.4% at setup level, complete separation between campaigns; implies ≈950 t participating mass |
-| Axial pile stiffness | 1.7–2.7×10⁸ N/m per pile from the measurement, against 2.5–3.4×10⁸ N/m predicted forward (Ohsaki–Iwasaki G0 from the SPT profile, Randolph–Wroth compressible pile, group interaction on the embedded length); 4.7–5.8×10⁸ N/m without interaction |
+| Admitted band | 1.05–1.33 Hz; passes the three checks (N_eff above 1.25 in five of the six setups tested, present in every setup, damping 1.3–9.9%) |
+| Mechanism | vertical/horizontal motion on the cap 0.08–0.16, against at most 0.09 for sway about the focal point and about 1 for rocking: rocking is excluded |
+| Pile layout | focal heights 42.0 and 45.0 m; the axial rotational stiffness is least about 44.2 m, where it is 2% of its value about the pile heads |
+| Rejected, local | 14–24 Hz: N_eff of 1.17 or less in five of seven setups, and three different bands in one campaign |
+| Rejected, harmonic | 57–700 Hz: seven of twenty poles with damping 0.007–0.042%, within 0.2% of a multiple of 50 Hz |
+| Change after tower installation | like-for-like setup means differ by −0.5 to −2.3%; a change smaller than about 5% cannot be resolved |
+| Depth to fixity of the piles | 1.9–4.6 pile diameters below the seabed, inverted from the measured frequency; 2.3–3.0 from Davisson and Robinson with the borehole profile |
 
 ## Data
 
