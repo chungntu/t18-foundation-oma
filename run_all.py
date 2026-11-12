@@ -26,6 +26,7 @@ STEPS = [
     "src/model/foundation_stiffness.py",   # so lieu hinh hoc, do cung doc truc thuan
     "src/model/rigid_cap_6dof.py",         # dai cung 6 bac tu do, tieu diem, suy nguoc L_eff
     "src/model/group_interaction.py",      # he so hieu qua nhom, do cung thuan
+    "src/model/tower_sensitivity.py",      # do nhay tam xoay voi thap (Supplement S7)
     "src/figures/make_figures.py",         # fig01, fig02, fig11
     "src/figures/make_figures_extra.py",   # fig03-06, fig08, fig09, fig12, fig13
     "src/figures/fig_harmonics.py",        # fig10
