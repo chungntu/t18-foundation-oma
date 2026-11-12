@@ -1,27 +1,43 @@
-# du lieu tho, ban ve va tai lieu khong can de tai lap ket qua - giu ngoai repo
-data/
-un_use/
+# Layout follows E:\03 RESEARCH PAPERS\paper_folder_and_file_naming_rule.md
 
-# san pham bien dich LaTeX
-*.aux
-*.log
-*.out
-*.toc
-*.synctex.gz
-*.fls
-*.fdb_latexmk
-*.bbl
-*.blg
+# Never pushed
+reference_materials/
+reference_drafts_and_legacy_materials/
+submission_records/
+source_code_and_data/cache/
+source_code_and_data/data/raw/
+
+# The remote `origin` of this repository is PUBLIC (it is the code repository cited
+# in the article). The rule assumes a private repository, so the internal material
+# below stays untracked until the author decides otherwise.
+research_notes/
+manuscript/internal_reviews/
+manuscript/submission/
+manuscript/summary_vi.md
+
+# Generated build files of the manuscript
+manuscript/*.pdf
+manuscript/*.aux
+manuscript/*.log
+manuscript/*.bbl
+manuscript/*.blg
+manuscript/*.out
+manuscript/*.toc
+manuscript/*.synctex.gz
+manuscript/*.fdb_latexmk
+manuscript/*.fls
 
 # Python
+.venv/
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
 
-# he dieu hanh
+# Operating system and folder appearance
 Thumbs.db
-desktop.ini
 .DS_Store
+desktop.ini
+folder*.ico
 
-# bo du lieu chuan bi nop Zenodo (2.4 GB, khong dua len GitHub)
-zenodo_dataset/
+# Emptied former repository location (remove when no program holds it open)
+t18-foundation-oma/
