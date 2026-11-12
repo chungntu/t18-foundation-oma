@@ -76,8 +76,8 @@ python src/figures/fig_harmonics.py       # file fig10_configurations
 ```
 
 The scripts in `src/model/` need no records and run on their own. A full run on
-2026-10-06 reproduced every CSV in `results/` byte for byte (the model sweep of
-`rigid_cap_6dof.py` was extended on 2026-11-11, which changed `table3_coupled_model.csv`); the figures differ only in
+2026-10-06 reproduced every CSV in `results/` byte for byte (the model inputs were corrected from the design report on 2026-11-12: cap
+volume 830 m3 and pile modulus 42.9 GPa, which changed the tables written by `src/model/`); the figures differ only in
 font rendering between matplotlib installations.
 
 `src/oma/oma_lib.py` holds the identification routines (pre-processing, SSI-COV, FDD,
@@ -100,7 +100,7 @@ references when the numbering of the article changes.
 | Rejected, local | 14–24 Hz: N_eff of 1.17 or less in five of seven setups, and three different bands in one campaign |
 | Rejected, harmonic | 57–700 Hz: seven of twenty poles with damping 0.007–0.042%, within 0.2% of a multiple of 50 Hz |
 | Change after tower installation | like-for-like setup means differ by −0.5 to −2.3%; a change smaller than about 5% cannot be resolved |
-| Depth to fixity of the piles | 1.9–4.6 pile diameters below the seabed, inverted from the measured frequency; 2.3–3.0 from Davisson and Robinson with the borehole profile |
+| Depth to fixity of the piles | 4.2–8.4 pile diameters below the seabed, inverted from the measured frequency with the cap mass and pile modulus of the design report; 2.3–3.0 from the single-pile rule of Davisson and Robinson |
 
 ## Data
 

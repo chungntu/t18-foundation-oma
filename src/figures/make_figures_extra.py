@@ -381,7 +381,7 @@ def fig_criterion():
     import rigid_cap_6dof as rc
     import foundation_stiffness as fsm
     Le = np.linspace(fsm.L_FREE + 1 * fsm.D_OUT, fsm.L_FREE + 14 * fsm.D_OUT, 40)
-    K_LO, K_HI = 2.5e8, 5.8e8
+    K_LO, K_HI = 2.6e8, 6.1e8
     S = {k: [rc.summary(k, L) for L in Le] for k in (K_LO, K_HI)}
 
     from matplotlib.ticker import FixedLocator, FixedFormatter, NullLocator

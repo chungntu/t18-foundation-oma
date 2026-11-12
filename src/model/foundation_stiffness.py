@@ -13,6 +13,17 @@ Nguon so lieu (Tap 4.2 - Ban ve thiet ke mong Turbine, 10/04/2021):
         dia chat (ho khoan DH9): 2.6 m cat set chat vua; 13.4 m SET BEO RAT MEM
         (SPT N = 0..2); duoi do la cac lop cung hon (N = 17..35).
 
+Nguon so lieu (Tap 4.1 - Thuyet minh, va Tap 4.3 - Bang tinh, 20/03/2021):
+  - Tap 4.1 muc III.8: be tron duong kinh 20.5 m, tong chieu day 3 m, trong do
+        1 m phia tren vat tu mep vao den co mong; co mong duong kinh 6 m, day 1 m
+        (tong chieu cao 4 m, khop voi +5.435 .. +9.435).
+  - Tap 4.3 (kiem toan lun, mong 34 coc): h1 = 4 m, Vfound = 830.131 m3,
+        gamma_c = 25 kN/m3, Ffound = 20753 kN; coc PHC D1000 loai C, vach 130 mm,
+        Ac = 0.355 m2.
+  - Tap 4.1 (vat lieu): be tong coc PHC C80, mo-dun dan hoi 42933 MPa.
+  - Tap 4.1 muc III.6: thap cao 88 m, khoi luong tap trung dinh thap 256312 kg;
+        Tap 4.3: tai dung tai dinh mong, to hop gan nhu vinh vien, Fz = 4681 kN.
+
 Module nay cung cap so lieu cho mo hinh dai cung 6 bac tu do (rigid_cap_6dof.py)
 va uoc luong THUAN do cung doc truc mot coc tu ho so dia chat (muc 6.2 bai bao).
 
@@ -28,14 +39,19 @@ RINGS = [  # (ban kinh [m], so coc, do xien n trong "n:1"; None = thang dung)
     (9.0, 18, 5.0),
 ]
 D_CAP = 20.5          # m, duong kinh dai
-T_CAP = 4.0           # m, chieu day dai
+T_CAP = 4.0           # m, tong chieu cao dai ke ca co mong (+5.435 .. +9.435)
+T_SLAB = 2.0          # m, phan be day deu
+T_TAPER = 1.0         # m, phan vat tu mep be vao co mong
+D_NECK = 6.0          # m, duong kinh co mong
+T_NECK = 1.0          # m, chieu cao co mong
+V_CAP_DESIGN = 830.131  # m3, the tich be mong theo bang tinh (Tap 4.3)
 L_FREE = 12.335       # m, tu day dai +5.435 den day bun -6.900
 L_PILE = 46.0         # m, chieu dai coc tinh toan
 
-# ------------------------------------------------- tiet dien coc (GIA THIET)
-D_OUT = 1.000         # m, PHC D1000
-T_WALL = 0.130        # m, GIA THIET - can xac nhan bang ban ve chi tiet coc
-E_PILE = 40e9         # Pa, GIA THIET cho be tong PHC cuong do cao (~C80)
+# ------------------------------------------- tiet dien coc (theo ho so thiet ke)
+D_OUT = 1.000         # m, PHC D1000 loai C
+T_WALL = 0.130        # m, Tap 4.3: "wall thickness 130mm", Din = 740 mm
+E_PILE = 42.933e9     # Pa, Tap 4.1: be tong coc PHC C80, mo-dun dan hoi 42933 MPa
 RHO_C = 2500.0        # kg/m3
 RHO_W = 1025.0        # kg/m3
 
@@ -57,15 +73,46 @@ def batter_angle(n):
     return 0.0 if n is None else np.arctan(1.0 / n)
 
 
+def cap_radius(z):
+    """Ban kinh dai o cao do z tren day dai: be day deu, phan vat, co mong."""
+    R, r = D_CAP / 2, D_NECK / 2
+    if z <= T_SLAB:
+        return R
+    if z <= T_SLAB + T_TAPER:
+        return R + (r - R) * (z - T_SLAB) / T_TAPER
+    return r
+
+
+def cap_body(n=4000):
+    """The tich, cao do trong tam va mo-men quan tinh (tren don vi khoi luong)
+    cua dai, tich phan theo cac lat tron mong. Hinh dang lay theo Tap 4.1."""
+    dz = T_CAP / n
+    z = (np.arange(n) + 0.5) * dz
+    r = np.array([cap_radius(v) for v in z])
+    dV = np.pi * r ** 2 * dz
+    V = dV.sum()
+    zc = (dV * z).sum() / V
+    izz = (dV * r ** 2 / 2).sum() / V                           # quanh truc dung
+    ixx = (dV * (r ** 2 / 4 + (z - zc) ** 2)).sum() / V          # quanh truc ngang qua trong tam
+    return V, zc, ixx, izz
+
+
 def cap_mass_inertia():
-    """Khoi luong dai, coc va nuoc kem theo (khong ke thap)."""
-    V_cap = np.pi / 4 * D_CAP ** 2 * T_CAP
+    """Khoi luong dai, coc va nuoc kem theo (khong ke thap).
+
+    Khoi luong dai lay theo the tich trong bang tinh thiet ke (830.131 m3);
+    trong tam va mo-men quan tinh lay theo hinh dang (be + phan vat + co mong),
+    the tich hinh hoc cua hinh dang nay la 840 m3, lech 1.2 %.
+    """
+    V_shape, z_cg, ixx, izz = cap_body()
+    V_cap = V_CAP_DESIGN
     m_cap = V_cap * RHO_C
     m_pile_each = A_PILE * L_PILE * RHO_C
     n_pile = sum(n for _, n, _ in RINGS)
     m_added = RHO_W * np.pi / 4 * D_OUT ** 2 * L_FREE * n_pile
     return dict(m_cap=m_cap, m_piles=m_pile_each * n_pile, m_added=m_added,
-                V_cap=V_cap, n_pile=n_pile)
+                V_cap=V_cap, n_pile=n_pile, V_shape=V_shape, z_cg=z_cg,
+                Ixx_cg=m_cap * ixx, Izz=m_cap * izz)
 
 
 def g0_ohsaki_iwasaki(N):
@@ -129,10 +176,12 @@ def main():
     print("=" * 74)
     print("SO LIEU DAN XUAT TU BAN VE")
     print("=" * 74)
-    print(f"  Tiet dien coc PHC D1000 (vach {T_WALL*1000:.0f} mm, GIA THIET):")
+    print(f"  Tiet dien coc PHC D1000 (vach {T_WALL*1000:.0f} mm, E = {E_PILE/1e9:.2f} GPa, theo ho so thiet ke):")
     print(f"     A  = {A_PILE:.4f} m2      I  = {I_PILE:.5f} m4")
     print(f"     EA = {EA:.3e} N        EI = {EI:.3e} N.m2")
-    print(f"  Dai: the tich {p['V_cap']:.0f} m3, khoi luong {p['m_cap']/1e6:.2f} x10^6 kg")
+    print(f"  Dai: the tich {p['V_cap']:.0f} m3 (hinh dang: {p['V_shape']:.0f} m3), "
+          f"khoi luong {p['m_cap']/1e6:.3f} x10^6 kg, trong tam {p['z_cg']:.2f} m tren day dai")
+    print(f"       Ixx (qua trong tam) = {p['Ixx_cg']:.3e} kg.m2, Izz = {p['Izz']:.3e} kg.m2")
     print(f"  {p['n_pile']} coc: khoi luong {p['m_piles']/1e6:.2f} x10^6 kg, "
           f"nuoc kem theo {p['m_added']/1e6:.2f} x10^6 kg")
     print("\n  Tieu diem tung vong coc xien, r cot(alpha):")

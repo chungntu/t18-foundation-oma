@@ -136,9 +136,16 @@ def fig_borehole():
     axL.axhline(MUD, color="0.2", lw=1.2, zorder=2)
     axL.text(-20.4, MUD + 0.6, f"mud line  {MUD:+.3f}", fontsize=7.5, color="0.2", zorder=5)
 
-    axL.add_patch(Rectangle((-D_CAP / 2, CAP_BOT), D_CAP, CAP_TOP - CAP_BOT,
-                            fc="0.75", ec="k", lw=1.2, zorder=4))
-    axL.text(0, (CAP_BOT + CAP_TOP) / 2, f"pile cap  $\\varnothing${D_CAP} m × 4 m",
+    # dai theo Tap 4.1: be day deu 2 m, phan vat 1 m vao co mong duong kinh 6 m, cao 1 m
+    import foundation_stiffness as _fs
+    from matplotlib.patches import Polygon
+    R, rn = D_CAP / 2, _fs.D_NECK / 2
+    z1 = CAP_BOT + _fs.T_SLAB
+    z2 = z1 + _fs.T_TAPER
+    axL.add_patch(Polygon([(-R, CAP_BOT), (R, CAP_BOT), (R, z1), (rn, z2), (rn, CAP_TOP),
+                           (-rn, CAP_TOP), (-rn, z2), (-R, z1)],
+                          closed=True, fc="0.75", ec="k", lw=1.2, zorder=4))
+    axL.text(0, CAP_BOT + 1.0, f"pile cap  $\\varnothing${D_CAP} m, 4 m overall",
              ha="center", va="center", fontsize=8.5, zorder=6)
     axL.text(D_CAP / 2 + 0.3, CAP_TOP, f"{CAP_TOP:+.3f}", fontsize=7.5, va="center")
     axL.text(D_CAP / 2 + 0.3, CAP_BOT, f"{CAP_BOT:+.3f}", fontsize=7.5, va="center")

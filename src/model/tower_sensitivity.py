@@ -32,7 +32,7 @@ import rigid_cap_6dof as rc
 from paths import RESULTS
 
 K_AX = 3.5e8                         # N/m, giua khoang uoc luong tu ho khoan
-L_EFF = fs.L_FREE + 3.0 * fs.D_OUT   # m, giua khoang suy nguoc (1.9-4.6 D)
+L_EFF = fs.L_FREE + 6.0 * fs.D_OUT   # m, giua khoang suy nguoc (4.2-8.4 D)
 D_SENSOR = 2.5 * np.sqrt(2)          # m, goc khung do cach truc xoay xa nhat
 
 M_T = (100e3, 200e3, 400e3, 800e3)             # kg, khoi luong modal

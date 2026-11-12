@@ -115,11 +115,9 @@ def mass(L_eff, pile_fraction=13 / 35):
     0 = chi co dai; 1 = gop toan bo.
     """
     p = fs.cap_mass_inertia()
-    R = fs.D_CAP / 2
     m_cap = p['m_cap']
-    Ixx = m_cap * (3 * R ** 2 + fs.T_CAP ** 2) / 12
-    Izz = m_cap * R ** 2 / 2
-    M = rigid_mass(m_cap, np.array([0, 0, fs.T_CAP / 2]), np.diag([Ixx, Ixx, Izz]))
+    M = rigid_mass(m_cap, np.array([0, 0, p['z_cg']]),
+                   np.diag([p['Ixx_cg'], p['Ixx_cg'], p['Izz']]))
     m_one = pile_fraction * (fs.A_PILE * fs.RHO_C * L_eff
                              + fs.RHO_W * np.pi / 4 * fs.D_OUT ** 2 * fs.L_FREE)
     for pos, _ in piles():
@@ -221,7 +219,7 @@ def fixity_depth_dr1965(G_scale=1.0, depth=5.0):
     return 1.4 * R, G
 
 
-K_AX_RANGE = (1.5e8, 2.5e8, 3.5e8, 6.0e8)              # N/m, muc 6.2
+K_AX_RANGE = (1.5e8, 2.6e8, 3.5e8, 6.5e8)              # N/m, bao khoang uoc luong thuan 2.6-6.1e8
 L_EFF_MULT = (1.5, 3, 5, 8, 12)                         # L_eff = L_free + m D; 1.5 D bao phu ket qua suy nguoc (1.9-4.6 D)
 FRACTIONS = (0.0, 13 / 35, 1.0)
 
@@ -294,7 +292,7 @@ def main():
     inv_rows = []
     print(f"  {'f [Hz]':>7} {'k_ax':>8} {'frac':>5} {'L_eff':>7} {'(L_eff-L_free)/D':>17}")
     for f_t in targets:
-        for k in (2.5e8, 5.8e8):
+        for k in (2.6e8, 6.1e8):
             for fr in (0.0, 1.0):
                 Le = invert_L_eff(f_t, k, fr)
                 inv_rows.append(dict(f_target=f_t, k_ax=k, pile_fraction=fr, L_eff=round(Le, 3),
