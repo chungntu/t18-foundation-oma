@@ -1,19 +1,23 @@
 """
 Do nhay cua tam xoay mode ngang co ban voi su co mat cua thap (Supplement S7).
 
-Thap khong co thong so trong ho so, nen KHONG mo hinh hoa thap cu the. Thay vao
-do, mot mode uon cua thap duoc thay bang mot dao dong tu mot bac tu do:
+Ho so thiet ke chi cho khoi luong tap trung o dinh thap (256 t, thap cao 88 m),
+khong cho do cung cua thap, nen KHONG mo hinh hoa thap cu the. Thay vao do, mot
+mode uon cua thap duoc thay bang mot dao dong tu mot bac tu do:
     khoi luong modal m_t, tan so rieng (ngam chan) f_t, dat o cao do z_t so voi
     dau coc; lo xo k_t = m_t (2 pi f_t)^2 noi m_t voi diem cua vat cung dai o z_t.
 Chuyen vi ngang cua diem do: Ux + Ry * z_t  (dai cung, mat x-z).
 He 7 bac tu do: 6 cua dai + chuyen vi ngang tuyet doi x_t cua m_t.
 
 Hai gioi han:
-    f_t << f_1 : khoi luong thap bi cach ly, thap chi con la lo xo mem k_t;
+    f_t << f_1 : khoi luong modal bi cach ly, thap chi con la lo xo mem k_t;
     f_t >> f_1 : thap di theo dai nhu vat cung, khoi luong m_t dat o z_t.
 
-Dau ra: tam xoay z_c va ty so dung/ngang tai mat dai cua mode "do dai chi phoi"
-(mode trong mat x-z, duoi 3 Hz, co ty le dong nang cua dai lon nhat).
+Dau ra cho moi to hop:
+    - mode "do dai chi phoi": mode trong mat x-z, duoi 3 Hz, co ty le dong nang
+      cua dai lon nhat; tam xoay z_c va ty so dung/ngang tai mat dai;
+    - mode "di kem": mode khac trong mat x-z, duoi 3 Hz, ma dai mang it nhat
+      CAP_MIN dong nang, co ty so dung/ngang lon nhat (neu co).
 
 Chay:  python scripts/model/tower_sensitivity.py
 """
@@ -32,15 +36,17 @@ import rigid_cap_6dof as rc
 from paths import RESULTS
 
 K_AX = 3.5e8                         # N/m, giua khoang uoc luong tu ho khoan
-L_EFF = fs.L_FREE + 6.0 * fs.D_OUT   # m, giua khoang suy nguoc (4.2-8.4 D)
+L_EFF = fs.L_FREE + 5.5 * fs.D_OUT   # m, giua khoang suy nguoc
 D_SENSOR = 2.5 * np.sqrt(2)          # m, goc khung do cach truc xoay xa nhat
+CAP_MIN = 0.20                       # ty le dong nang toi thieu cua dai de xet mode di kem
 
 M_T = (100e3, 200e3, 400e3, 800e3)             # kg, khoi luong modal
-Z_T = (30.0, 60.0, 90.0)                       # m tren dau coc
+Z_T = (30.0, 60.0, 94.0)                       # m tren dau coc; 94 m = dinh thap 88 m + lech tam
 F_T = (0.2, 0.32, 0.5, 0.8, 1.0, 1.5, 2.0, 3.0, 5.0, 1e3)   # Hz; 1e3 = thap cung
 
 
-def cap_mode(m_t, z_t, f_t):
+def in_plane_modes(m_t, z_t, f_t):
+    """Cac mode trong mat x-z duoi 3 Hz: tan so, tam xoay, ty le dong nang cua dai."""
     K6 = rc.stiffness(K_AX, L_EFF)
     M6 = rc.mass(L_EFF)
     k_t = m_t * (2 * np.pi * f_t) ** 2
@@ -53,37 +59,55 @@ def cap_mode(m_t, z_t, f_t):
     M[:6, :6] = M6
     M[6, 6] = m_t
     w2, V = linalg.eigh(K, M)
-    best = None
+    out = []
     for j in range(7):
         f = np.sqrt(max(w2[j], 0)) / (2 * np.pi)
-        phi = V[:, j]
-        cap = phi[:6]
-        in_plane = abs(cap[0]) + abs(cap[4]) > 10 * (abs(cap[1]) + abs(cap[3]) + abs(cap[2]) + abs(cap[5]))
-        if not in_plane or f > 3.0:
+        cap = V[:6, j]
+        ok = abs(cap[0]) + abs(cap[4]) > 10 * (abs(cap[1]) + abs(cap[3]) + abs(cap[2]) + abs(cap[5]))
+        if not ok or f > 3.0:
             continue
-        e_cap = cap @ M6 @ cap                 # ty le dong nang cua dai (V chuan hoa theo M)
-        if best is None or e_cap > best["e_cap"]:
-            zc = -cap[0] / cap[4] if abs(cap[4]) > 1e-14 else np.inf
-            best = dict(f=f, zc=zc, e_cap=e_cap)
-    return best
+        zc = -cap[0] / cap[4] if abs(cap[4]) > 1e-14 else np.inf
+        out.append(dict(f=f, zc=zc, e_cap=cap @ M6 @ cap,        # V chuan hoa theo M
+                        vh=D_SENSOR / abs(zc - rc.H_TOP)))
+    return out
+
+
+def cap_mode(m_t, z_t, f_t):
+    """(mode do dai chi phoi, mode di kem hoac None)."""
+    ms = in_plane_modes(m_t, z_t, f_t)
+    main = max(ms, key=lambda m: m["e_cap"])
+    others = [m for m in ms if m is not main and m["e_cap"] >= CAP_MIN]
+    comp = max(others, key=lambda m: m["vh"]) if others else None
+    return main, comp
 
 
 def main():
     base = rc.summary(K_AX, L_EFF)
     vh0 = D_SENSOR / (base["zc1"] - rc.H_TOP)
+    bound = D_SENSOR / (42.0 - rc.H_TOP)
     print(f"Khong thap: f1 = {base['f1']:.3f} Hz, z_c = {base['zc1']:.1f} m, dung/ngang = {vh0:.3f}")
-    print(f"Tieu diem: 42.0 va 45.0 m; can hinh hoc d/(z_f - h) = {D_SENSOR / (42.0 - rc.H_TOP):.3f}")
+    print(f"Tieu diem: 42.0 va 45.0 m; can hinh hoc d/(z_f - h) = {bound:.3f}")
     rows = []
-    print(f"\n{'m_t [t]':>8} {'z_t [m]':>8} {'f_t [Hz]':>9} {'f [Hz]':>7} {'z_c [m]':>8} {'dung/ngang':>11} {'dai %':>6}")
+    print(f"\n{'m_t [t]':>8} {'z_t [m]':>8} {'f_t [Hz]':>9} {'f [Hz]':>7} {'z_c [m]':>8} {'d/n':>6} {'dai %':>6}"
+          f" | {'f2':>6} {'z_c2':>7} {'d/n 2':>6} {'dai2 %':>6}")
     for m_t in M_T:
         for z_t in Z_T:
             for f_t in F_T:
-                r = cap_mode(m_t, z_t, f_t)
-                vh = D_SENSOR / abs(r["zc"] - rc.H_TOP)
-                rows.append(dict(m_t_tonne=m_t / 1e3, z_t_m=z_t, f_t_Hz=f_t, f_Hz=round(r["f"], 4),
-                                 zc_m=round(r["zc"], 2), vh=round(vh, 4),
-                                 cap_energy_fraction=round(r["e_cap"], 3)))
-                print(f"{m_t/1e3:8.0f} {z_t:8.0f} {f_t:9.2f} {r['f']:7.3f} {r['zc']:8.1f} {vh:11.3f} {100*r['e_cap']:6.0f}")
+                r, c = cap_mode(m_t, z_t, f_t)
+                row = dict(m_t_tonne=m_t / 1e3, z_t_m=z_t, f_t_Hz=f_t, f_Hz=round(r["f"], 4),
+                           zc_m=round(r["zc"], 2), vh=round(r["vh"], 4),
+                           cap_energy_fraction=round(r["e_cap"], 3),
+                           companion_f_Hz="", companion_zc_m="", companion_vh="",
+                           companion_cap_energy_fraction="")
+                txt = ""
+                if c is not None:
+                    row.update(companion_f_Hz=round(c["f"], 4), companion_zc_m=round(c["zc"], 2),
+                               companion_vh=round(c["vh"], 4),
+                               companion_cap_energy_fraction=round(c["e_cap"], 3))
+                    txt = f" | {c['f']:6.3f} {c['zc']:7.1f} {c['vh']:6.3f} {100*c['e_cap']:6.0f}"
+                rows.append(row)
+                print(f"{m_t/1e3:8.0f} {z_t:8.0f} {f_t:9.2f} {r['f']:7.3f} {r['zc']:8.1f} {r['vh']:6.3f}"
+                      f" {100*r['e_cap']:6.0f}{txt}")
     out = os.path.join(RESULTS, "tables", "table_tower_sensitivity.csv")
     with open(out, "w", newline="", encoding="utf-8") as fh:
         wr = csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
@@ -91,17 +115,34 @@ def main():
         wr.writerows(rows)
     print("[luu]", out)
 
-    def rng(sel):
+    def show(name, sel):
         v = [r for r in rows if sel(r)]
-        return (min(r["zc_m"] for r in v), max(r["zc_m"] for r in v),
-                min(r["vh"] for r in v), max(r["vh"] for r in v),
-                min(r["f_Hz"] for r in v), max(r["f_Hz"] for r in v))
+        print(f"  {name:>26}: z_c {min(r['zc_m'] for r in v):7.1f} .. {max(r['zc_m'] for r in v):7.1f} m;"
+              f" dung/ngang {min(r['vh'] for r in v):.3f} .. {max(r['vh'] for r in v):.3f};"
+              f" f {min(r['f_Hz'] for r in v):.3f} .. {max(r['f_Hz'] for r in v):.3f} Hz")
 
-    for name, sel in (("f_t <= 0.5 Hz", lambda r: r["f_t_Hz"] <= 0.5),
-                      ("0.8 <= f_t <= 2 Hz", lambda r: 0.8 <= r["f_t_Hz"] <= 2.0),
-                      ("f_t >= 3 Hz", lambda r: r["f_t_Hz"] >= 3.0)):
-        a = rng(sel)
-        print(f"  {name:>20}: z_c {a[0]:7.1f} .. {a[1]:7.1f} m; dung/ngang {a[2]:.3f} .. {a[3]:.3f}; f {a[4]:.3f} .. {a[5]:.3f} Hz")
+    print("\nMode do dai chi phoi:")
+    show("f_t <= 0.5 Hz", lambda r: r["f_t_Hz"] <= 0.5)
+    for z in Z_T:
+        show(f"thap cung, z_t = {z:.0f} m", lambda r, z=z: r["f_t_Hz"] >= 1e3 and r["z_t_m"] == z)
+    show("moi to hop", lambda r: True)
+    over = [r for r in rows if r["vh"] > bound]
+    print(f"  vuot can {bound:.3f}: {len(over)} to hop:",
+          [(r["m_t_tonne"], r["z_t_m"], r["f_t_Hz"], r["vh"]) for r in over])
+    print(f"  ty le dong nang nho nhat cua dai: {min(r['cap_energy_fraction'] for r in rows):.2f}")
+    comp = [r for r in rows if r["companion_vh"] != ""]
+    if comp:
+        print(f"\nMode di kem (dai mang >= {100*CAP_MIN:.0f} % dong nang): {len(comp)} to hop;"
+              f" dung/ngang {min(r['companion_vh'] for r in comp):.3f} .. {max(r['companion_vh'] for r in comp):.3f};"
+              f" z_c {min(r['companion_zc_m'] for r in comp):.1f} .. {max(r['companion_zc_m'] for r in comp):.1f} m;"
+              f" dong nang dai {min(r['companion_cap_energy_fraction'] for r in comp):.2f} .."
+              f" {max(r['companion_cap_energy_fraction'] for r in comp):.2f}")
+        worst = max(comp, key=lambda r: r["companion_vh"])
+        print("  lon nhat:", {k: worst[k] for k in ("m_t_tonne", "z_t_m", "f_t_Hz", "companion_f_Hz",
+                                                    "companion_zc_m", "companion_vh",
+                                                    "companion_cap_energy_fraction")})
+    allv = max([r["vh"] for r in rows] + [r["companion_vh"] for r in comp])
+    print(f"\nTy so lon nhat cua moi mode duoc xet: {allv:.3f}")
 
 
 if __name__ == "__main__":

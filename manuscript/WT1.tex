@@ -135,7 +135,7 @@ radius of each ring and the inclination of the piles in it.
 \label{tab:geometry}
 \begin{tabularx}{\linewidth}{@{}lL@{}}
 \toprule
-Cap & 20.5~m diameter, 4~m high overall (soffit $+5.44$~m, top $+9.44$~m): a slab 2~m thick, a 1~m taper and a neck 6~m in diameter and 1~m high; 830~m$^3$ of concrete \\
+Cap & 20.5~m diameter, 4~m high overall (soffit $+5.44$~m, top $+9.44$~m): a slab 2~m thick, a 1~m taper and a neck 6~m in diameter and 1~m high, 830~m$^3$ of concrete; below the soffit, a precast slab 0.3~m thick, 93~m$^3$ \\
 Inner ring & $R = 3.0$~m, 4 piles at 90\degr, vertical \\
 Middle ring & $R = 6.0$~m, 12 piles at 30\degr, inclined 7:1 (8.1\degr{} from vertical) \\
 Outer ring & $R = 9.0$~m, 18 piles at 20\degr, inclined 5:1 (11.3\degr{} from vertical) \\
@@ -257,19 +257,19 @@ The pile layout fixes the shapes of these modes but not their frequencies, which
 \toprule
  & Sway (fundamental pair) & Rocking pair \\
 \midrule
-Frequency & 0.74--1.97~Hz & 6.7--17.3~Hz \\
-Centre of rotation above the pile heads & 48--145~m & 0.3--1.2~m \\
-Vertical/horizontal at the cap top, $d = 2.5$~m & 0.018--0.057 & 0.7--0.9 \\
-Vertical/horizontal at the cap top, $d = 3.5$~m & 0.025--0.080 & 1.0--1.2 \\
+Frequency & 0.71--1.87~Hz & 6.5--16.3~Hz \\
+Centre of rotation above the pile heads & 48--139~m & 0.2--1.0~m \\
+Vertical/horizontal at the cap top, $d = 2.5$~m & 0.018--0.057 & 0.7--0.8 \\
+Vertical/horizontal at the cap top, $d = 3.5$~m & 0.026--0.080 & 0.9--1.2 \\
 \midrule
-Torsion, $f_{\mathrm{tor}}/f_1$ & \multicolumn{2}{l}{1.13--1.30} \\
+Torsion, $f_{\mathrm{tor}}/f_1$ & \multicolumn{2}{l}{1.13--1.29} \\
 Rocking, $f_{\mathrm{rock}}/f_1$ & \multicolumn{2}{l}{4.6--18} \\
 Increase of $f_1$ for a fourfold increase of $k_{\mathrm{ax}}$ & \multicolumn{2}{l}{4--5\,\%} \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-Three predictions matter for what follows. First, the centre of rotation of the fundamental pair stays above the focal points in every case (at least 48~m), so the bound \eqref{eq:vh} holds over the whole range: in the full model its vertical motion is 2 to 8\,\% of its horizontal motion, against 70 to 120\,\% for rocking. Second, the fundamental frequency depends on the fixity length and hardly on the axial stiffness, whereas rocking lies 5 to 18 times higher and rises with the axial stiffness. Third, torsion lies only 13 to 30\,\% above the fundamental frequency, so the low band of this foundation should contain several poles within about 30\,\% of each other.
+Three predictions matter for what follows. First, the centre of rotation of the fundamental pair stays above the focal points in every case (at least 48~m), so the bound \eqref{eq:vh} holds over the whole range: in the full model its vertical motion is 2 to 8\,\% of its horizontal motion, against 70 to 120\,\% for rocking. Second, the fundamental frequency depends on the fixity length and hardly on the axial stiffness, whereas rocking lies 5 to 18 times higher and rises with the axial stiffness. Third, torsion lies only 13 to 29\,\% above the fundamental frequency, so the low band of this foundation should contain several poles within about 30\,\% of each other.
 
 % =====================================================================
 \section{Identification of the real modes}
@@ -330,11 +330,11 @@ The damping ratios, 1.3 to 9.9\,\%, are far above the bound of the third check. 
 \label{fig:shape}
 \end{figure}
 
-\paragraph{The 14--24~Hz poles are local responses.} In this band five of the seven setups have an effective channel count of 1.17 or less, four of them 1.01 or less: one channel responds and the others record only noise (Figure~\ref{fig:neff}). These poles do not form one group either: in campaign 1 the vertical, the lateral and the three-channel setups return three different bands, 18.1--19.9~Hz, 21.6--23.8~Hz and 14.4--15.0~Hz, and in campaign 2 two of the three setups return no such pole. They may come from higher bending modes of individual piles, whose first mode lies between about 5 and 12~Hz, or from the sensor mountings \cite{shokrollahi2017}; the records cannot tell which.
+\paragraph{The 14--24~Hz poles are local responses.} In this band five of the seven setups have an effective channel count of 1.17 or less, four of them 1.01 or less: one channel responds and the others record only noise (Figure~\ref{fig:neff}). These poles do not form one group either: in campaign 1 the vertical, the lateral and the three-channel setups return three different bands, 18.1--19.9~Hz, 21.6--23.8~Hz and 14.4--15.0~Hz, and in campaign 2 two of the three setups return no such pole. They may come from higher bending modes of individual piles, whose first mode lies between about 6 and 13~Hz, or from the sensor mountings \cite{shokrollahi2017}; the records cannot tell which.
 
 \paragraph{The poles at the acquisition rate include mains harmonics.} Seven of the twenty poles returned between 57 and 700~Hz have damping between 0.007 and 0.042\,\%, far below the 0.1\,\% bound, and lie within 0.2\,\% of a multiple of 50~Hz (Supplementary Section~S4). They enter through the measuring chain \cite{bk0464}, but they look like structural poles to the estimator. The other thirteen were not classified, because the processing that returns them cannot resolve the structural band.
 
-Table~\ref{tab:classify} summarises the result. A separate search below 0.5~Hz found no pole that passes the checks, only a spectral peak near 0.32~Hz in campaign 2, where the first tower mode is expected (Supplementary Section~S5). A pole at 1.61--1.73~Hz appears in the three setups with horizontal channels other than lateral setup 2, which failed the first check; it lies 33 to 40\,\% above the band poles of the same setups, just beyond the width of the group, and is left unclassified (Supplementary Section~S3).
+Table~\ref{tab:classify} summarises the result. A separate search below 0.5~Hz found no pole that passes the checks, only a spectral peak near 0.32~Hz in campaign 2, where the first tower mode is expected (Supplementary Section~S5). A pole at 1.61--1.73~Hz appears in the three setups with horizontal channels other than lateral setup 2, which failed the first check; it lies 33 to 40\,\% above the band poles of the same setups, beyond the width of the group, and is left unclassified (Supplementary Section~S3).
 
 \begin{table}[htbp]
 \centering
@@ -365,7 +365,7 @@ The vertical setups show that the band involves a rotation about a horizontal ax
 
 The lateral setup of campaign 2 bounds that height from below. In this setup channel 4 measures vertically and the other cap channels horizontally, so the ratio of the vertical to the horizontal amplitude is the quantity bounded by \eqref{eq:vh}. Table~\ref{tab:vh} gives it from several estimators: 0.08 to 0.16. Rocking predicts a ratio of 0.7 to 1.2 (Table~\ref{tab:sums}), so the measured ratio is at least 4 times too small for rocking (Figure~\ref{fig:criterion}). It lies at or slightly above the sway bound of 0.09. The vertical signal of channel 4 is weak: its coherence with the central channel is 0.5, from about five spectral averages, which is not significant, so the ratio is an upper bound set by noise and by the transverse sensitivity of the accelerometer rather than a measured rotation. The data therefore exclude rocking and are compatible with sway; they do not locate the centre of rotation at the focal point. Rocking could produce so small a ratio only if the cap happened to move within about $\pm6$\degr{} of the one direction that places channel 4 on the rotation axis.
 
-Two limits apply. The test rests on one setup, the only one whose channel orientations are recorded. And the bound was derived for the cap without the tower, whereas this setup was recorded with the tower standing. A sensitivity study with one tower mode represented by an oscillator (Supplementary Section~S7) shows that a tower mode well below the band, such as one near the 0.32~Hz peak, leaves the centre of rotation unchanged, whereas a stiff tower mode with a large mass high above the cap can lower it to the focal points or slightly below. In none of the cases examined does the ratio exceed 0.11, so the tower may contribute to the excess but cannot turn a sway into an apparent rocking.
+Two limits apply. The test rests on one setup, the only one whose channel orientations are recorded. And the bound was derived for the cap without the tower, whereas this setup was recorded with the tower standing. A sensitivity study with one tower mode represented by an oscillator (Supplementary Section~S7) shows that a tower mode well below the band, such as one near the 0.32~Hz peak, moves the centre of rotation by less than 10\,\%, whereas a stiff tower mode with a large mass high above the cap can lower it to the focal points or below, and a tower mode close to the band couples with the mode of the cap. In the cases examined the ratio reaches 0.12 for the mode in which the cap carries most of the kinetic energy and 0.19 for a companion mode of the coupled regime, against 0.7 or more for rocking. The tower can therefore account for the excess of the measured ratio over the sway bound, but it cannot turn a sway into an apparent rocking.
 
 \begin{table}[htbp]
 \centering
@@ -394,14 +394,14 @@ Predicted, rocking pair & & 0.7--1.2 \\
 \label{fig:criterion}
 \end{figure}
 
-The lateral setup of campaign 2 returns a second pole at 1.052~Hz, in which the channels on one edge of the frame move in antiphase with those on the opposite edge, as in a rotation about a vertical axis. The assignment is not secure. The central channel still carries 46\,\% of the corner amplitude, where torsion about the cap axis would give none, and the model places torsion 13 to 30\,\% above the fundamental pair for every combination of parameters, whereas this pole lies 13\,\% below the 1.215~Hz pole. A likelier candidate is the pole at 1.61--1.73~Hz, which appears only in setups with horizontal channels and lies 33 to 40\,\% above the band, just beyond the range of the model. Neither is assigned: the torsional mode is not identified, and the 1.052~Hz pole is referred to below by its frequency.
+The lateral setup of campaign 2 returns a second pole at 1.052~Hz, in which the channels on one edge of the frame move in antiphase with those on the opposite edge, as in a rotation about a vertical axis. The assignment is not secure. The central channel still carries 46\,\% of the corner amplitude, where torsion about the cap axis would give none, and the model places torsion 13 to 29\,\% above the fundamental pair for every combination of parameters, whereas this pole lies 13\,\% below the 1.215~Hz pole. A likelier candidate is the pole at 1.61--1.73~Hz, which appears only in setups with horizontal channels and lies 33 to 40\,\% above the band, beyond the range of the model. Neither is assigned: the torsional mode is not identified, and the 1.052~Hz pole is referred to below by its frequency.
 
-The rocking mode was not identified either. The model places it between about 9 and 17~Hz for the axial stiffness estimated from the borehole (Appendix~\ref{app:fixity}). The poles returned in that range, at 14.4--15.0~Hz in the three-channel setup of campaign 1 and at 11.8--16.8~Hz in one vertical setup of campaign 2, are not repeated by another setup of the same campaign. Whether rocking is weakly excited or masked cannot be decided from these records.
+The rocking mode was not identified either. The model places it between about 9 and 16~Hz for the axial stiffness estimated from the borehole (Appendix~\ref{app:fixity}). The poles returned in that range, at 14.4--15.0~Hz in the three-channel setup of campaign 1 and at 11.8--16.8~Hz in one vertical setup of campaign 2, are not repeated by another setup of the same campaign. Whether rocking is weakly excited or masked cannot be decided from these records.
 
 \subsection{Depth to fixity of the piles}
 \label{sec:stiffness}
 
-Because the fundamental mode is resisted mainly by pile bending, its frequency depends on how deep below the seabed the piles are effectively fixed, and hardly on their axial stiffness. The measured frequency can therefore be inverted for the fixity length once the axial stiffness is bounded, here from the borehole (Appendix~\ref{app:fixity}). Inverting the setup means of campaign 1, 1.17 to 1.28~Hz, gives an effective fixity length of 16.5 to 20.8~m. Since 12.34~m of it is free length in water, the piles are effectively fixed 4.2 to 8.4 diameters below the seabed, within the very soft clay. An estimate that uses no measured frequency, the rule of Davisson and Robinson \cite{davisson1965} for a single pile, gives 2.3 to 3.0 diameters, about half as much. The difference has the expected sign. The inverted value is an equivalent length for the group: it absorbs the interaction between piles and any flexibility of the pile--cap connection, both of which lengthen it, whereas the rule is governed by the 2.6~m of sand at the seabed and takes no account of the 13.4~m of very soft clay below. Given also the uncertainty of the soil properties at $N \leq 2$, the two estimates agree in order of magnitude only.
+Because the fundamental mode is resisted mainly by pile bending, its frequency depends on how deep below the seabed the piles are effectively fixed, and hardly on their axial stiffness. The measured frequency can therefore be inverted for the fixity length once the axial stiffness is bounded, here from the borehole (Appendix~\ref{app:fixity}). Inverting the setup means of campaign 1, 1.17 to 1.28~Hz, gives an effective fixity length of 16.0 to 19.8~m, measured along the pile. Since 12.34~m of it is free length in water, the piles are effectively fixed 3.7 to 7.5 diameters below the seabed, within the very soft clay; measured vertically, the depth of the raked piles is 0.1 to 0.3 diameters less. An estimate that uses no measured frequency, the rule of Davisson and Robinson \cite{davisson1965} for a single pile, gives 2.3 to 3.0 diameters, about half as much. The difference has the expected sign, but its size is not explained. The inverted value is an equivalent length for the group: it absorbs the lateral interaction between piles, any flexibility of the pile--cap connection, a soil modulus in operation below the small-strain correlation used here, and any mass on the cap that the model omits, all of which lengthen it. The two estimates agree in order of magnitude only.
 
 \subsection{Effect of tower installation}
 \label{sec:tower}
@@ -462,7 +462,7 @@ Figure~\ref{fig:notation} shows the model and its notation. The cap is a rigid b
 %
 in which $\mathbf{S}(\mathbf{p})$ is the skew matrix of the cross product. Nothing in \eqref{eq:K} decouples translation from rotation; all cross terms are retained.
 
-\paragraph{Mass.} The mass matrix is that of the rigid cap, $2.08\times10^{6}$~kg for the 830~m$^3$ of concrete in the design report, with its centroid 1.3~m above $O$ and the moments of inertia of its actual shape (slab, taper and neck), together with a participating share of the piles and of the water they carry, lumped at the pile heads. The central value of that share is 13/35 of the mass of each pile over $L_{\mathrm{eff}}$ and of the added water over the free length, the equivalent mass of a beam fixed at one end and guided at the other; the bounds 0 and 1 are carried through every result.
+\paragraph{Mass.} The mass matrix is that of the rigid cap, $2.08\times10^{6}$~kg for the 830~m$^3$ of concrete in the design report, with its centroid 1.3~m above $O$ and the moments of inertia of its actual shape (slab, taper and neck), and of the precast slab below its soffit, $0.23\times10^{6}$~kg, together with a participating share of the piles and of the water they carry, lumped at the pile heads. The central value of that share is 13/35 of the mass of each pile over $L_{\mathrm{eff}}$ and of the added water over the free length, the equivalent mass of a beam fixed at one end and guided at the other; the bounds 0 and 1 are carried through every result. The access platform on the cap and marine growth on the piles, a few per cent of the mass of the cap, are not modelled.
 
 \paragraph{The axial part and the focal point.} The axial springs contribute $k_{\mathrm{ax}}\,\mathbf{g}_i\mathbf{g}_i^{\mathsf T}$ to $\mathbf{K}$, with $\mathbf{g}_i = (\mathbf{a}_i,\ \mathbf{p}_i\times\mathbf{a}_i)$, so their part of the stiffness is $k_{\mathrm{ax}}\mathbf{G}$, where $\mathbf{G}$ depends only on the positions and inclinations of the piles. For a translation $u$ in $x$ and a rotation $\varphi$ about $y$,
 %
@@ -492,7 +492,7 @@ Rotational stiffness remaining about that centre & 18.8~m$^2$ (2.0\,\%) \\
 \end{tabularx}
 \end{table}
 
-\paragraph{Parameter sweep.} The modes of Table~\ref{tab:sums} are the eigenmodes of $\mathbf{K}$ and the mass matrix over all combinations of three uncertain inputs: the axial pile stiffness, from $1.5$ to $6.5\times10^{8}$~N/m per pile; the depth to fixity, from 1.5 to 12 pile diameters below the seabed; and the participating pile mass, between its bounds 0 and 1. Over this range a fourfold increase in $k_{\mathrm{ax}}$ raises the fundamental frequency by only 4 to 5\,\%, and the centre of rotation of the fundamental pair stays between 48 and 145~m above the pile heads. The inequality $z_c \geq z_f$ used in \eqref{eq:vh} is thus a property of this model, in which the mass lies near the pile heads, and not a theorem.
+\paragraph{Parameter sweep.} The modes of Table~\ref{tab:sums} are the eigenmodes of $\mathbf{K}$ and the mass matrix over all combinations of three uncertain inputs: the axial pile stiffness, from $1.5$ to $6.5\times10^{8}$~N/m per pile; the depth to fixity, from 1.5 to 12 pile diameters below the seabed; and the participating pile mass, between its bounds 0 and 1. Over this range a fourfold increase in $k_{\mathrm{ax}}$ raises the fundamental frequency by only 4 to 5\,\%, and the centre of rotation of the fundamental pair stays between 48 and 139~m above the pile heads. The inequality $z_c \geq z_f$ used in \eqref{eq:vh} is thus a property of this model, in which the mass lies near the pile heads, and not a theorem.
 
 \section{Axial pile stiffness and depth to fixity}
 \label{app:fixity}
@@ -510,8 +510,8 @@ The effective fixity length is then the value of $L_{\mathrm{eff}}$ at which the
 Axial stiffness, isolated pile, $G = 0.5$--$1.0\,G_0$ & $4.9$--$6.1\times10^{8}$~N/m \\
 Axial stiffness, in the group, interaction on the embedded length & $2.6$--$3.5\times10^{8}$~N/m \\
 Change of $f_1$ over $2.6$--$6.1\times10^{8}$~N/m & about 3\,\% \\
-Depth to fixity, inverted from $f = 1.17$--$1.28$~Hz & 4.2--8.4 pile diameters \\
-\quad at the campaign 1 mean, 1.233~Hz & 4.7--7.6 pile diameters \\
+Depth to fixity along the pile, inverted from $f = 1.17$--$1.28$~Hz & 3.7--7.5 pile diameters \\
+\quad at the campaign 1 mean, 1.233~Hz & 4.2--6.7 pile diameters \\
 Depth to fixity, Davisson and Robinson (single pile), $E_s = 3G$, $G = 0.5$--$1.0\,G_0$ & 2.3--3.0 pile diameters \\
 \bottomrule
 \end{tabularx}

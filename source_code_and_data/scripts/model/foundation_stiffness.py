@@ -44,7 +44,9 @@ T_SLAB = 2.0          # m, phan be day deu
 T_TAPER = 1.0         # m, phan vat tu mep be vao co mong
 D_NECK = 6.0          # m, duong kinh co mong
 T_NECK = 1.0          # m, chieu cao co mong
-V_CAP_DESIGN = 830.131  # m3, the tich be mong theo bang tinh (Tap 4.3)
+V_CAP_DESIGN = 830.131  # m3, the tich be mong theo bang tinh (Tap 4.3), khong ke tam day duc san
+D_PRECAST = 20.7      # m, duong kinh tam day be tong duc san (Tap 4.2, ban ve mat cat mong)
+T_PRECAST = 0.30      # m, chieu day tam day duc san, nam duoi day dai +5.435 (Tap 4.1 muc III.8)
 L_FREE = 12.335       # m, tu day dai +5.435 den day bun -6.900
 L_PILE = 46.0         # m, chieu dai coc tinh toan
 
@@ -101,8 +103,13 @@ def cap_mass_inertia():
     """Khoi luong dai, coc va nuoc kem theo (khong ke thap).
 
     Khoi luong dai lay theo the tich trong bang tinh thiet ke (830.131 m3);
-    trong tam va mo-men quan tinh lay theo hinh dang (be + phan vat + co mong),
-    the tich hinh hoc cua hinh dang nay la 840 m3, lech 1.2 %.
+    trong tam va mo-men quan tinh lay theo hinh dang (be + phan vat + co mong).
+    The tich hinh hoc cua hinh dang dac la 840 m3; phan lech 9.9 m3 xap xi bang
+    lo rong o tam dai tren ban ve (duong kinh 1.8 m, cao 3.9 m).
+
+    Tam day be tong duc san (day 0.3 m, duong kinh 20.7 m, tru 34 lo coc) nam
+    duoi day dai va KHONG nam trong 830.131 m3; no duoc tinh rieng (m_precast),
+    trong tam o 0.15 m duoi day dai.
     """
     V_shape, z_cg, ixx, izz = cap_body()
     V_cap = V_CAP_DESIGN
@@ -110,9 +117,15 @@ def cap_mass_inertia():
     m_pile_each = A_PILE * L_PILE * RHO_C
     n_pile = sum(n for _, n, _ in RINGS)
     m_added = RHO_W * np.pi / 4 * D_OUT ** 2 * L_FREE * n_pile
+    Rp = D_PRECAST / 2
+    V_precast = np.pi * Rp ** 2 * T_PRECAST - n_pile * np.pi / 4 * D_OUT ** 2 * T_PRECAST
+    m_precast = V_precast * RHO_C
     return dict(m_cap=m_cap, m_piles=m_pile_each * n_pile, m_added=m_added,
                 V_cap=V_cap, n_pile=n_pile, V_shape=V_shape, z_cg=z_cg,
-                Ixx_cg=m_cap * ixx, Izz=m_cap * izz)
+                Ixx_cg=m_cap * ixx, Izz=m_cap * izz,
+                V_precast=V_precast, m_precast=m_precast, z_precast=-T_PRECAST / 2,
+                Ixx_precast=m_precast * (3 * Rp ** 2 + T_PRECAST ** 2) / 12,
+                Izz_precast=m_precast * Rp ** 2 / 2)
 
 
 def g0_ohsaki_iwasaki(N):
@@ -182,6 +195,8 @@ def main():
     print(f"  Dai: the tich {p['V_cap']:.0f} m3 (hinh dang: {p['V_shape']:.0f} m3), "
           f"khoi luong {p['m_cap']/1e6:.3f} x10^6 kg, trong tam {p['z_cg']:.2f} m tren day dai")
     print(f"       Ixx (qua trong tam) = {p['Ixx_cg']:.3e} kg.m2, Izz = {p['Izz']:.3e} kg.m2")
+    print(f"  Tam day duc san: the tich {p['V_precast']:.1f} m3, khoi luong {p['m_precast']/1e6:.3f} x10^6 kg"
+          f" ({100*p['m_precast']/p['m_cap']:.1f} % khoi luong dai)")
     print(f"  {p['n_pile']} coc: khoi luong {p['m_piles']/1e6:.2f} x10^6 kg, "
           f"nuoc kem theo {p['m_added']/1e6:.2f} x10^6 kg")
     print("\n  Tieu diem tung vong coc xien, r cot(alpha):")
@@ -198,8 +213,8 @@ def main():
         print(f"  G = {s:.1f} G0: G_avg = {r['G_avg']/1e6:.1f} MPa, muL = {r['muL']:.2f}, "
               f"k_ngam = {r['k_soil']:.2e}, k_co_lap = {r['k_iso']:.2e} N/m")
 
-    print("\n  Tan so uon thu nhat cua mot coc (L_eff suy nguoc 14.2-17.0 m, muc 6.2):")
-    for L in (14.2, 17.0):
+    print("\n  Tan so uon thu nhat cua mot coc (hai dau khoang L_eff suy nguoc, muc 5.2):")
+    for L in (16.0, 19.8):
         print(f"    L = {L:.1f} m: ngam-ngam {pile_bending_frequency(L):.1f} Hz,"
               f" ngam-khop {pile_bending_frequency(L, 'fixed-pinned'):.1f} Hz")
 

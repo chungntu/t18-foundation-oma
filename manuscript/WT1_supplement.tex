@@ -351,61 +351,70 @@ paper) rests on a centre of rotation at or above the focal points, which the
 rigid-cap model gives for a cap without superstructure. The ratio was measured
 in campaign 2, with the tower standing. The design report gives only a lumped
 mass of 256~t at the top of an 88~m tower and a vertical load of 4681~kN at the
-tower base, about 477~t for the complete turbine; the stiffness of the tower is
-not given, and whether the nacelle and rotor were in place during campaign 2 is
-not recorded. The tower is therefore not modelled as such. Instead, one bending mode of
-the tower is represented by a single oscillator: a modal mass $m_t$ at height
-$z_t$ above the pile heads, connected by a spring to the point of the rigid cap
-body at that height, with a fixed-base frequency $f_t$. The oscillator adds one
-degree of freedom to the six of the cap. The cap model takes the central values
-of its parameters: an axial stiffness of $3.5\times10^{8}$~N/m per pile and a
-depth to fixity of 6 pile diameters, for which the cap alone has its
-fundamental mode at 1.25~Hz with the centre of rotation 54.7~m above the pile
-heads. The mass was varied from 100 to 800~t, the height from 30 to 90~m and
-the frequency from 0.2~Hz to a rigid connection, 120 combinations in all,
-which include the masses and the height of the design report.
-Table~\ref{tab:tower} gives the centre of rotation and the ratio at a corner of
-the instrumented frame for the mode in which the cap carries most of the
-kinetic energy.
+tower base in the quasi-permanent load combination, which corresponds to
+roughly 480~t; the stiffness of the tower is not given, and whether the nacelle
+and rotor were in place during campaign 2 is not recorded. The tower is
+therefore not modelled as such. Instead, one bending mode of the tower is
+represented by a single oscillator: a modal mass $m_t$ at height $z_t$ above
+the pile heads, connected by a spring to the point of the rigid cap body at
+that height, with a fixed-base frequency $f_t$. The oscillator adds one degree
+of freedom to the six of the cap. The cap model takes the central values of its
+parameters: an axial stiffness of $3.5\times10^{8}$~N/m per pile and a depth to
+fixity of 5.5 pile diameters, for which the cap alone has its fundamental mode
+at 1.23~Hz with the centre of rotation 55.1~m above the pile heads. The mass
+was varied from 100 to 800~t, the height from 30 to 94~m, the height of the
+tower top, and the frequency from 0.2~Hz to a rigid connection, 120
+combinations in all. Table~\ref{tab:tower} gives the centre of rotation and the
+ratio at a corner of the instrumented frame for the mode in which the cap
+carries most of the kinetic energy.
 
 \begin{table}[htbp]
 \centering
-\caption{Centre of rotation of the cap-dominated lateral mode and ratio of vertical to horizontal motion at a corner of the frame (3.5~m from the rotation axis), with one tower mode represented by an oscillator of modal mass $m_t$ at height $z_t$ and fixed-base frequency $f_t$. The geometric bound of the main paper is 0.09}
+\caption{Centre of rotation of the lateral mode in which the cap carries most of the kinetic energy, and ratio of vertical to horizontal motion at a corner of the frame (3.5~m from the rotation axis), with one tower mode represented by an oscillator of modal mass $m_t$ at height $z_t$ and fixed-base frequency $f_t$. The geometric bound of the main paper is 0.09}
 \label{tab:tower}
 \begin{tabularx}{\linewidth}{@{}Lll@{}}
 \toprule
 Case & Centre of rotation & Vertical / horizontal \\
 \midrule
-No tower & 54.7~m & 0.070 \\
-Soft tower mode, $f_t \leq 0.5$~Hz; every mass and height & 53.6--59.0~m & 0.064--0.071 \\
-Rigid tower, mass at 30~m; 100--800~t & 55.4--61.7~m & 0.061--0.069 \\
-Rigid tower, mass at 60~m; 100--800~t & 49.8--54.3~m & 0.070--0.077 \\
-Rigid tower, mass at 90~m; 100--400~t & 38.4--51.2~m & 0.075--0.103 \\
-Largest ratio in the 120 combinations (400~t at 90~m, $f_t = 3$~Hz) & 35.4~m & 0.11 \\
+No tower & 55.1~m & 0.069 \\
+Soft tower mode, $f_t \leq 0.5$~Hz; every mass and height & 54.0--60.1~m & 0.063--0.071 \\
+Rigid tower, mass at 30~m; 100--800~t & 55.9--62.2~m & 0.061--0.068 \\
+Rigid tower, mass at 60~m; 100--800~t & 50.8--54.8~m & 0.070--0.076 \\
+Rigid tower, mass at 94~m; 100--400~t & 37.0--51.2~m & 0.075--0.107 \\
+Largest ratio in the 120 combinations (400~t at 94~m, $f_t = 3$~Hz) & 34.0~m & 0.12 \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 Three regimes appear. A tower mode well below the fundamental frequency of the
 cap, such as a first bending mode near the 0.32~Hz peak of
-Section~\ref{sec:s-lowband}, is isolated from the cap: its mass does not follow
-the motion, and the centre of rotation and the ratio are unchanged for every
-mass and height examined. A tower that follows the cap rigidly acts as a mass
-at its height: below the centre of rotation it raises the centre, near the
-centre it has little effect, and above the centre it lowers it. A mass of
-200~t at 90~m brings the centre down to 47~m, just above the focal points, and
-400~t at 90~m brings it to 38~m, below them, with a ratio of 0.10. Between
-these regimes, when a tower mode lies near the fundamental
-frequency of the cap, the two modes couple, the cap carries as little as 54\,\%
-of the kinetic energy, and no single mode can be called the mode of the
-foundation; with 800~t at 90~m this is the case even for a rigid tower.
+Section~\ref{sec:s-lowband}, is isolated from the cap: its modal mass does not
+follow the motion, and the centre of rotation and the ratio change by less
+than 10\,\% for every mass and height examined. This holds for the modal mass
+of that mode only; the rest of the tower mass acts through higher modes, which
+may lie in the other two regimes. A tower that follows the cap rigidly acts as
+a mass at its height: below the centre of rotation it raises the centre, near
+the centre it has little effect, and above the centre it lowers it. A mass of
+200~t at 94~m brings the centre down to 47~m, just above the focal points, and
+400~t at 94~m brings it to 37~m, below them, with a ratio of 0.11. Between
+these regimes, when a tower mode lies near the fundamental frequency of the
+cap, the two modes couple. The cap then carries as little as 55\,\% of the
+kinetic energy of the mode of Table~\ref{tab:tower}, and a companion mode
+appears in which the cap carries 20 to 46\,\% of the energy. In 13 of the 120
+combinations such a companion mode exists; its centre of rotation can lie as
+low as 22~m above the pile heads, and its ratio reaches 0.19.
 
-The ratio does not exceed 0.11 in any of the 120 combinations, against 0.7 or
-more for rocking. The separation of sway from rocking therefore does not depend
-on the tower. The bound of 0.09 itself can be exceeded slightly, in 5 of the 120
-combinations, all with a stiff tower mode and a modal mass of 400~t or more. The study uses one
-oscillator and one set of foundation parameters; it shows the size and the
-direction of the effect, not the behaviour of the actual tower.
+Three conclusions follow. For the mode in which the cap carries most of the
+kinetic energy, the ratio exceeds the bound of 0.09 in 5 of the 120
+combinations (0.094 to 0.118), with a modal mass of 200~t or more at 60 or
+94~m and a tower frequency of 2~Hz or more. For every mode examined, companion
+modes included, the ratio does not exceed 0.19, against 0.7 or more for
+rocking: the tower can raise the ratio to the level measured, 0.08 to 0.16,
+but cannot produce an apparent rocking. And the bound of the main paper is
+that of the cap alone; with a tower it holds only if the tower modes lie well
+below the band. The study uses one oscillator and one set of foundation
+parameters; it shows the size and the direction of the effect, not the
+behaviour of the actual tower.
 
 \begin{thebibliography}{9}
 

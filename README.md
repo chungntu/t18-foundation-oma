@@ -13,7 +13,7 @@
 Ambient vibration identification of the pile-group foundation of wind turbine **T18**,
 Dong Hai 1 wind farm, Tra Vinh, Vietnam, recorded before and after tower installation.
 The foundation is a circular cap 20.5 m in diameter and 4 m high overall (a 2 m slab, a
-1 m taper and a neck 6 m in diameter) on 34 PHC D1000 piles in three rings, 30 of them
+1 m taper and a neck 6 m in diameter, on a precast bottom slab 0.3 m thick) on 34 PHC D1000 piles in three rings, 30 of them
 raked at 5:1 or 7:1, with 12.34 m of each pile standing free in water above 13.4 m of
 very soft clay.
 
@@ -43,7 +43,7 @@ horizontal motion, which separates it from rocking without knowing the soil stif
 | Rejected, local | 14–24 Hz: N_eff of 1.17 or less in five of seven setups, and three different bands in one campaign |
 | Rejected, harmonic | 57–700 Hz: seven of twenty poles with damping 0.007–0.042%, within 0.2% of a multiple of 50 Hz |
 | Change after tower installation | like-for-like setup means differ by −0.5 to −2.3%; a change smaller than about 5% cannot be resolved |
-| Depth to fixity of the piles | 4.2–8.4 pile diameters below the seabed, inverted from the measured frequency with the cap mass and pile modulus of the design report; 2.3–3.0 from the single-pile rule of Davisson and Robinson |
+| Depth to fixity of the piles | 3.7–7.5 pile diameters below the seabed, inverted from the measured frequency with the cap mass (including the precast bottom slab) and pile modulus of the design report; 2.3–3.0 from the single-pile rule of Davisson and Robinson |
 
 ## Conventions
 
@@ -84,6 +84,7 @@ manuscript/
   WT1_supplement.tex         supplementary material, Sections S1-S7
   references.bib             bibliography source
   make_references.py         writes the reference list into WT1.tex
+  citation_sources.md        source and verification status of each reference
   figures/                   figures named by content, PNG and vector PDF
   internal_reviews/          reports of the internal review rounds              (not in Git)
   submission/                cover letter, checklist, package builder           (not in Git)
@@ -107,10 +108,11 @@ analysis, see `source_code_and_data/README.md`.
 ## Open items
 
 - Apply the Springer template and check the current author guidelines of the journal.
-- `manuscript/submission/build_submission.py` and `cover_letter.tex` predate the restructuring of the manuscript and of this folder; update their paths and the results they quote before use.
-- `manuscript/citation_sources.md` does not exist yet: the source and verification status of each reference have not been recorded.
-- The cap volume (830 m3) comes from the 2021 design calculations; confirm against the as-built foundation if records become available.
+- `manuscript/submission/submission_checklist.md` lists the confirmations still needed from the authors (author list, affiliations, AI-use statement).
+- `manuscript/citation_sources.md`: three references are not verified by any check (`worldbank2021`, `fernandes2022`, `davisson1965`); eleven have no DOI.
+- The cap volume (830 m3) and the precast bottom slab (93 m3) come from the 2021 design documents; confirm against the as-built foundation if records become available.
 - The sensor frame (5 x 5 m) is wider than the neck of the cap (6 m diameter); the position of the frame on the cap is not documented, and the figure `sensor_layout` draws the cap as a block.
 - The remote `origin` is public, whereas the folder rule assumes a private repository. `research_notes/`, `manuscript/internal_reviews/`, `manuscript/submission/` and `manuscript/summary_vi.md` are therefore kept out of Git (see `.gitignore`).
 - The folder `t18-foundation-oma/` is the emptied former repository location; delete it once no program holds it open.
-- This paper is not yet listed in the research map (`02 WRITING/0 research map`).
+- The Zenodo description still says the cap is "4 m thick"; the article now gives its actual shape.
+- Items found by the third internal review and not modelled: the access platform on the cap, marine growth, added water above the still water level, and the reinforced-concrete link to the service bridge (see `manuscript/internal_reviews/full_manuscript_round_3/`).

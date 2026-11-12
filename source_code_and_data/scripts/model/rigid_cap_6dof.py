@@ -118,6 +118,8 @@ def mass(L_eff, pile_fraction=13 / 35):
     m_cap = p['m_cap']
     M = rigid_mass(m_cap, np.array([0, 0, p['z_cg']]),
                    np.diag([p['Ixx_cg'], p['Ixx_cg'], p['Izz']]))
+    M += rigid_mass(p['m_precast'], np.array([0, 0, p['z_precast']]),      # tam day duc san
+                    np.diag([p['Ixx_precast'], p['Ixx_precast'], p['Izz_precast']]))
     m_one = pile_fraction * (fs.A_PILE * fs.RHO_C * L_eff
                              + fs.RHO_W * np.pi / 4 * fs.D_OUT ** 2 * fs.L_FREE)
     for pos, _ in piles():
@@ -220,7 +222,7 @@ def fixity_depth_dr1965(G_scale=1.0, depth=5.0):
 
 
 K_AX_RANGE = (1.5e8, 2.6e8, 3.5e8, 6.5e8)              # N/m, bao khoang uoc luong thuan 2.6-6.1e8
-L_EFF_MULT = (1.5, 3, 5, 8, 12)                         # L_eff = L_free + m D; 1.5 D bao phu ket qua suy nguoc (1.9-4.6 D)
+L_EFF_MULT = (1.5, 3, 5, 8, 12)                         # L_eff = L_free + m D; bao phu ket qua suy nguoc
 FRACTIONS = (0.0, 13 / 35, 1.0)
 
 

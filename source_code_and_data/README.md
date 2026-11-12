@@ -89,4 +89,4 @@ frequencies between them.
 | Segment scatter | `oma/segment_uncertainty.py` | `results/tables/table_segment_uncertainty.csv` |
 
 The model inputs were corrected from the design report on 2026-11-12 (cap volume 830 m3,
-pile modulus 42.9 GPa). The result files are CSV and PNG; they were not converted to JSON.
+precast bottom slab 93 m3, pile modulus 42.9 GPa). The result files are CSV and PNG; they were not converted to JSON.
