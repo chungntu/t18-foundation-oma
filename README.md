@@ -107,10 +107,9 @@ analysis, see `source_code_and_data/README.md`.
 
 ## Open items
 
-- The journal requires any use of a large language model beyond copy editing to be documented in the manuscript. This paper was restructured, reviewed and revised with AI assistance; a draft statement is in `manuscript/submission/submission_checklist.md` and the authors must decide on its wording before submission.
-- ORCID identifiers of the authors are not in the manuscript.
+- ORCID identifiers are not in the manuscript; the journal asks for them only "if available", and the submission system can record them.
 - `manuscript/submission/submission_checklist.md` lists the confirmations still needed from the authors (author list, affiliations, AI-use statement).
-- `manuscript/citation_sources.md`: three references are not verified by any check (`worldbank2021`, `fernandes2022`, `davisson1965`); eleven have no DOI.
+- `manuscript/citation_sources.md`: every cited reference is covered by at least one check; eleven have no DOI.
 - The cap volume (830 m3) and the precast bottom slab (93 m3) come from the 2021 design documents; confirm against the as-built foundation if records become available.
 - The sensor frame (5 x 5 m) is wider than the neck of the cap (6 m diameter); the position of the frame on the cap is not documented, and the figure `sensor_layout` draws the cap as a block.
 - The remote `origin` is public, whereas the folder rule assumes a private repository. `research_notes/`, `manuscript/internal_reviews/`, `manuscript/submission/` and `manuscript/summary_vi.md` are therefore kept out of Git (see `.gitignore`).

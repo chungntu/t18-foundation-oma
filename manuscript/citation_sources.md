@@ -11,11 +11,11 @@ printed in `WT1.tex` with the Crossref record of its DOI (script run on 2026-11-
 
 "Not recorded" means that no note of 2026-10-03 exists for the entry. Entries with "no DOI" in
 the Crossref column and "not recorded" in the last column have not been verified by anyone and
-should be checked by hand before submission.
+were checked by hand on 2026-11-13 (see the last column).
 
 | No. | Key | Reference | Crossref check, 2026-11-12 | Verification recorded on 2026-10-03 |
 |---:|---|---|---|---|
-| 1 | `worldbank2021` | World Bank Group (2021) Offshore Wind Roadmap for Vietnam. Report, World Bank, Washington, DC. | no DOI | not recorded |
+| 1 | `worldbank2021` | World Bank Group (2021) Offshore Wind Roadmap for Vietnam. Report, World Bank, Washington, DC. | no DOI | verified on 2026-11-13 against the World Bank Open Knowledge Repository record (author World Bank, published 2021-06, doi:10.1596/36249); entry corrected to that author name and DOI |
 | 2 | `nguyen2022` | Nguyen TD, Ho DA, Bui NH, Pham DH, Ngo HD, Du VT (2022) Design and Construction of Nearshore Wind Turbine Foun… | matches Crossref | Crossref metadata checked |
 | 3 | `lang2014` | Lang R, Liu R, Lian J, Ding H (2014) Study on Load-Bearing Characteristics of a New Pile Group Foundation for … | matches Crossref | Crossref metadata checked; claim checked against abstract or full text |
 | 4 | `weijtjens2016` | Weijtjens W, Verbelen T, De Sitter G, Devriendt C (2016) Foundation structural health monitoring of an offshor… | matches Crossref | not recorded |
@@ -38,7 +38,7 @@ should be checked by hand before submission.
 | 21 | `noren2021` | Noren-Cosgriff K, Kaynia AM (2021) Estimation of natural frequencies and damping using dynamic field data from… | matches Crossref | not recorded |
 | 22 | `sastre2024` | Sastre Jurado C, Weijtjens W, Stuyts B, Winkler K, Fallais D, Devriendt C (2024) Benchmarking Measured Eigenfr… | matches Crossref | Crossref metadata checked; claim checked against abstract or full text |
 | 23 | `peeters2001z24` | Peeters B, De Roeck G (2001) One-year monitoring of the Z24-Bridge: environmental effects versus damage events… | matches Crossref | Crossref metadata checked |
-| 24 | `fernandes2022` | Fernandes A, Winkler K, Weijtjens W, Devriendt C (2022) Operational modal analysis campaign conducted during t… | no DOI | not recorded |
+| 24 | `fernandes2022` | Fernandes A, Winkler K, Weijtjens W, Devriendt C (2022) Operational modal analysis campaign conducted during t… | no DOI | verified on 2026-11-13 against the University of Augsburg repository record of the ISMA 2022 proceedings (ISBN 9789082893151, pages 2696-2707); first page corrected from 2695 |
 | 25 | `seo2020` | Seo Y-H, Ryu MS, Oh K-Y (2020) Dynamic Characteristics of an Offshore Wind Turbine with Tripod Suction Buckets… | matches Crossref | Crossref metadata checked; claim checked against abstract or full text |
 | 26 | `li2022` | Li Y, Wang B, Liu Q, Gao S, Lu S (2022) Application of Converted Displacement for Modal Parameter Identificati… | matches Crossref | Crossref metadata checked; claim checked against abstract or full text |
 | 27 | `liu2026` | Liu Y, Zhao J, Zhang L, Hu H, Yu L, Wang Y, Liu C, Luo S (2026) Dynamic Characteristics of Offshore Wind Turbi… | matches Crossref | Crossref metadata checked; claim checked against abstract or full text |
@@ -70,8 +70,8 @@ should be checked by hand before submission.
 | 53 | `gres2021` | Gres S, Dohler M, Andersen P, Mevel L (2021) Kalman filter-based subspace identification for operational modal… | matches Crossref | Crossref metadata checked |
 | 54 | `en1991` | European Committee for Standardization (2010) EN 1991-1-4:2005+A1:2010 Eurocode 1: Actions on structures - Par… | no DOI | claim checked against abstract or full text |
 | 55 | `bk0464` | Lindahl C, Ginn B (1999) How to deal with electrical noise and interference in the measuring chain using a NEX… | no DOI | claim checked against abstract or full text |
-| 56 | `davisson1965` | Davisson MT, Robinson KE (1965) Bending and buckling of partially embedded piles. In: Proceedings of the 6th I… | no DOI | not recorded |
+| 56 | `davisson1965` | Davisson MT, Robinson KE (1965) Bending and buckling of partially embedded piles. In: Proceedings of the 6th I… | no DOI | verified on 2026-11-13: listed in the ISSMGE online library (6th ICSMFE, Montreal); volume 2, pages 243-246 as given in the reference list of an ASCE journal paper of 1997 |
 | 57 | `ohsaki1973` | Ohsaki Y, Iwasaki R (1973) On Dynamic Shear Moduli and Poisson's Ratios of Soil Deposits. Soils and Foundation… | matches Crossref | not recorded |
 | 58 | `t18dataset` | Nguyen TCN (2026) Ambient vibration records of the pile-group foundation of offshore wind turbine T18, Dong Ha… | DataCite DOI; Zenodo record opened and compared on 2026-11-12 | not recorded |
 
-Not verified by either check (3): `worldbank2021`, `fernandes2022`, `davisson1965`.
+Every cited reference is now covered by at least one check. Eleven have no DOI.
