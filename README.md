@@ -49,7 +49,7 @@ horizontal motion, which separates it from rocking without knowing the soil stif
 
 | Convention | This paper |
 |---|---|
-| Target journal, template | Journal of Civil Structural Health Monitoring; currently plain `article` class, Springer template not yet applied |
+| Target journal, template | Journal of Civil Structural Health Monitoring; plain `article` class formatted by hand to the author guidelines read on 2026-11-13 (the Springer Nature LaTeX template is recommended by the journal, not required, and is not installed on this machine) |
 | Length limits | none stated by the journal |
 | Abstract; highlights, graphical abstract | 150–250 words (currently about 248); none |
 | Peer review | single-blind |
@@ -58,7 +58,7 @@ horizontal motion, which separates it from rocking without knowing the soil stif
 | Decimal mark | point |
 | Thousands separator | thin space (`2\,535\,936`) |
 | Section headings | sentence case |
-| Figure and equation references | "Figure 3", "(5)"; to be changed to "Fig. 3", "Eq. (5)" when the Springer template is applied |
+| Figure, section and equation references | "Fig. 3", "Sect. 4.2", "Eq. (5)"; captions start with "Fig. 3" and "Table 3" without punctuation; appendix figures and tables continue the numbering of the main text; the supplement is cited as "Online Resource 1" |
 | Vector notation | bold (`\mathbf{U}`, `\boldsymbol{\Phi}`) |
 | Fixed terms | sway, rocking, pole, setup, campaign, fundamental pair, low band, effective fixity length, depth to fixity, effective channel count |
 | Fixed symbols | `z_f` focal height, `z_c` centre of rotation, `h` sensor height, `d` distance to rotation axis, `k_ax`, `L_eff`, `N_eff` |
@@ -81,7 +81,7 @@ README.md                    this file
 research_notes/              research plan, decision log                        (not in Git, see below)
 manuscript/
   WT1.tex                    article (Appendix A: rigid-cap model, Appendix B: fixity inversion)
-  WT1_supplement.tex         supplementary material, Sections S1-S7
+  WT1_supplement.tex         Online Resource 1 (supplementary material), Sections S1-S7
   references.bib             bibliography source
   make_references.py         writes the reference list into WT1.tex
   citation_sources.md        source and verification status of each reference
@@ -107,7 +107,8 @@ analysis, see `source_code_and_data/README.md`.
 
 ## Open items
 
-- Apply the Springer template and check the current author guidelines of the journal.
+- The journal requires any use of a large language model beyond copy editing to be documented in the manuscript. This paper was restructured, reviewed and revised with AI assistance; a draft statement is in `manuscript/submission/submission_checklist.md` and the authors must decide on its wording before submission.
+- ORCID identifiers of the authors are not in the manuscript.
 - `manuscript/submission/submission_checklist.md` lists the confirmations still needed from the authors (author list, affiliations, AI-use statement).
 - `manuscript/citation_sources.md`: three references are not verified by any check (`worldbank2021`, `fernandes2022`, `davisson1965`); eleven have no DOI.
 - The cap volume (830 m3) and the precast bottom slab (93 m3) come from the 2021 design documents; confirm against the as-built foundation if records become available.

@@ -77,15 +77,15 @@ frequencies between them.
 | Item of the article | Script | Result file |
 |---|---|---|
 | Table 1, focal heights | `model/foundation_stiffness.py` | printed |
-| Table 3, Table A1, Appendix B inversion | `model/rigid_cap_6dof.py` | `results/tables/table3_coupled_model.csv`, `table8_L_eff_inversion.csv` |
-| Table B1, axial stiffness | `model/group_interaction.py`, `model/foundation_stiffness.py` | printed |
+| Table 3, Table 6 (Appendix A), Appendix B inversion | `model/rigid_cap_6dof.py` | `results/tables/table3_coupled_model.csv`, `table8_L_eff_inversion.csv` |
+| Table 7 (Appendix B), axial stiffness | `model/group_interaction.py`, `model/foundation_stiffness.py` | printed |
 | Table 5, vertical/horizontal ratio | `oma/rotation_centre_test.py` | `results/tables/table_rotation_centre.csv` |
 | Effective channel count (Figure 6, Table 4) | `oma/participation.py` | printed |
-| Supplement Tables S1, S2, S3, S5 | `oma/make_tables.py`, campaign runners | `results/tables/table2_records.csv`, `table4_poles.csv`, `table5_phase.csv`, `table9_shift.csv`, `results/campaign_1/`, `results/campaign_2/` |
-| Supplement S2, threshold simulation | `oma/criterion_calibration.py` | printed |
-| Supplement S4, processing settings | `oma/configuration_experiment.py` | printed |
-| Supplement S5, low-band search | `oma/low_band_search.py` | printed |
-| Supplement S7, tower sensitivity | `model/tower_sensitivity.py` | `results/tables/table_tower_sensitivity.csv` |
+| Online Resource 1, Tables S1, S2, S3, S5 | `oma/make_tables.py`, campaign runners | `results/tables/table2_records.csv`, `table4_poles.csv`, `table5_phase.csv`, `table9_shift.csv`, `results/campaign_1/`, `results/campaign_2/` |
+| Online Resource 1, S2, threshold simulation | `oma/criterion_calibration.py` | printed |
+| Online Resource 1, S4, processing settings | `oma/configuration_experiment.py` | printed |
+| Online Resource 1, S5, low-band search | `oma/low_band_search.py` | printed |
+| Online Resource 1, S7, tower sensitivity | `model/tower_sensitivity.py` | `results/tables/table_tower_sensitivity.csv` |
 | Segment scatter | `oma/segment_uncertainty.py` | `results/tables/table_segment_uncertainty.csv` |
 
 The model inputs were corrected from the design report on 2026-11-12 (cap volume 830 m3,

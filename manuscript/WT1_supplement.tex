@@ -17,7 +17,8 @@
 \usepackage{float}
 \usepackage[section,above,below]{placeins}
 \usepackage[font=small,labelfont=bf]{caption}
-\captionsetup[figure]{name=Figure,labelsep=colon}
+\captionsetup{labelsep=space}
+\captionsetup[figure]{name=Fig.}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
@@ -33,7 +34,7 @@
 
 \graphicspath{{figures/}}
 \hypersetup{
-  pdftitle={Supplementary Material: A Geometric Criterion for Sway and Rocking in Inclined Pile Groups},
+  pdftitle={Online Resource 1: A Geometric Criterion for Sway and Rocking in Inclined Pile Groups},
   hypertexnames=false
 }
 \setlength{\emergencystretch}{3em}
@@ -50,9 +51,11 @@
 \renewcommand{\thefigure}{S\arabic{figure}}
 \renewcommand{\thetable}{S\arabic{table}}
 
-\title{Supplementary Material\\[4pt]
-\large A Geometric Criterion for Sway and Rocking in Inclined Pile Groups, with Field Identification of an Offshore Wind Turbine Foundation}
-\author{Nguyen Hoang Bui, Thi Cam Nhung Nguyen, Huu-Quyet Nguyen, Chung Truong Thanh, Hung Nguyen-Dang, Jos\'e C. Matos}
+\title{Online Resource 1\\[4pt]
+\large A Geometric Criterion for Sway and Rocking in Inclined Pile Groups, with Field Identification of an Offshore Wind Turbine Foundation\\[6pt]
+\normalsize Journal of Civil Structural Health Monitoring}
+\author{Nguyen Hoang Bui, Thi Cam Nhung Nguyen, Huu-Quyet Nguyen, Chung Truong Thanh, Hung Nguyen-Dang, Jos\'e C. Matos\\[4pt]
+\small Corresponding author: Thi Cam Nhung Nguyen, University of Transport and Communications, No.\ 3 Cau Giay Street, Hanoi, Vietnam, \texttt{ncnhung@utc.edu.vn}}
 \date{}
 
 \begin{document}
@@ -71,7 +74,7 @@ table numbers without the prefix S refer to the main paper.
 \label{sec:s-quality}
 
 Table~\ref{tab:records} gives the statistics of the raw records of the seven
-setups, and Figure~\ref{fig:quality} shows a typical record of campaign 2. At
+setups, and Fig.~\ref{fig:quality} shows a typical record of campaign 2. At
 one moment a single channel jumps far above its normal level while the others
 stay quiet. The event rings briefly at a high frequency, as a sensor mounting
 does when it is struck, and is most likely a knock on or near that sensor
@@ -116,7 +119,7 @@ Camp. & Setup & Ch. & Samples & Min. & Peak/$\sigma$ & Kurt. & $N_{>8\sigma}$ & 
 \section{Threshold of the effective channel count}
 \label{sec:s-neff}
 
-The first check of Section~4.2 rejects a pole whose effective channel count
+The first check of Sect.~4.2 of the main paper rejects a pole whose effective channel count
 $N_{\mathrm{eff}} = (\sum|\phi|^2)^2 / \sum|\phi|^4$ is below 1.25. The
 threshold was set by simulation. Two cases were generated with the sampling
 rate, the record length of the shortest record (28\,000 samples at 51.61~Hz)
@@ -154,7 +157,7 @@ to the three-channel setup.
 \section{Complete list of identified poles}
 \label{sec:s-poles}
 
-Table~\ref{tab:poles} lists every pole returned below 25~Hz, by setup, with the spectral peak of frequency domain decomposition (FDD) nearest to the low-band poles. Poles with damping outside 0.1 to 15\,\% are discarded by the identification and do not appear. Table~\ref{tab:phase} gives the phase between opposite corners of the instrumented frame at the peak of the low band, which underlies Figure~7 of the main paper.
+Table~\ref{tab:poles} lists every pole returned below 25~Hz, by setup, with the spectral peak of frequency domain decomposition (FDD) nearest to the low-band poles. Poles with damping outside 0.1 to 15\,\% are discarded by the identification and do not appear. Table~\ref{tab:phase} gives the phase between opposite corners of the instrumented frame at the peak of the low band, which underlies Fig.~7 of the main paper.
 
 \begin{table}[htbp]
 \centering
@@ -228,7 +231,7 @@ over a time window $\tau = i\,\Delta t$, set by the number of block rows $i$.
 At the acquisition rate of 1651.6~Hz with $i = 150$, the window is only
 0.09~s, a tenth of a period at 1~Hz. The effect of this window and of the
 high-pass cut-off was tested on one record (Table~\ref{tab:config} and
-Figure~\ref{fig:harm}). With the short covariance window of the full rate, no
+Fig.~\ref{fig:harm}). With the short covariance window of the full rate, no
 pole is found below 5~Hz, whether or not the high-pass filter is applied
 (configurations A and C). The 1~Hz band appears only with both the longer
 window and the low cut-off (configuration B), which is the configuration used
@@ -277,7 +280,7 @@ configuration is not used.
 The band below 0.5~Hz was searched for a tower mode, which a soft--stiff design
 places near 0.3~Hz \cite{arany2017}. The records were decimated further to
 12.9~Hz and analysed with a covariance window of 11.6~s
-(Figure~\ref{fig:lowband}). Four of the seven records were searched: the
+(Fig.~\ref{fig:lowband}). Four of the seven records were searched: the
 vertical setup and lateral setup 1 of campaign 1, and the lateral setup and
 vertical setup d2ke of campaign 2. No pole below 0.5~Hz passes the checks. The only
 features are spectral peaks near 0.21~Hz in campaign 1, recorded before the
@@ -295,7 +298,7 @@ the first tower mode is expected.
 \section{Setup-by-setup comparison of the two campaigns}
 \label{sec:s-shift}
 
-Table~\ref{tab:shift} lists the low-band poles behind Figure~9 of the main
+Table~\ref{tab:shift} lists the low-band poles behind Fig.~9 of the main
 paper. Averaging all setups of each campaign, including lateral setup 2, suggests a fall of 8.4\,\% (6.8\,\% without it) after
 the tower was installed, but this mixes setups that measure in different
 directions and therefore weight different members of the band. The table
@@ -362,8 +365,7 @@ of freedom to the six of the cap. The cap model takes the central values of its
 parameters: an axial stiffness of $3.5\times10^{8}$~N/m per pile and a depth to
 fixity of 5.5 pile diameters, for which the cap alone has its fundamental mode
 at 1.23~Hz with the centre of rotation 55.1~m above the pile heads. The mass
-was varied from 100 to 800~t, the height from 30 to 94~m, the height of the
-tower top, and the frequency from 0.2~Hz to a rigid connection, 120
+was varied from 100 to 800~t, the height from 30 to 94~m, about the height of the nacelle above the pile heads, and the frequency from 0.2~Hz to a rigid connection, 120
 combinations in all. Table~\ref{tab:tower} gives the centre of rotation and the
 ratio at a corner of the instrumented frame for the mode in which the cap
 carries most of the kinetic energy.
@@ -388,7 +390,7 @@ Largest ratio in the 120 combinations (400~t at 94~m, $f_t = 3$~Hz) & 34.0~m & 0
 
 Three regimes appear. A tower mode well below the fundamental frequency of the
 cap, such as a first bending mode near the 0.32~Hz peak of
-Section~\ref{sec:s-lowband}, is isolated from the cap: its modal mass does not
+Sect.~\ref{sec:s-lowband}, is isolated from the cap: its modal mass does not
 follow the motion, and the centre of rotation and the ratio change by less
 than 10\,\% for every mass and height examined. This holds for the modal mass
 of that mode only; the rest of the tower mass acts through higher modes, which
@@ -396,20 +398,30 @@ may lie in the other two regimes. A tower that follows the cap rigidly acts as
 a mass at its height: below the centre of rotation it raises the centre, near
 the centre it has little effect, and above the centre it lowers it. A mass of
 200~t at 94~m brings the centre down to 47~m, just above the focal points, and
-400~t at 94~m brings it to 37~m, below them, with a ratio of 0.11. Between
+400~t at 94~m brings it to 37~m, below them, with a ratio of 0.11. With 800~t
+at 94~m the lateral motion splits into two modes: one at 1.41~Hz, in which the
+cap carries 75\,\% of the energy and moves almost in pure translation, and one
+at 0.96~Hz, in which it carries 26\,\%, with the centre 23.7~m above the pile
+heads and a ratio of 0.18; this case is therefore not in
+Table~\ref{tab:tower}. Between
 these regimes, when a tower mode lies near the fundamental frequency of the
 cap, the two modes couple. The cap then carries as little as 55\,\% of the
-kinetic energy of the mode of Table~\ref{tab:tower}, and a companion mode
-appears in which the cap carries 20 to 46\,\% of the energy. In 13 of the 120
-combinations such a companion mode exists; its centre of rotation can lie as
-low as 22~m above the pile heads, and its ratio reaches 0.19.
+kinetic energy of the mode of Table~\ref{tab:tower}, and a companion mode can
+appear. Companion modes are counted when they lie below 3~Hz and the cap
+carries at least 20\,\% of their kinetic energy; modes with a smaller share are
+essentially modes of the tower and are not examined. Such a companion mode
+exists in 13 of the 120 combinations: nine with a tower frequency of 1.5 to
+3~Hz, and four with 400 or 800~t at 94~m and a tower frequency of 5~Hz or a
+rigid connection. The cap carries 20 to 46\,\% of its energy; its centre of
+rotation can lie as low as 22~m above the pile heads, and its ratio reaches
+0.19.
 
 Three conclusions follow. For the mode in which the cap carries most of the
 kinetic energy, the ratio exceeds the bound of 0.09 in 5 of the 120
 combinations (0.094 to 0.118), with a modal mass of 200~t or more at 60 or
-94~m and a tower frequency of 2~Hz or more. For every mode examined, companion
-modes included, the ratio does not exceed 0.19, against 0.7 or more for
-rocking: the tower can raise the ratio to the level measured, 0.08 to 0.16,
+94~m and a tower frequency of 2~Hz or more. For every mode in which the cap carries at
+least 20\,\% of the kinetic energy, companion modes included, the ratio does
+not exceed 0.19, against 0.7 or more for rocking: the tower can raise the ratio to the level measured, 0.08 to 0.16,
 but cannot produce an apparent rocking. And the bound of the main paper is
 that of the cap alone; with a tower it holds only if the tower modes lie well
 below the band. The study uses one oscillator and one set of foundation
